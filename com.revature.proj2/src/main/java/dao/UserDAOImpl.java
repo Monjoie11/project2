@@ -2,12 +2,13 @@ package dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.revature.proj2.pojos.User;
+import pojos.User;
 import com.revature.util.SessionFactoryUtil;
 
 public class UserDAOImpl implements UserDAO{

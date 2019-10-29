@@ -1,25 +1,20 @@
-package com.revature.proj2.daos;
+package dao;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.revature.util.SessionFactoryUtil;
+import pojos.Company;
 
-import pojos.Post;
+public class CompanyDAOImpl implements CompanyDAO {
 
-public class PostDAOImpl implements PostDAO {
-
-	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
-	
 	@Override
-	public void insertPost(Post p) {
+	public void insertCompany(Company c) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.save(p);
+			sess.save(c);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -31,13 +26,13 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public void removePost(String name) {
+	public void removeCompany(String name) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.delete(p);
+			sess.delete(c);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -49,13 +44,13 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public void updatePost(Post p) {
+	public void updateCompany(Company c) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.update(p);
+			sess.update(c);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)

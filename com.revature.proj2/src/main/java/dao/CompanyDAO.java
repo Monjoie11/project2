@@ -1,4 +1,4 @@
-package com.revature.proj2.daos;
+package dao;
 
 import pojos.Company;
 
