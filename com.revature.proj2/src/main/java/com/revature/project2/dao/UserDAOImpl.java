@@ -2,19 +2,17 @@ package com.revature.project2.dao;
 
 import java.util.List;
 
-
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.revature.project2.pojos.User;
-import com.revature.util.SessionFactoryUtil;
+import com.revature.project2.util.SessionFactoryUtil;
 
 public class UserDAOImpl implements UserDAO{
 	
-	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
 	@Override
 	public User getUser(String email) {
