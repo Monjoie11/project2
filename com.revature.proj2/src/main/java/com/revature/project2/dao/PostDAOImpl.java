@@ -9,21 +9,20 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.revature.project2.util.SessionFactoryUtil;
-import com.revature.project2.pojos.Company;
 import com.revature.project2.pojos.Post;
 
 public class PostDAOImpl implements PostDAO {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
-	
+
 	@Override
-	public void createPost(Post p) {
+	public void createPost(Post post) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.save(p);
+			sess.save(post);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -35,13 +34,13 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public void deletePost(Post p) {
+	public void deletePost(Post post) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.delete(p);
+			sess.delete(post);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -53,13 +52,13 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public void updatePost(Post p) {
+	public void updatePost(Post post) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.update(p);
+			sess.update(post);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -78,7 +77,7 @@ public class PostDAOImpl implements PostDAO {
 		try {
 			tx = sess.beginTransaction();
 			Criteria crit = sess.createCriteria(Post.class);
-			result = crit.list();			
+			result = crit.list();
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -91,14 +90,14 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public Post getPost(String name) {
+	public Post getPost(String postName) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		Post p = null;
 		try {
 			tx = sess.beginTransaction();
-			p = (Post) sess.get(Post.class, name);
+			p = (Post) sess.get(Post.class, postName);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)

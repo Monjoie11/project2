@@ -5,9 +5,14 @@ import java.util.List;
 import com.revature.project2.pojos.Company;
 
 public interface CompanyDAO {
-	public void createCompany(Company c);
-	public Company getCompany(String name);
-	public void deleteCompany(Company c);
-	public void updateCompany(Company c);
-	public List<Company> getAllCompanies();}
+	public void createCompany(Company company);
 
+	public Company getCompany(String companyName);
+
+	public void deleteCompany(Company company);
+
+	public void updateCompany(Company company);
+
+	public List<Company> getAllCompanies();
+
+}

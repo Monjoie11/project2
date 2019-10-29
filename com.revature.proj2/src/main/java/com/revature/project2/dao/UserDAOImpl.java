@@ -10,8 +10,8 @@ import org.hibernate.Transaction;
 import com.revature.project2.pojos.User;
 import com.revature.project2.util.SessionFactoryUtil;
 
-public class UserDAOImpl implements UserDAO{
-	
+public class UserDAOImpl implements UserDAO {
+
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
 	@Override
@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO{
 		sess.delete(user);
 		tx.commit();
 		sess.close();
-		
+
 	}
 
 }

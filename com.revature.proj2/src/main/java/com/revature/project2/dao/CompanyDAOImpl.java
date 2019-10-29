@@ -13,15 +13,15 @@ import com.revature.project2.util.SessionFactoryUtil;
 public class CompanyDAOImpl implements CompanyDAO {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
-	
+
 	@Override
-	public void createCompany(Company c) {
+	public void createCompany(Company company) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.save(c);
+			sess.save(company);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -33,13 +33,13 @@ public class CompanyDAOImpl implements CompanyDAO {
 	}
 
 	@Override
-	public void deleteCompany(Company c) {
+	public void deleteCompany(Company company) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.delete(c);
+			sess.delete(company);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -51,13 +51,13 @@ public class CompanyDAOImpl implements CompanyDAO {
 	}
 
 	@Override
-	public void updateCompany(Company c) {
+	public void updateCompany(Company company) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.update(c);
+			sess.update(company);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -97,7 +97,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 		try {
 			tx = sess.beginTransaction();
 			Criteria crit = sess.createCriteria(Company.class);
-			result = crit.list();			
+			result = crit.list();
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
