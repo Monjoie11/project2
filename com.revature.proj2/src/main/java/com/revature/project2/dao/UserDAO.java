@@ -1,8 +1,9 @@
-package dao;
+package com.revature.project2.dao;
 
 import java.util.List;
 
-import pojos;
+
+import com.revature.project2.pojos.User;
 
 public interface UserDAO {
 	

@@ -1,4 +1,4 @@
-package pojos;
+package com.revature.project2.pojos;
 
 public class User {
 	private String email;

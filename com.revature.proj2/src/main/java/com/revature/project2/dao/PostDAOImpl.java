@@ -1,12 +1,13 @@
-package dao;
+package com.revature.project2.dao;
 
 import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.revature.util.SessionFactoryUtil;
 
-import pojos.Post;
+import com.revature.project2.pojos.Post;
 
 public class PostDAOImpl implements PostDAO {
 

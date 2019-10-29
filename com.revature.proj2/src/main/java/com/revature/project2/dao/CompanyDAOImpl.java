@@ -1,9 +1,9 @@
-package dao;
+package com.revature.project2.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import pojos.Company;
+import com.revature.project2.pojos.Company;
 
 public class CompanyDAOImpl implements CompanyDAO {
 

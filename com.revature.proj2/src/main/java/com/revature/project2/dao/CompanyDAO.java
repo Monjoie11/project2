@@ -1,6 +1,7 @@
-package dao;
+package com.revature.project2.dao;
 
-import pojos.Company;
+import com.revature.project2.pojos.Company;
+
 
 public interface CompanyDAO {
 	public void insertCompany(Company c);
