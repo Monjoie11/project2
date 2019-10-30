@@ -1,64 +1,154 @@
 package com.revature.project2.pojos;
 
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="POSTS")
 public class Post {
-	public enum status 
-	{
-		pending, accepted, completed, rejected, repliedTo
+	
+	@Id
+	@Column(name="POST_ID")
+	private int postId;
+	
+	@Column(name="POST_CONTENT")
+	private String content;
+
+	@ManyToOne
+	@JoinColumn(name="POSTING_EMAIL")
+	private User postingUser;
+	
+	@OneToMany(mappedBy="email", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<User> acceptingUser;
+	
+	@ManyToOne
+	@JoinColumn(name="AFFILIATED_COMPANY")
+	private Company affiliatedCompany;
+	
+	@Column(name="POSTED_TIME")
+	private LocalDateTime timeCreated;
+	
+	@Column(name="START_TIME")
+	private LocalDateTime startTime;
+	
+	@Column(name="END_TIME")
+	private LocalDateTime endTime;
+	
+	
+	public int getPostId() {
+		return postId;
 	}
-	private String postingUserEmail;
-	private String acceptingUserEmail;
-	private String affiliatedCompanyName;
-	private Object timeCreated;
-	private Object startTime;
-	private Object endTime;
-	public String getPostingUserEmail() {
-		return postingUserEmail;
+
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
-	public void setPostingUserEmail(String postingUserEmail) {
-		this.postingUserEmail = postingUserEmail;
+
+	public String getContent() {
+		return content;
 	}
-	public String getAcceptingUserEmail() {
-		return acceptingUserEmail;
+
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public void setAcceptingUserEmail(String acceptingUserEmail) {
-		this.acceptingUserEmail = acceptingUserEmail;
+
+	public User getPostingUser() {
+		return postingUser;
 	}
-	public String getAffiliatedCompanyName() {
-		return affiliatedCompanyName;
+
+	public void setPostingUser(User postingUser) {
+		this.postingUser = postingUser;
 	}
-	public void setAffiliatedCompanyName(String affiliatedCompanyName) {
-		this.affiliatedCompanyName = affiliatedCompanyName;
+
+	public Set<User> getAcceptingUser() {
+		return acceptingUser;
 	}
-	public Object getTimeCreated() {
+
+	public void setAcceptingUser(Set<User> acceptingUser) {
+		this.acceptingUser = acceptingUser;
+	}
+
+	public Company getAffiliatedCompany() {
+		return affiliatedCompany;
+	}
+
+	public void setAffiliatedCompany(Company affiliatedCompany) {
+		this.affiliatedCompany = affiliatedCompany;
+	}
+
+	public LocalDateTime getTimeCreated() {
 		return timeCreated;
 	}
-	public void setTimeCreated(Object timeCreated) {
+
+	public void setTimeCreated(LocalDateTime timeCreated) {
 		this.timeCreated = timeCreated;
 	}
-	public Object getStartTime() {
+
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Object startTime) {
+
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
-	public Object getEndTime() {
+
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Object endTime) {
+
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
+
+	public Post(int postId, String content, User postingUser, Set<User> acceptingUser, Company affiliatedCompany,
+			LocalDateTime timeCreated, LocalDateTime startTime, LocalDateTime endTime) {
+		super();
+		this.postId = postId;
+		this.content = content;
+		this.postingUser = postingUser;
+		this.acceptingUser = acceptingUser;
+		this.affiliatedCompany = affiliatedCompany;
+		this.timeCreated = timeCreated;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+
+	public Post(int postId) {
+		super();
+		this.postId = postId;
+	}
+
+	public Post() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((acceptingUserEmail == null) ? 0 : acceptingUserEmail.hashCode());
-		result = prime * result + ((affiliatedCompanyName == null) ? 0 : affiliatedCompanyName.hashCode());
+		result = prime * result + ((acceptingUser == null) ? 0 : acceptingUser.hashCode());
+		result = prime * result + ((affiliatedCompany == null) ? 0 : affiliatedCompany.hashCode());
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
-		result = prime * result + ((postingUserEmail == null) ? 0 : postingUserEmail.hashCode());
+		result = prime * result + postId;
+		result = prime * result + ((postingUser == null) ? 0 : postingUser.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
 		result = prime * result + ((timeCreated == null) ? 0 : timeCreated.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -68,25 +158,32 @@ public class Post {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		if (acceptingUserEmail == null) {
-			if (other.acceptingUserEmail != null)
+		if (acceptingUser == null) {
+			if (other.acceptingUser != null)
 				return false;
-		} else if (!acceptingUserEmail.equals(other.acceptingUserEmail))
+		} else if (!acceptingUser.equals(other.acceptingUser))
 			return false;
-		if (affiliatedCompanyName == null) {
-			if (other.affiliatedCompanyName != null)
+		if (affiliatedCompany == null) {
+			if (other.affiliatedCompany != null)
 				return false;
-		} else if (!affiliatedCompanyName.equals(other.affiliatedCompanyName))
+		} else if (!affiliatedCompany.equals(other.affiliatedCompany))
+			return false;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
 			return false;
 		if (endTime == null) {
 			if (other.endTime != null)
 				return false;
 		} else if (!endTime.equals(other.endTime))
 			return false;
-		if (postingUserEmail == null) {
-			if (other.postingUserEmail != null)
+		if (postId != other.postId)
+			return false;
+		if (postingUser == null) {
+			if (other.postingUser != null)
 				return false;
-		} else if (!postingUserEmail.equals(other.postingUserEmail))
+		} else if (!postingUser.equals(other.postingUser))
 			return false;
 		if (startTime == null) {
 			if (other.startTime != null)
@@ -100,25 +197,20 @@ public class Post {
 			return false;
 		return true;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Post [postingUserEmail=" + postingUserEmail + ", acceptingUserEmail=" + acceptingUserEmail
-				+ ", affiliatedCompanyName=" + affiliatedCompanyName + ", timeCreated=" + timeCreated + ", startTime="
-				+ startTime + ", endTime=" + endTime + "]";
+		return "Post [postId=" + postId + ", content=" + content + ", postingUser=" + postingUser + ", acceptingUser="
+				+ acceptingUser + ", affiliatedCompany=" + affiliatedCompany + ", timeCreated=" + timeCreated
+				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
-	public Post(String postingUserEmail, String acceptingUserEmail, String affiliatedCompanyName, Object timeCreated,
-			Object startTime, Object endTime) {
-		super();
-		this.postingUserEmail = postingUserEmail;
-		this.acceptingUserEmail = acceptingUserEmail;
-		this.affiliatedCompanyName = affiliatedCompanyName;
-		this.timeCreated = timeCreated;
-		this.startTime = startTime;
-		this.endTime = endTime;
+
+
+
+	public static enum status{
+		PENDING, ACCEPTED, COMPLETED, REJECTED, REPLIEDTO
 	}
-	public Post() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 }
