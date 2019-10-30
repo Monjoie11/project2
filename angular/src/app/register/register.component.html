@@ -48,15 +48,14 @@
                     </td>
                     <td>
                         <mat-form-field>
-                            <mat-select #coList placeholder="Company Affiliation">
-                                <mat-option value="option">Freelancer</mat-option>
-                                <mat-option value="option">Enterprise</mat-option>
+                            <mat-select placeholder="Company Affiliation" [(ngModel)]="selectedValue">
+                                <mat-option value="college">Freelancer</mat-option>
+                                <mat-option value="others">Enterprise</mat-option>
                             </mat-select>
                             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                         </mat-form-field>
                     </td>
-                    <!-- <td *ngIf="coList.selectedIndex === coList.options.length - 1"> -->
-                    <td>
+                    <td *ngIf="selectedValue == 'others'">
                         <mat-form-field class="example-full-width">
                             <input type="select" matInput placeholder="Company Code">
                         </mat-form-field>

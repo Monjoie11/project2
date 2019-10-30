@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  selectedValue: string = '';
+
+  constructor() {  
+      //this.affiliatedUser = ['Free Lancer', 'Enterprise']
+   }
 
   ngOnInit() {
+
+
   }
 
 }
