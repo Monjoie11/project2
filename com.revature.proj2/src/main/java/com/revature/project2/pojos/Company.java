@@ -15,15 +15,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "companies")
+@Table(name = "COMPANIES")
 public class Company {
 
 	@Id
 	@Column(name = "COMPANY_NAME")
-	private String name;
+	private String companyName;
 
 	@Column(name = "EMAIL")
-	private String email;
+	private String companyEmail;
 
 	@Column(name = "PASS")
 	private String password;
@@ -32,32 +32,32 @@ public class Company {
 	private String accessCode;
 
 	@Column(name = "RATING")
-	private double rating;
+	private double companyRating;
 
-	@Column(name = "access_level")
+	@Column(name = "ACCESS_LEVEL")
 	private AccessLevel accessLevel;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "EMAIL"))
 	private Set<User> employees = new HashSet<User>();
 
-	@OneToMany(mappedBy = "", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "affiliatedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Post> approvedPosts;
 
 	public String getName() {
-		return name;
+		return companyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public String getEmail() {
-		return email;
+		return companyEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String companyEmail) {
+		this.companyEmail = companyEmail;
 	}
 
 	public String getPassword() {
@@ -77,11 +77,11 @@ public class Company {
 	}
 
 	public double getRating() {
-		return rating;
+		return companyRating;
 	}
 
-	public void setRating(double rating) {
-		this.rating = rating;
+	public void setRating(double companyRating) {
+		this.companyRating = companyRating;
 	}
 
 	public AccessLevel getAccessLevel() {
@@ -108,30 +108,29 @@ public class Company {
 		this.approvedPosts = approvedPosts;
 	}
 
-	public Company(String name, String email, String password, String accessCode, double rating,
+	public Company(String companyNamw, String companyEmail, String password, String accessCode, double companyRating,
 			AccessLevel accessLevel, Set<User> employees, Set<Post> approvedPosts) {
 		super();
-		this.name = name;
-		this.email = email;
+		this.companyName = companyNamw;
+		this.companyEmail = companyEmail;
 		this.password = password;
 		this.accessCode = accessCode;
-		this.rating = rating;
+		this.companyRating = companyRating;
 		this.accessLevel = accessLevel;
 		this.employees = employees;
 		this.approvedPosts = approvedPosts;
 	}
 
-	public Company(String name, String email, String password, String accessCode) {
+	public Company(String companyNamw, String companyEmail, String password, String accessCode) {
 		super();
-		this.name = name;
-		this.email = email;
+		this.companyName = companyNamw;
+		this.companyEmail = companyEmail;
 		this.password = password;
 		this.accessCode = accessCode;
 	}
 
 	public Company() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -141,12 +140,12 @@ public class Company {
 		result = prime * result + ((accessCode == null) ? 0 : accessCode.hashCode());
 		result = prime * result + ((accessLevel == null) ? 0 : accessLevel.hashCode());
 		result = prime * result + ((approvedPosts == null) ? 0 : approvedPosts.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((companyEmail == null) ? 0 : companyEmail.hashCode());
 		result = prime * result + ((employees == null) ? 0 : employees.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(rating);
+		temp = Double.doubleToLongBits(companyRating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -172,30 +171,32 @@ public class Company {
 				return false;
 		} else if (!approvedPosts.equals(other.approvedPosts))
 			return false;
-		if (email == null) {
-			if (other.email != null)
+		if (companyEmail == null) {
+			if (other.companyEmail != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!companyEmail.equals(other.companyEmail))
 			return false;
 		if (employees == null) {
 			if (other.employees != null)
 				return false;
 		} else if (!employees.equals(other.employees))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (companyName == null) {
+			if (other.companyName != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!companyName.equals(other.companyName))
 			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (Double.doubleToLongBits(rating) != Double.doubleToLongBits(other.rating))
+		if (Double.doubleToLongBits(companyRating) != Double.doubleToLongBits(other.companyRating))
 			return false;
 		return true;
 	}
+	
+//	open means posts go on open market boards. affiliated means the company has some control over companies. closed mean only employees can see their posts
 
 	public static enum AccessLevel {
 		OPEN, AFFILIATED, CLOSED
