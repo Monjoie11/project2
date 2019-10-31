@@ -7,9 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterCompanyComponent implements OnInit {
 
-  constructor() { }
+  public containers = [0];
+  public counter : number = 1;
+  constructor()  { }
 
   ngOnInit() {
+  }
+
+  add() {
+    if(this.containers.length < 5){
+      this.containers.push(this.counter);
+      this.counter ++;
+    }
+  }
+  
+
+  remove() {
+    let element = document.getElementsByClassName('myClass');
+    if(this.containers.length > 1){
+      element[this.containers.length - 1].parentNode.removeChild(element[this.containers.length - 1]);
+      const index = this.containers.indexOf(this.containers.length - 1, 0);
+      if (index > -1) {
+        this.containers.splice(index, 1);
+        this.counter--;
+      }
+    }
   }
 
 }

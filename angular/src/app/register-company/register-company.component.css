@@ -2,6 +2,10 @@
     width: 100%;
   }
 
+  .myClass{
+    width: 100%;
+  }
+
   td {
     padding-right: 10px;
   } 
@@ -20,4 +24,10 @@
       
 .example-spacer {
     flex: 1 1 auto;
+}
+
+.fab-container{
+  height:20px;
+  width:20px;
+  display: inline;
 }
