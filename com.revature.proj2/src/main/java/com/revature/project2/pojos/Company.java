@@ -44,11 +44,11 @@ public class Company {
 	@OneToMany(mappedBy = "affiliatedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Post> approvedPosts;
 
-	public String getName() {
+	public String getCompanyName() {
 		return companyName;
 	}
 
-	public void setName(String companyName) {
+	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 
@@ -108,10 +108,10 @@ public class Company {
 		this.approvedPosts = approvedPosts;
 	}
 
-	public Company(String companyNamw, String companyEmail, String password, String accessCode, double companyRating,
+	public Company(String companyName, String companyEmail, String password, String accessCode, double companyRating,
 			AccessLevel accessLevel, Set<User> employees, Set<Post> approvedPosts) {
 		super();
-		this.companyName = companyNamw;
+		this.companyName = companyName;
 		this.companyEmail = companyEmail;
 		this.password = password;
 		this.accessCode = accessCode;
@@ -121,9 +121,9 @@ public class Company {
 		this.approvedPosts = approvedPosts;
 	}
 
-	public Company(String companyNamw, String companyEmail, String password, String accessCode) {
+	public Company(String companyName, String companyEmail, String password, String accessCode) {
 		super();
-		this.companyName = companyNamw;
+		this.companyName = companyName;
 		this.companyEmail = companyEmail;
 		this.password = password;
 		this.accessCode = accessCode;
