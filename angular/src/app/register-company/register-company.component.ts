@@ -23,7 +23,7 @@ export class RegisterCompanyComponent implements OnInit {
   
 
   remove() {
-    let element = document.getElementsByClassName('myClass');
+    let element = document.getElementsByClassName('company-code');
     if(this.containers.length > 1){
       element[this.containers.length - 1].parentNode.removeChild(element[this.containers.length - 1]);
       const index = this.containers.indexOf(this.containers.length - 1, 0);

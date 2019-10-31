@@ -11,58 +11,72 @@
                 <input matInput placeholder="Company (disabled)" disabled value="Freelancer">
             </mat-form-field>
 
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input matInput placeholder="First Name">
                         </mat-form-field>
                     </td>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input matInput placeholder="Last Name">
                         </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input type="email" matInput placeholder="Email">
                         </mat-form-field>
                     </td>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="half"> 
+                        <mat-form-field class="full">
                             <input type="password" matInput placeholder="Password">
                         </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <!-- <span matPrefix>+1 &nbsp;</span> -->
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input type="tel" matInput placeholder="Telephone">
-                            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
                         </mat-form-field>
                     </td>
-                    <td>
-                        <mat-form-field class="example-full-width"> 
+                    <td class="half">
+                        <mat-form-field class="full"> 
                             <mat-select placeholder="Company Affiliation" [(ngModel)]="selectedValue">
-                                <mat-option value="college">Freelancer</mat-option>
-                                <mat-option value="others">Enterprise</mat-option>
+                                <mat-option value="Freelancer">Freelancer</mat-option>
+                                <mat-option value="Enterprise">Enterprise</mat-option>
                             </mat-select>
                             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                         </mat-form-field>
                     </td>
-                    <td *ngIf="selectedValue == 'others'">
-                        <mat-form-field class="example-full-width">
-                            <input type="select" matInput placeholder="Company Code">
-                        </mat-form-field>
-                    </td>
-                </tr>
+                    <td class="third" *ngIf = "selectedValue == 'Enterprise'">
+                            <mat-form-field class="company-code" *ngFor="let container of containers">
+                                <input type="text" matInput placeholder="Company Code">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="fab-container">
+                                <button mat-fab class="fab-toggler" color="primary" (click)="add()"
+                                    *ngIf="selectedValue == 'Enterprise'">
+                                    <i class="material-icons">add</i>
+                                </button>
+                                <button mat-fab class="fab-toggler" color="primary" (click)="remove()"
+                                    *ngIf="selectedValue == 'Enterprise'">
+                                    <i class="material-icons">remove</i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
             </table>
             <mat-form-field class="example-full-width">
                 <mat-label>Biography</mat-label>

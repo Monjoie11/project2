@@ -8,15 +8,30 @@ import { Component, OnInit } from '@angular/core';
 
 export class RegisterComponent implements OnInit {
 
-  selectedValue: string = '';
-
-  constructor() {  
-      //this.affiliatedUser = ['Free Lancer', 'Enterprise']
-   }
+  public containers = [0];
+  public counter : number = 1;
+  constructor()  { }
 
   ngOnInit() {
-
-
   }
 
+  add() {
+    if(this.containers.length < 5){
+      this.containers.push(this.counter);
+      this.counter ++;
+    }
+  }
+  
+
+  remove() {
+    let element = document.getElementsByClassName('company-code');
+    if(this.containers.length > 1){
+      element[this.containers.length - 1].parentNode.removeChild(element[this.containers.length - 1]);
+      const index = this.containers.indexOf(this.containers.length - 1, 0);
+      if (index > -1) {
+        this.containers.splice(index, 1);
+        this.counter--;
+      }
+    }
+  }
 }

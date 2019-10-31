@@ -7,45 +7,39 @@
               <mat-card-title>Please Register below</mat-card-title>
         </mat-card-header>
         <mat-card-content fxLayout="column">
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Company (disabled)" disabled value="Freelancer">
-            </mat-form-field>
 
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="full">
+                        <mat-form-field class="full">
                             <input matInput placeholder="Company Name">
                         </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input type="email" matInput placeholder="Company Email">
                         </mat-form-field>
                     </td>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input type="password" matInput placeholder="Compmany Password">
+                    <td class="half">
+                        <mat-form-field class="full">
+                            <input type="password" matInput placeholder="Company Password">
                         </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <table class="example-full-width" cellspacing="0">
+            <table cellspacing="0">
                 <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <!-- <span matPrefix>+1 &nbsp;</span> -->
+                    <td class="half">
+                        <mat-form-field class="full">
                             <input type="text" matInput placeholder="Website URL">
-                            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
                         </mat-form-field>
                     </td>
-                    <td>
-                        <!-- enter access code to afffil with other cos. Website link -->
-                        <mat-form-field class="example-full-width">
+                    <td class="half">
+                        <mat-form-field class="full">
                             <mat-select placeholder="Company Affiliation" [(ngModel)]="selectedValue">
                                 <mat-option value="Open Shop">Open Shop</mat-option>
                                 <mat-option value="Affiliated Shop">Affiliated Shop</mat-option>
@@ -54,8 +48,8 @@
                             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                         </mat-form-field>
                     </td>
-                    <td>
-                        <mat-form-field class="myClass" *ngFor="let container of containers">
+                    <td class="third" *ngIf = "selectedValue == 'Affiliated Shop'">
+                        <mat-form-field class="company-code" *ngFor="let container of containers">
                             <input type="text" matInput placeholder="Company Code">
                         </mat-form-field>
                     </td>
@@ -69,8 +63,6 @@
                                 *ngIf="selectedValue == 'Affiliated Shop'">
                                 <i class="material-icons">add</i>
                             </button>
-<!--                         </div>
-                        <div class="fab-container"> -->
                             <button mat-fab class="fab-toggler" color="primary" (click)="remove()"
                                 *ngIf="selectedValue == 'Affiliated Shop'">
                                 <i class="material-icons">remove</i>
@@ -79,7 +71,7 @@
                     </td>
                 </tr>
             </table>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="full">
                 <mat-label>Biography</mat-label>
                 <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
                     cdkAutosizeMaxRows="5"></textarea>
