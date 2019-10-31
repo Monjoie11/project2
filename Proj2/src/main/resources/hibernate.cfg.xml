@@ -12,9 +12,7 @@
 		
 		<property name="hibernate.connection.pool_size">5</property>
 		
-		<mapping class="com.revature.project2.pojos.User"/>
-		<mapping class="com.revature.project2.pojos.User"/>
-		<mapping class="com.revature.project2.pojos.User"/>
+		<mapping class="com.revature.pojo.User"/>
 		
 	</session-factory>
 </hibernate-configuration>
