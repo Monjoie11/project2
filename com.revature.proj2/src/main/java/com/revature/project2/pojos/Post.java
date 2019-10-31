@@ -33,8 +33,8 @@ public class Post {
 	private Set<User> acceptingUser;
 	
 	@ManyToOne
-	@JoinColumn(name="AFFILIATED_COMPANY")
-	private Company affiliatedCompany;
+	@JoinColumn(name="REFERENCED_COMPANY")
+	private Company referencedCompany;
 	
 	@Column(name="POSTED_TIME")
 	private LocalDateTime timeCreated;
@@ -78,12 +78,12 @@ public class Post {
 		this.acceptingUser = acceptingUser;
 	}
 
-	public Company getAffiliatedCompany() {
-		return affiliatedCompany;
+	public Company getReferencedCompany() {
+		return referencedCompany;
 	}
 
-	public void setAffiliatedCompany(Company affiliatedCompany) {
-		this.affiliatedCompany = affiliatedCompany;
+	public void setReferencedCompany(Company referencedCompany) {
+		this.referencedCompany = referencedCompany;
 	}
 
 	public LocalDateTime getTimeCreated() {
@@ -110,14 +110,14 @@ public class Post {
 		this.endTime = endTime;
 	}
 
-	public Post(int postId, String content, User postingUser, Set<User> acceptingUser, Company affiliatedCompany,
+	public Post(int postId, String content, User postingUser, Set<User> acceptingUser, Company referencedCompany,
 			LocalDateTime timeCreated, LocalDateTime startTime, LocalDateTime endTime) {
 		super();
 		this.postId = postId;
 		this.content = content;
 		this.postingUser = postingUser;
 		this.acceptingUser = acceptingUser;
-		this.affiliatedCompany = affiliatedCompany;
+		this.referencedCompany = referencedCompany;
 		this.timeCreated = timeCreated;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -138,7 +138,7 @@ public class Post {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((acceptingUser == null) ? 0 : acceptingUser.hashCode());
-		result = prime * result + ((affiliatedCompany == null) ? 0 : affiliatedCompany.hashCode());
+		result = prime * result + ((referencedCompany == null) ? 0 : referencedCompany.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + postId;
@@ -162,10 +162,10 @@ public class Post {
 				return false;
 		} else if (!acceptingUser.equals(other.acceptingUser))
 			return false;
-		if (affiliatedCompany == null) {
-			if (other.affiliatedCompany != null)
+		if (referencedCompany == null) {
+			if (other.referencedCompany != null)
 				return false;
-		} else if (!affiliatedCompany.equals(other.affiliatedCompany))
+		} else if (!referencedCompany.equals(other.referencedCompany))
 			return false;
 		if (content == null) {
 			if (other.content != null)
@@ -201,7 +201,7 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", content=" + content + ", postingUser=" + postingUser + ", acceptingUser="
-				+ acceptingUser + ", affiliatedCompany=" + affiliatedCompany + ", timeCreated=" + timeCreated
+				+ acceptingUser + ", referencedCompany=" + referencedCompany + ", timeCreated=" + timeCreated
 				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 

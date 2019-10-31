@@ -25,6 +25,9 @@ public class Company {
 	@Column(name = "EMAIL")
 	private String companyEmail;
 
+	@Column(name = "LINK")
+	private String companyLink;
+
 	@Column(name = "PASS")
 	private String password;
 
@@ -41,8 +44,12 @@ public class Company {
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "EMAIL"))
 	private Set<User> employees = new HashSet<User>();
 
-	@OneToMany(mappedBy = "affiliatedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "refrencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Post> approvedPosts;
+
+	@ManyToMany
+	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
+	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 
 	public String getCompanyName() {
 		return companyName;
@@ -52,12 +59,20 @@ public class Company {
 		this.companyName = companyName;
 	}
 
-	public String getEmail() {
+	public String getCompanyEmail() {
 		return companyEmail;
 	}
 
-	public void setEmail(String companyEmail) {
+	public void setCompanyEmail(String companyEmail) {
 		this.companyEmail = companyEmail;
+	}
+
+	public String getCompanyLink() {
+		return companyLink;
+	}
+
+	public void setCompanyLink(String companyLink) {
+		this.companyLink = companyLink;
 	}
 
 	public String getPassword() {
@@ -76,11 +91,11 @@ public class Company {
 		this.accessCode = accessCode;
 	}
 
-	public double getRating() {
+	public double getCompanyRating() {
 		return companyRating;
 	}
 
-	public void setRating(double companyRating) {
+	public void setCompanyRating(double companyRating) {
 		this.companyRating = companyRating;
 	}
 
@@ -108,17 +123,28 @@ public class Company {
 		this.approvedPosts = approvedPosts;
 	}
 
-	public Company(String companyName, String companyEmail, String password, String accessCode, double companyRating,
-			AccessLevel accessLevel, Set<User> employees, Set<Post> approvedPosts) {
+	public Set<Company> getAffiliatedCompanies() {
+		return affiliatedCompanies;
+	}
+
+	public void setAffiliatedCompanies(Set<Company> affiliatedCompanies) {
+		this.affiliatedCompanies = affiliatedCompanies;
+	}
+
+	public Company(String companyName, String companyEmail, String companyLink, String password, String accessCode,
+			double companyRating, AccessLevel accessLevel, Set<User> employees, Set<Post> approvedPosts,
+			Set<Company> affiliatedCompanies) {
 		super();
 		this.companyName = companyName;
 		this.companyEmail = companyEmail;
+		this.companyLink = companyLink;
 		this.password = password;
 		this.accessCode = accessCode;
 		this.companyRating = companyRating;
 		this.accessLevel = accessLevel;
 		this.employees = employees;
 		this.approvedPosts = approvedPosts;
+		this.affiliatedCompanies = affiliatedCompanies;
 	}
 
 	public Company(String companyName, String companyEmail, String password, String accessCode) {
@@ -134,19 +160,29 @@ public class Company {
 	}
 
 	@Override
+	public String toString() {
+		return "Company [companyName=" + companyName + ", companyEmail=" + companyEmail + ", companyLink=" + companyLink
+				+ ", password=" + password + ", accessCode=" + accessCode + ", companyRating=" + companyRating
+				+ ", accessLevel=" + accessLevel + ", employees=" + employees + ", approvedPosts=" + approvedPosts
+				+ ", affiliatedCompanies=" + affiliatedCompanies + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((accessCode == null) ? 0 : accessCode.hashCode());
 		result = prime * result + ((accessLevel == null) ? 0 : accessLevel.hashCode());
+		result = prime * result + ((affiliatedCompanies == null) ? 0 : affiliatedCompanies.hashCode());
 		result = prime * result + ((approvedPosts == null) ? 0 : approvedPosts.hashCode());
 		result = prime * result + ((companyEmail == null) ? 0 : companyEmail.hashCode());
-		result = prime * result + ((employees == null) ? 0 : employees.hashCode());
+		result = prime * result + ((companyLink == null) ? 0 : companyLink.hashCode());
 		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(companyRating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((employees == null) ? 0 : employees.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
 
@@ -166,6 +202,11 @@ public class Company {
 			return false;
 		if (accessLevel != other.accessLevel)
 			return false;
+		if (affiliatedCompanies == null) {
+			if (other.affiliatedCompanies != null)
+				return false;
+		} else if (!affiliatedCompanies.equals(other.affiliatedCompanies))
+			return false;
 		if (approvedPosts == null) {
 			if (other.approvedPosts != null)
 				return false;
@@ -176,28 +217,33 @@ public class Company {
 				return false;
 		} else if (!companyEmail.equals(other.companyEmail))
 			return false;
-		if (employees == null) {
-			if (other.employees != null)
+		if (companyLink == null) {
+			if (other.companyLink != null)
 				return false;
-		} else if (!employees.equals(other.employees))
+		} else if (!companyLink.equals(other.companyLink))
 			return false;
 		if (companyName == null) {
 			if (other.companyName != null)
 				return false;
 		} else if (!companyName.equals(other.companyName))
 			return false;
+		if (Double.doubleToLongBits(companyRating) != Double.doubleToLongBits(other.companyRating))
+			return false;
+		if (employees == null) {
+			if (other.employees != null)
+				return false;
+		} else if (!employees.equals(other.employees))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (Double.doubleToLongBits(companyRating) != Double.doubleToLongBits(other.companyRating))
-			return false;
 		return true;
 	}
-	
-//	open means posts go on open market boards. affiliated means the company has some control over companies. closed mean only employees can see their posts
 
+	// open means posts go on open market boards. affiliated means the company has
+	// some control over companies. closed mean only employees can see their posts
 	public static enum AccessLevel {
 		OPEN, AFFILIATED, CLOSED
 	}
