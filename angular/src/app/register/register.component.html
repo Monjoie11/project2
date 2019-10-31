@@ -38,16 +38,18 @@
                         </mat-form-field>
                     </td>
                 </tr>
+            </table>
+            <table class="example-full-width" cellspacing="0">
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <span matPrefix>+1 &nbsp;</span>
+                            <!-- <span matPrefix>+1 &nbsp;</span> -->
                             <input type="tel" matInput placeholder="Telephone">
-                            <mat-icon matSuffix>mode_edit</mat-icon>
+                            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
                         </mat-form-field>
                     </td>
                     <td>
-                        <mat-form-field>
+                        <mat-form-field class="example-full-width"> 
                             <mat-select placeholder="Company Affiliation" [(ngModel)]="selectedValue">
                                 <mat-option value="college">Freelancer</mat-option>
                                 <mat-option value="others">Enterprise</mat-option>
@@ -62,7 +64,7 @@
                     </td>
                 </tr>
             </table>
-            <mat-form-field>
+            <mat-form-field class="example-full-width">
                 <mat-label>Biography</mat-label>
                 <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
                     cdkAutosizeMaxRows="5"></textarea>
