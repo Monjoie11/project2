@@ -1,8 +1,8 @@
-package com.revature.project2.dao;
+package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.project2.pojos.Company;
+import com.revature.pojo.Company;
 
 public interface CompanyDAO {
 	public void createCompany(Company company);

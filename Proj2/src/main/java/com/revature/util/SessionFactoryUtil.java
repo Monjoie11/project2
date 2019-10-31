@@ -1,4 +1,4 @@
-package com.revature.project2.util;
+package com.revature.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

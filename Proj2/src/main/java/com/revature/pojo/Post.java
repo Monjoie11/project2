@@ -1,4 +1,4 @@
-package com.revature.project2.pojos;
+package com.revature.pojo;
 
 import java.time.LocalDateTime;
 import java.util.Set;

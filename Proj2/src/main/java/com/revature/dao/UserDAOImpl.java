@@ -1,4 +1,4 @@
-package com.revature.project2.dao;
+package com.revature.dao;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.revature.project2.pojos.User;
-import com.revature.project2.util.SessionFactoryUtil;
+import com.revature.pojo.User;
+import com.revature.util.SessionFactoryUtil;
 
 public class UserDAOImpl implements UserDAO {
 

@@ -1,8 +1,8 @@
-package com.revature.project2.dao;
+package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.project2.pojos.Post;
+import com.revature.pojo.Post;
 
 public interface PostDAO {
 	public void createPost(Post post);
