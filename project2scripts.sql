@@ -15,14 +15,19 @@ create table users(
 	company text,
 	bio text,
 	resume text,
-	post text,
+	post_id integer,
 	rating numeric(1,1),
 	access_level text,
 	work_type text,
-	primary key(email),
-	foreign key (company) references companies(company_name)
-
+	primary key(email)
 );
+
+
+
+ALTER TABLE users 
+ADD CONSTRAINT constraint_fkey FOREIGN KEY (post_id) REFERENCES posts(post_id);
+
+foreign key (post_id) references posts(post_id)
 
 create table posts(
 	post_id serial primary key,
@@ -37,17 +42,21 @@ create table posts(
 	foreign key (affiliated_company) references companies(company_name)
 );
 
-ALTER TABLE users
-        ADD FOREIGN KEY (email) REFERENCES posts(accepting_email)
-                DEFERRABLE INITIALLY DEFERRED;
- 
-ALTER TABLE posts 
-        ADD FOREIGN KEY (accepting_email) REFERENCES users(email)
-                DEFERRABLE INITIALLY DEFERRED;
+              
+create table company_user(
+company_name text,
+email text,
+foreign key (company_name) references companies(company_name),
+foreign key (email) references users(email)
+);
 
 
 
+alter table posts add column post_content text;
 
-drop table companies;
+
+
+drop table companies, posts, users;
 drop table posts;
 drop table users;
+drop table company_user;
