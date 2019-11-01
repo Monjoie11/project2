@@ -25,6 +25,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
+import { BioComponent } from './bio/bio.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
     CompanyHomepageComponent,
     NavbarComponent,
     ProfilePictureComponent,
-    TabbedTableComponent
+    TabbedTableComponent,
+    BioComponent
   ],
   imports: [
     BrowserModule,
