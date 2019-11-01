@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { RegisterCompanyComponent } from './register-company/register-company.component';
 import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CompanyHomepageComponent } from './company-homepage/company-homepage.co
     MatToolbarModule,
     MatIconModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
