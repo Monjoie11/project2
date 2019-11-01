@@ -4,6 +4,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RegisterCompanyComponent} from './register-company/register-company.component';
 import {ErrorComponent} from './error/error.component';
+import {CompanyHomepageComponent} from './company-homepage/company-homepage.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
 
   {   path: 'register-company',
     component: RegisterCompanyComponent
+  },
+
+  {   path: 'company-homepage',
+    component: CompanyHomepageComponent
   },
   {
     path: '**', component: ErrorComponent

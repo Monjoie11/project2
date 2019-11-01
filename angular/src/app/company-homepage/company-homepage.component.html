@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+          </button>
+          <h1>Shiftz</h1>
+          <span class="menu-spacer"></span>
+          <div>
+            <a mat-button [routerLink]="'/login'"> Log Out </a>
+            <a mat-button [routerLink]="'/create-account'"> See Your Calendar </a>
+            <a mat-button [routerLink]="'/create-contact'"> View The Market Board </a>
+            <a mat-button [routerLink]="'/activities'"> Home </a>
+      
+          </div>
+        </mat-toolbar-row>
+      
+        <mat-toolbar-row>
+            <span style="font-size: 18px;">Need a Shift? Get a Shift.</span>
+          </mat-toolbar-row>
+      </mat-toolbar>
+      <div id="img-div" *ngIf="url; else nourl">
+      <img [src]="url" height="200"> <br/>
+    </div>
+    <ng-template #nourl>
+            <img src="./empty.jpg" height="200"> <br/>
+    </ng-template>
+      <input type='file' (change)="onSelectFile($event)">

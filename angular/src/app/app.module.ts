@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { RegisterCompanyComponent } from './register-company/register-company.component';
+import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
-    RegisterCompanyComponent
+    RegisterCompanyComponent,
+    CompanyHomepageComponent
   ],
   imports: [
     BrowserModule,
