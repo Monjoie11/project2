@@ -17,7 +17,7 @@ public class AuthService {
 	
 	public User validateUser(User user) {
 		
-		User validatedUser = userService.getEmail(user.getEmail());
+		User validatedUser = userService.getUserFromEmail(user.getEmail());
 		
 		if(validatedUser != null && validatedUser.getPassword().equals(user.getPassword())) {
 			return validatedUser;

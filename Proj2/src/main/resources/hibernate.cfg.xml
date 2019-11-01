@@ -11,6 +11,7 @@
 		<property name="hibernate.connection.password"></property> -->
 		
 		<property name="hibernate.connection.pool_size">5</property>
+		<property name="show_sql">true</property>
 		
 		<mapping class="com.revature.pojo.User"/>
 		<mapping class="com.revature.pojo.Company"/>

@@ -29,9 +29,16 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void createUser(User user) {
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.save(user);
-		tx.commit();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.save(user);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 	}
 

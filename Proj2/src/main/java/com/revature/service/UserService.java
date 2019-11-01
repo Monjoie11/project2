@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.revature.dao.UserDao;
 import com.revature.pojo.User;
+import com.revature.util.LoggerUtil;
 
 @Component
 public class UserService {
@@ -18,8 +19,18 @@ public class UserService {
 		this.userDao = userDao;
 	}
 	
-	public User getEmail(String email) {
+	public User getUserFromEmail(String email) {
 		return userDao.getUser(email);
+	}
+	
+	public boolean registerUser(User user) {
+		if( userDao.getUser( user.getEmail() ) != null) {
+			LoggerUtil.trace("Registered email: " + user.getEmail());
+			userDao.createUser(user);
+			return true;
+		}
+		LoggerUtil.trace("Could not register email: " + user.getEmail());
+		return false;
 	}
 	
 	public List<User> getAllUsers() {
