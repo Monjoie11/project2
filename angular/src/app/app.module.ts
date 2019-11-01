@@ -22,6 +22,9 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
 import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
+import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     RegisterComponent,
     ErrorComponent,
     RegisterCompanyComponent,
-    CompanyHomepageComponent
+    CompanyHomepageComponent,
+    NavbarComponent,
+    ProfilePictureComponent,
+    TabbedTableComponent
   ],
   imports: [
     BrowserModule,
