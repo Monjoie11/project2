@@ -21,6 +21,7 @@ import { ErrorComponent } from './error/error.component';
 import { RegisterCompanyComponent } from './register-company/register-company.component';
 import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatSelectModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
