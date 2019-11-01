@@ -6,107 +6,99 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
-import com.revature.pojo.Company;
+import com.revature.pojo.User;
 import com.revature.util.SessionFactoryUtil;
 
-public class CompanyDAOImpl implements CompanyDAO {
+@Component
+public class UserDaoImpl implements UserDao {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
 	@Override
-	public void createCompany(Company company) {
-		// TODO Auto-generated method stub
+	public User getUser(String email) {
 		Session sess = sf.openSession();
 		Transaction tx = null;
+		User user = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.save(company);
+			user = (User) sess.get(User.class, email);
 			tx.commit();
-		} catch (Exception e) {
+		}catch(Exception e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
-			sess.close();
 		}
+		sess.close();
+		return user;
 	}
 
 	@Override
-	public void deleteCompany(Company company) {
-		// TODO Auto-generated method stub
+	public void createUser(User user) {
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.delete(company);
+			sess.save(user);
 			tx.commit();
-		} catch (Exception e) {
+		}catch(Exception e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
-			sess.close();
 		}
+		sess.close();
 	}
 
 	@Override
-	public void updateCompany(Company company) {
-		// TODO Auto-generated method stub
+	public List<User> getAllUsers() {
 		Session sess = sf.openSession();
 		Transaction tx = null;
+		List<User> result = null;
 		try {
-			tx = sess.beginTransaction();
-			sess.update(company);
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		} finally {
-			sess.close();
-		}
-	}
-
-	@Override
-	public Company getCompany(String name) {
-		// TODO Auto-generated method stub
-		Session sess = sf.openSession();
-		Transaction tx = null;
-		Company c = null;
-		try {
-			tx = sess.beginTransaction();
-			c = (Company) sess.get(Company.class, name);
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		} finally {
-			sess.close();
-		}
-		return c;
-	}
-
-	@Override
-	public List<Company> getAllCompanies() {
-		// TODO Auto-generated method stub
-		Session sess = sf.openSession();
-		Transaction tx = null;
-		List<Company> result = null;
-		try {
-			tx = sess.beginTransaction();
-			Criteria crit = sess.createCriteria(Company.class);
+			Criteria crit = sess.createCriteria(User.class);
 			result = crit.list();
-			tx.commit();
-		} catch (Exception e) {
+		}catch(Exception e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
-			sess.close();
 		}
+		sess.close();
 		return result;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		
+		Session sess = sf.openSession();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.update(user);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		sess.close();
+	}
+
+	@Override
+	public void deleteUser(User user) {		
+		Session sess = sf.openSession();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.delete(user);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		sess.close();
+
 	}
 
 }

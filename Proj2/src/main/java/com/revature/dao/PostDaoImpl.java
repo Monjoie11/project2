@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import com.revature.util.SessionFactoryUtil;
 import com.revature.pojo.Post;
 
-public class PostDAOImpl implements PostDAO {
+public class PostDaoImpl implements PostDao {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
