@@ -38,16 +38,15 @@ public class Company {
 	private double companyRating;
 
 	@Column(name = "ACCESS_LEVEL")
-	private AccessLevel accessLevel;
+	private AccessLevel accessLevel;;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "EMAIL"))
+	@ManyToMany(mappedBy = "parentCompanies")
 	private Set<User> employees = new HashSet<User>();
 
 	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Post> approvedPosts;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 

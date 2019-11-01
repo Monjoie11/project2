@@ -38,7 +38,8 @@ public class User {
 	private String phoneNumber;
 
 	@ManyToMany
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
+	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
 	private Set<Company> parentCompanies;
 
 	@Column(name = "BIO")
