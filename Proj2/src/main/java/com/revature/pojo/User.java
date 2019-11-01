@@ -12,13 +12,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.security.core.Transient;
 
 @Entity
 @Table(name = "USERS")
 public class User {
 
+	
 	@Id
 	@Column(name = "EMAIL")
 	private String email;
@@ -35,11 +37,9 @@ public class User {
 	@Column(name = "PHONE")
 	private String phoneNumber;
 
-	@Column(name = "WORK_EXPERIENCE")
-	private int workExperience;
-
 	@ManyToMany
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
+	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
 	private Set<Company> parentCompanies;
 
 	@Column(name = "BIO")
@@ -102,14 +102,6 @@ public class User {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public int getWorkExperience() {
-		return workExperience;
-	}
-
-	public void setWorkExperience(int workExperience) {
-		this.workExperience = workExperience;
 	}
 
 	public Set<Company> getParentCompanies() {
@@ -179,10 +171,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phoneNumber=" + phoneNumber + ", workExperience=" + workExperience + ", parentCompanies="
-				+ parentCompanies + ", biography=" + biography + ", resume=" + resume + ", postedPost=" + postedPost
-				+ ", acceptedPost=" + acceptedPost + ", rating=" + rating + ", accessLevel=" + accessLevel
-				+ ", workType=" + workType + "]";
+				+ ", phoneNumber=" + phoneNumber + ", parentCompanies=" + parentCompanies + ", biography=" + biography
+				+ ", resume=" + resume + ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + ", rating="
+				+ rating + ", accessLevel=" + accessLevel + ", workType=" + workType + "]";
 	}
 
 	@Override
@@ -203,7 +194,6 @@ public class User {
 		temp = Double.doubleToLongBits(rating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((resume == null) ? 0 : resume.hashCode());
-		result = prime * result + workExperience;
 		result = prime * result + ((workType == null) ? 0 : workType.hashCode());
 		return result;
 	}
@@ -271,23 +261,20 @@ public class User {
 				return false;
 		} else if (!resume.equals(other.resume))
 			return false;
-		if (workExperience != other.workExperience)
-			return false;
 		if (workType != other.workType)
 			return false;
 		return true;
 	}
 
 	public User(String email, String password, String firstName, String lastName, String phoneNumber,
-			int workExperience, Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost,
-			Post acceptedPost, double rating, AccessLevel accessLevel, WorkType workType) {
+			Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
+			double rating, AccessLevel accessLevel, WorkType workType) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
-		this.workExperience = workExperience;
 		this.parentCompanies = parentCompanies;
 		this.biography = biography;
 		this.resume = resume;
