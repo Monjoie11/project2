@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.revature.pojo.User;
 
-public interface UserDAO {
+public interface UserDao {
 	
 	public User getUser(String email);
 	public void createUser(User user);

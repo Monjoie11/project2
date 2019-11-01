@@ -13,6 +13,8 @@
 		<property name="hibernate.connection.pool_size">5</property>
 		
 		<mapping class="com.revature.pojo.User"/>
+		<mapping class="com.revature.pojo.Company"/>
+		<mapping class="com.revature.pojo.Post"/>
 		
 	</session-factory>
 </hibernate-configuration>

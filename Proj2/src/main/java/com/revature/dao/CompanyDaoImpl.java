@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 import com.revature.pojo.Company;
 import com.revature.util.SessionFactoryUtil;
 
-public class CompanyDAOImpl implements CompanyDAO {
+public class CompanyDaoImpl implements CompanyDao {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 

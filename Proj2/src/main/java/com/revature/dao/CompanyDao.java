@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.revature.pojo.Company;
 
-public interface CompanyDAO {
+public interface CompanyDao {
 	public void createCompany(Company company);
 
 	public Company getCompany(String companyName);

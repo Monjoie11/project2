@@ -6,11 +6,13 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.pojo.User;
 import com.revature.util.SessionFactoryUtil;
 
-public class UserDAOImpl implements UserDAO {
+@Component
+public class UserDaoImpl implements UserDao {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 

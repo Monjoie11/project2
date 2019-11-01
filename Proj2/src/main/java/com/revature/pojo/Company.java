@@ -44,7 +44,7 @@ public class Company {
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "EMAIL"))
 	private Set<User> employees = new HashSet<User>();
 
-	@OneToMany(mappedBy = "refrencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Post> approvedPosts;
 
 	@ManyToMany
