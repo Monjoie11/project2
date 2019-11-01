@@ -1,24 +1,31 @@
-  .example-full-width {
-    width: 100%;
+td {
+  padding-right: 10px;
+} 
+.login-main{
+  margin-top: 10%;
+  }
+  mat-card{
+  min-width: 40%;
+  max-width: 1000px;
   }
 
-  td {
-    padding-right: 10px;
-  } 
-
-  .login-main{
-    margin-top: 10%;
-    }
-    mat-card{
-    min-width: 40%;
-    max-width: 1000px;
-    }
-
-.example-icon {
-    padding: 0 14px;
+.fab-container{
+display: inline-block;
 }
-      
-.example-spacer {
-    flex: 1 1 auto;
+
+.full{
+width: 100%;
+}
+
+.half{
+width: 50%;
+}
+
+.third{
+width: 30%;
+}
+
+.company-code{
+width: 100%;
 }
 

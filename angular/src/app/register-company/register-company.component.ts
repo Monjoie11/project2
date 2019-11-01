@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-register-company',
+  templateUrl: './register-company.component.html',
+  styleUrls: ['./register-company.component.css']
 })
-
-export class RegisterComponent implements OnInit {
+export class RegisterCompanyComponent implements OnInit {
 
   public containers = [0];
   public counter : number = 1;
@@ -34,4 +33,5 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
+
 }
