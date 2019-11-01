@@ -46,10 +46,17 @@ public class UserDAOTest {
 	public void tearDown() throws Exception {
 	}
 
-
+	/*
 	@Test
 	public void testRegister() {
 		userDao.createUser(u);
+		User ret_u = userDao.getUser(u.getEmail());
+		assertEquals(u, ret_u);
+	}
+	*/
+	
+	@Test
+	public void fetchSingleUser() {
 		User ret_u = userDao.getUser(u.getEmail());
 		assertEquals(u, ret_u);
 	}

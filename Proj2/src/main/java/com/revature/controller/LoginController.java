@@ -12,7 +12,7 @@ import com.revature.pojo.User;
 import com.revature.service.AuthService;
 
 @Controller
-public class LoginController {
+public class LoginController{
 	
 	private AuthService authService;
 	

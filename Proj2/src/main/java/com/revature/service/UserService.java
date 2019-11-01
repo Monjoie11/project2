@@ -37,6 +37,7 @@ public class UserService {
 		return userDao.getAllUsers();
 	}
 	
+	
 	/*
 	 * public void registerUser(User user) { userDao.saveUser(user); }
 	 */

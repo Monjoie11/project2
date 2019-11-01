@@ -19,9 +19,17 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUser(String email) {
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		User user = (User) sess.get(User.class, email);
-		tx.commit();
+		Transaction tx = null;
+		User user = null;
+		try {
+			tx = sess.beginTransaction();
+			user = (User) sess.get(User.class, email);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 		return user;
 	}
@@ -45,25 +53,50 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> getAllUsers() {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(User.class);
-		List<User> result = crit.list();
+		Transaction tx = null;
+		List<User> result = null;
+		try {
+			Criteria crit = sess.createCriteria(User.class);
+			result = crit.list();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 		return result;
 	}
 
 	@Override
 	public void updateUser(User user) {
+		
 		Session sess = sf.openSession();
-		sess.update(user);
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.update(user);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 	}
 
 	@Override
-	public void deleteUser(User user) {
+	public void deleteUser(User user) {		
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.delete(user);
-		tx.commit();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.delete(user);
+			tx.commit();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 
 	}
