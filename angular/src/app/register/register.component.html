@@ -32,7 +32,7 @@
                             <input type="email" matInput placeholder="Email">
                         </mat-form-field>
                     </td>
-                    <td class="half"> 
+                    <td class="half">
                         <mat-form-field class="full">
                             <input type="password" matInput placeholder="Password">
                         </mat-form-field>
@@ -47,7 +47,7 @@
                         </mat-form-field>
                     </td>
                     <td class="half">
-                        <mat-form-field class="full"> 
+                        <mat-form-field class="full">
                             <mat-select placeholder="Company Affiliation" [(ngModel)]="selectedValue">
                                 <mat-option value="Freelancer">Freelancer</mat-option>
                                 <mat-option value="Enterprise">Enterprise</mat-option>
@@ -55,28 +55,28 @@
                             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                         </mat-form-field>
                     </td>
-                    <td class="third" *ngIf = "selectedValue == 'Enterprise'">
-                            <mat-form-field class="company-code" *ngFor="let container of containers">
-                                <input type="text" matInput placeholder="Company Code">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="fab-container">
-                                <button mat-fab class="fab-toggler" color="primary" (click)="add()"
-                                    *ngIf="selectedValue == 'Enterprise'">
-                                    <i class="material-icons">add</i>
-                                </button>
-                                <button mat-fab class="fab-toggler" color="primary" (click)="remove()"
-                                    *ngIf="selectedValue == 'Enterprise'">
-                                    <i class="material-icons">remove</i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                    <td class="third" *ngIf="selectedValue == 'Enterprise'">
+                        <mat-form-field class="company-code" *ngFor="let container of containers">
+                            <input type="text" matInput placeholder="Company Code">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="fab-container">
+                            <button mat-fab class="fab-toggler" color="primary" (click)="add()"
+                                *ngIf="selectedValue == 'Enterprise'">
+                                <i class="material-icons">add</i>
+                            </button>
+                            <button mat-fab class="fab-toggler" color="primary" (click)="remove()"
+                                *ngIf="selectedValue == 'Enterprise'">
+                                <i class="material-icons">remove</i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </table>
             <mat-form-field class="example-full-width">
                 <mat-label>Biography</mat-label>
@@ -85,8 +85,11 @@
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button routerLink = "/login" mat-raised-button color="primary">Register</button>
-            <button routerLink = "/register-company" mat-raised-button color="primary">Register as Company</button>
+                <form action="register" method="POST">
+                <button routerLink="/login" mat-raised-button color="primary">Login</button>
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+                <button routerLink="/register-company" mat-raised-button color="primary">Register as Company</button>
+                </form>
         </mat-card-actions>
     </mat-card>
 </div>
