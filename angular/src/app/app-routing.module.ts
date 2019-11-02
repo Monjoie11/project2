@@ -4,6 +4,10 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RegisterCompanyComponent} from './register-company/register-company.component';
 import {ErrorComponent} from './error/error.component';
+import {CompanyHomepageComponent} from './company-homepage/company-homepage.component';
+import {UserHomepageComponent} from './user-homepage/user-homepage.component';
+import { MarketboardComponent } from './marketboard/marketboard.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -21,6 +25,21 @@ const routes: Routes = [
 
   {   path: 'register-company',
     component: RegisterCompanyComponent
+  },
+
+  {   path: 'company-homepage',
+    component: CompanyHomepageComponent
+  },
+
+  {   path: 'user-homepage',
+    component: UserHomepageComponent
+  },
+  {   path: 'marketboard',
+    component: MarketboardComponent
+  },
+
+  {   path: 'calendar',
+    component: CalendarComponent
   },
   {
     path: '**', component: ErrorComponent

@@ -42,6 +42,16 @@ create table posts(
 	foreign key (affiliated_company) references companies(company_name)
 );
 
+ALTER TABLE companies 
+ADD CONSTRAINT unique (access_code);
+
+CREATE UNIQUE INDEX CONCURRENTLY access_code_index1 
+on companies (access_code);
+
+ALTER TABLE companies
+ADD CONSTRAINT unique_access_code
+UNIQUE USING INDEX access_code_index1;
+
               
 create table company_user(
 company_name text,
