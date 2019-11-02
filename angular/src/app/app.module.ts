@@ -25,9 +25,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
+import { TabbedTableComponent2 } from './tabbed-table2/tabbed-table.component';
 import { BioComponent } from './bio/bio.component';
 import { RatingModule } from 'ng-starrating';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MarketboardComponent } from './marketboard/marketboard.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +44,11 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     NavbarComponent,
     ProfilePictureComponent,
     TabbedTableComponent,
+    TabbedTableComponent2,
     BioComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    MarketboardComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,8 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     FormsModule,
     MatTableModule,
     MatTabsModule,
-    RatingModule
+    RatingModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
