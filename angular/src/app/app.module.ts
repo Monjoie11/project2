@@ -27,6 +27,13 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
+import { TabbedTableComponent2 } from './tabbed-table2/tabbed-table.component';
+import { BioComponent } from './bio/bio.component';
+import { RatingModule } from 'ng-starrating';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MarketboardComponent } from './marketboard/marketboard.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +48,11 @@ import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
     TabbedTableComponent,
     UserHomepageComponent,
     JobDropdownComponent,
+    TabbedTableComponent2,
+    BioComponent,
+    StarRatingComponent,
+    MarketboardComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +68,9 @@ import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
     MatSelectModule,
     FormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    RatingModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
