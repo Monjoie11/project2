@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  postId: number;
+  postingUser: string;
+  acceptingUser: string;
+  postedTime: string;
+  startTime: string;
+  endTime: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 2, postingUser: 'Hannah', acceptingUser: 'Jeff', postedTime: '9:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 3, postingUser: 'Java', acceptingUser: 'Shalom', postedTime: '8:30', startTime: '10:00', endTime: '1:00'},
+  {postId: 4, postingUser: 'Jesus', acceptingUser: 'Jared', postedTime: '10:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 5, postingUser: 'Rulez!!', acceptingUser: 'Michael', postedTime: '11:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 6, postingUser: 'Carbon', acceptingUser: 'Andrew', postedTime: '11:30', startTime: '10:00', endTime: '1:00'},
+  {postId: 7, postingUser: 'Nitrogen', acceptingUser: 'Jacoburu', postedTime: '12:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 8, postingUser: 'Oxygen', acceptingUser: 'Tony', postedTime: '1:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 9, postingUser: 'Fluorine', acceptingUser: 'Ariel', postedTime: '5:00', startTime: '10:00', endTime: '1:00'},
+  {postId: 10, postingUser: 'Neon', acceptingUser: 'Harambe', postedTime: '4:30', startTime: '10:00', endTime: '1:00'},
 ];
 
 @Component({
@@ -26,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./tabbed-table.component.css']
 })
 export class TabbedTableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
   dataSource = ELEMENT_DATA;
   constructor() { }
 

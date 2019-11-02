@@ -26,6 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
 import { BioComponent } from './bio/bio.component';
+/* import {StarRatingModule} from 'angular-star-rating'; */
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { BioComponent } from './bio/bio.component';
     MatSelectModule,
     FormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+/*     StarRatingModule */
   ],
   providers: [],
   bootstrap: [AppComponent]
