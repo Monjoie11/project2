@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.User;
@@ -47,11 +48,10 @@ public class UserController {
 		return userService.getUserFromEmail(email+".com");
 	}
 	/*
-	@PostMapping(consumes = "application/json", value = "/user")
-	public String makeUser(@RequestBody User user) {
-		userService.registerUser(user);
-		return "success";
+	@PostMapping(consumes = "application/json", value = "/register")
+	public User makeUser(@RequestBody User user) {
+		User u = userService.registerUser(user);
+		return u;
 	}
 	*/
-	
 }
