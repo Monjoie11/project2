@@ -16,22 +16,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.security.core.Transient;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
+//@JsonIgnoreProperties(value={"parentCompanies", "acceptedPost", "postedPost"}, allowGetters = true, ignoreUnknown = true)
 public class User {
 
-	
 	@Id
 	@Column(name = "EMAIL")
-	//@Pattern(regexp = "\\w+", message = "Must start with a letter[a-z, A-Z]")
+	// @Pattern(regexp = "\\w+", message = "Must start with a letter[a-z, A-Z]")
 	private String email;
 
 	@Column(name = "PASSWORD")
@@ -47,8 +40,7 @@ public class User {
 	private String phoneNumber;
 
 	@ManyToMany
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
-	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
 	private Set<Company> parentCompanies = new HashSet<Company>();
 
 	@Column(name = "BIO")

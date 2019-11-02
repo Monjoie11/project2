@@ -16,8 +16,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "COMPANIES")
+//@JsonIgnoreProperties(value={"employees", "approvedPosts", "affiliatedCompanies"}, allowGetters = true, ignoreUnknown = true)
 public class Company {
 
 	@Id
@@ -41,7 +45,7 @@ public class Company {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
-	private AccessLevel accessLevel;;
+	private AccessLevel accessLevel;
 
 	@ManyToMany(mappedBy = "parentCompanies")
 	private Set<User> employees = new HashSet<User>();

@@ -47,6 +47,8 @@ public class UserController {
 		LoggerUtil.debug("detected email: " + email);
 		return userService.getUserFromEmail(email+".com");
 	}
+	
+	
 	/*
 	@PostMapping(consumes = "application/json", value = "/register")
 	public User makeUser(@RequestBody User user) {

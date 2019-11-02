@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,13 +20,22 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pojo.User;
 import com.revature.service.AuthService;
+import com.revature.service.UserService;
+import com.revature.util.LoggerUtil;
+
 import static com.revature.util.LoggerUtil.debug;
 
 @RestController
 public class LoginController{
 	
 	private AuthService authService;
+	private static UserService userService;
 	
+	@Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 	@Autowired
 	public void setAuthService(AuthService authService) { 
 		this.authService = authService;
@@ -41,6 +51,13 @@ public class LoginController{
 		
 		return "login";
 	}
+	
+	@GetMapping("/login/{email}")
+	public Boolean getUserByUsername(@PathVariable String email) {
+		LoggerUtil.debug("detected email: " + email);
+		return ( userService.getUserFromEmail(email+".com") != null );
+	}
+	
 	/*
 	@PostMapping("/login")
 	public void loginPost(ModelMap modelMap, BindingResult bindingResult, HttpServletRequest req, HttpServletResponse response) throws JsonProcessingException, IOException {
