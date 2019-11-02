@@ -25,6 +25,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
+import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
 import { TabbedTableComponent2 } from './tabbed-table2/tabbed-table.component';
 import { BioComponent } from './bio/bio.component';
 import { RatingModule } from 'ng-starrating';
@@ -44,6 +46,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     NavbarComponent,
     ProfilePictureComponent,
     TabbedTableComponent,
+    UserHomepageComponent,
+    JobDropdownComponent,
     TabbedTableComponent2,
     BioComponent,
     StarRatingComponent,
