@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.revature.dao.UserDao;
 import com.revature.pojo.User;
 import com.revature.pojo.User.WorkType;
-import com.revature.util.LoggerUtil;
+import static com.revature.util.LoggerUtil.debug;
 
 @Component
 public class UserService {
@@ -25,18 +25,18 @@ public class UserService {
 	}
 	
 	public boolean registerUser(User user) {
-		LoggerUtil.debug("UserService-registerUser");
+		debug("UserService-registerUser");
 		if( userDao.getUser( user.getEmail() ) != null) {
-			LoggerUtil.trace("Registered email: " + user.getEmail());
+			debug("Registered email: " + user.getEmail());
 			userDao.createUser(user);
 			return true;
 		}
-		LoggerUtil.trace("Could not register email: " + user.getEmail());
+		debug("Could not register email: " + user.getEmail());
 		return false;
 	}
 	
 	public List<User> getAllUsers() {
-		LoggerUtil.debug("UserService-getAllUsers");
+		debug("UserService-getAllUsers");
 		return userDao.getAllUsers();
 	}
 	
@@ -44,7 +44,7 @@ public class UserService {
 	//LINECHEF
 	
 	public void updateWorkType(User user, String workType) {
-		LoggerUtil.debug("UserService-updateWorkType");
+		debug("UserService-updateWorkType");
 		WorkType x = WorkType.valueOf(workType);
 		user.setWorkType(x);
 		userDao.updateUser(user);

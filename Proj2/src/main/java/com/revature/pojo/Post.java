@@ -1,6 +1,7 @@
 package com.revature.pojo;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,8 +30,8 @@ public class Post {
 	@JoinColumn(name="POSTING_EMAIL")
 	private User postingUser;
 	
-	@OneToMany(mappedBy="email", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<User> acceptingUser;
+	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<User> acceptingUser = new HashSet<User>();
 	
 	@ManyToOne
 	@JoinColumn(name="REFERENCED_COMPANY")
