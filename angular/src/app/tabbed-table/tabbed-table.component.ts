@@ -8,7 +8,6 @@ export interface PeriodicElement {
   startTime: string;
   endTime: string;
 }
-
 const ELEMENT_DATA: PeriodicElement[] = [
   {postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
   {postId: 2, postingUser: 'Hannah', acceptingUser: 'Jeff', postedTime: '9:00', startTime: '10:00', endTime: '1:00'},
@@ -29,6 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TabbedTableComponent implements OnInit {
   displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
   dataSource = ELEMENT_DATA;
   constructor() { }
 

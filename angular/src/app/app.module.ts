@@ -26,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
 import { BioComponent } from './bio/bio.component';
-/* import {StarRatingModule} from 'angular-star-rating'; */
+import { RatingModule } from 'ng-starrating';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BioComponent } from './bio/bio.component';
     NavbarComponent,
     ProfilePictureComponent,
     TabbedTableComponent,
-    BioComponent
+    BioComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import { BioComponent } from './bio/bio.component';
     FormsModule,
     MatTableModule,
     MatTabsModule,
-/*     StarRatingModule */
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
