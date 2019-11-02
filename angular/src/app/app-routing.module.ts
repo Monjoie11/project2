@@ -5,6 +5,7 @@ import {RegisterComponent} from './register/register.component';
 import {RegisterCompanyComponent} from './register-company/register-company.component';
 import {ErrorComponent} from './error/error.component';
 import {CompanyHomepageComponent} from './company-homepage/company-homepage.component';
+import {UserHomepageComponent} from './user-homepage/user-homepage.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
 
   {   path: 'company-homepage',
     component: CompanyHomepageComponent
+  },
+  {   path: 'user-homepage',
+    component: UserHomepageComponent
   },
   {
     path: '**', component: ErrorComponent
