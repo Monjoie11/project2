@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -65,9 +67,11 @@ public class User {
 	@Column(name = "RATING")
 	private double rating;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
 	private AccessLevel accessLevel;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "WORK_TYPE")
 	private WorkType workType;
 
