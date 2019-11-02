@@ -50,8 +50,8 @@ public class UserController {
 	/*
 	@PostMapping(consumes = "application/json", value = "/register")
 	public User makeUser(@RequestBody User user) {
-		User u = userService.registerUser(user);
-		return u;
+		String message = userService.registerUser(user);
+		return message;
 	}
 	*/
 }

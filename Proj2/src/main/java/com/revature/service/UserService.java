@@ -24,15 +24,18 @@ public class UserService {
 		return userDao.getUser(email);
 	}
 	
-	public boolean registerUser(User user) {
+	public String registerUser(User user) {
+		String message = null;
 		debug("UserService-registerUser");
 		if( userDao.getUser( user.getEmail() ) != null) {
 			debug("Registered email: " + user.getEmail());
 			userDao.createUser(user);
-			return true;
+			message = "Success registering!";
+			return message;
 		}
 		debug("Could not register email: " + user.getEmail());
-		return false;
+		message = "Email already registered";
+		return message;
 	}
 	
 	public List<User> getAllUsers() {
