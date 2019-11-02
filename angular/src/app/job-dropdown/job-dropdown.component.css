@@ -1,4 +1,10 @@
 #job-drop-down{
     display: inline-block;
-    width: 17%;
+    vertical-align: top;
+    width: 15%;
+    min-width: 250px;
+    padding: 35px;
+    box-sizing: border-box;
+    margin-right: 10%;
+    margin-left: 10%;
 }

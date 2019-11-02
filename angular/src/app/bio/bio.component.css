@@ -1,5 +1,6 @@
 #bio-card{
-    width: 20%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 15%;
+    height: 20%;
 }

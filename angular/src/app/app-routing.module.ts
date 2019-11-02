@@ -33,7 +33,7 @@ const routes: Routes = [
 
   {   path: 'user-homepage',
     component: UserHomepageComponent
-
+  },
   {   path: 'marketboard',
     component: MarketboardComponent
   },
