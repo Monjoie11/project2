@@ -16,9 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "COMPANIES")
-public class Company {
+public class Company implements FlatCompany{
 
 	@Id
 	@Column(name = "COMPANY_NAME")
@@ -44,13 +46,16 @@ public class Company {
 	private AccessLevel accessLevel;;
 
 	@ManyToMany(mappedBy = "parentCompanies")
+	@JsonSerialize(contentAs = FlatUser.class)
 	private Set<User> employees = new HashSet<User>();
 
 	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonSerialize(contentAs = FlatPost.class)
 	private Set<Post> approvedPosts = new HashSet<Post>();
 
 	@ManyToMany(fetch = FetchType.LAZY) // naming convention -> Should be Companies_Affiliated
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
+	@JsonSerialize(contentAs = FlatCompany.class)
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 
 	public String getCompanyName() {
@@ -249,5 +254,6 @@ public class Company {
 	public static enum AccessLevel {
 		OPEN, AFFILIATED, CLOSED
 	}
+
 
 }

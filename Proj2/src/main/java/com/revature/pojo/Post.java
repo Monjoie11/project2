@@ -19,9 +19,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name="POSTS")
-public class Post {
+public class Post implements FlatPost {
 	
 	@Id
 	@Column(name="POST_ID")
@@ -36,13 +38,16 @@ public class Post {
 	
 	@ManyToOne
 	@JoinColumn(name="POSTING_EMAIL")
+	@JsonSerialize(contentAs = FlatUser.class)
 	private User postingUser;
 	
 	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonSerialize(contentAs = FlatUser.class)
 	private Set<User> acceptingUser = new HashSet<User>();
 	
 	@ManyToOne
 	@JoinColumn(name="REFERENCED_COMPANY")
+	@JsonSerialize(contentAs = FlatCompany.class)
 	private Company referencedCompany;
 	
 	@Temporal(TemporalType.TIMESTAMP)
