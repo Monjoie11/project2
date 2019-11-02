@@ -19,6 +19,21 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { RegisterCompanyComponent } from './register-company/register-company.component';
+import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
+import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
+import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
+import { TabbedTableComponent2 } from './tabbed-table2/tabbed-table.component';
+import { BioComponent } from './bio/bio.component';
+import { RatingModule } from 'ng-starrating';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MarketboardComponent } from './marketboard/marketboard.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +41,18 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
-    RegisterCompanyComponent
+    RegisterCompanyComponent,
+    CompanyHomepageComponent,
+    NavbarComponent,
+    ProfilePictureComponent,
+    TabbedTableComponent,
+    UserHomepageComponent,
+    JobDropdownComponent,
+    TabbedTableComponent2,
+    BioComponent,
+    StarRatingComponent,
+    MarketboardComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +66,11 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
     MatToolbarModule,
     MatIconModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatTabsModule,
+    RatingModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
