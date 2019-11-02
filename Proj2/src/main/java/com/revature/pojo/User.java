@@ -19,12 +19,15 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.Transient;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User implements FlatUser{
 
 	
 	@Id
@@ -47,6 +50,7 @@ public class User {
 	@ManyToMany
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
 	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	@JsonSerialize(contentAs = FlatCompany.class)
 	private Set<Company> parentCompanies = new HashSet<Company>();
 
 	@Column(name = "BIO")
@@ -56,10 +60,12 @@ public class User {
 	private String resume;
 
 	@OneToMany(mappedBy = "postingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonSerialize(contentAs = FlatCompany.class)
 	private Set<Post> postedPost = new HashSet<Post>();
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")
+	@JsonSerialize(contentAs = FlatPost.class)
 	private Post acceptedPost;
 
 	@Column(name = "RATING")
@@ -311,5 +317,7 @@ public class User {
 		FRONTHOUSE, FLOOR, BACKHOUSE, HOST, MAITRED, WAITER, BARTENDER, BUSSER, BARBACK, SOMMELIER, HEADCHEF, PREPCHEF,
 		LINECHEF
 	}
+
+	
 
 }
