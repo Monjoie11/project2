@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,6 +41,7 @@ public class Company implements FlatCompany{
 	@Column(name = "RATING")
 	private double companyRating;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
 	private AccessLevel accessLevel;;
 
