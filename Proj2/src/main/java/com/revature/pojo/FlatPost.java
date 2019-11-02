@@ -1,16 +1,6 @@
 package com.revature.pojo;
 
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import java.util.Calendar;
 
 public interface FlatPost {
 	
@@ -18,10 +8,10 @@ public interface FlatPost {
 	
 	String getContent();
 	
-	LocalDateTime getTimeCreated();
+	Calendar getTimeCreated();
 	
-	LocalDateTime getStartTime();
+	Calendar getStartTime();
 	
-	LocalDateTime getEndTime();
+	Calendar getEndTime();
 
 }
