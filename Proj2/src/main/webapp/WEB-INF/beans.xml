@@ -16,15 +16,15 @@
 	<mvc:resources location="/resources/"
 		mapping="/resources/**"></mvc:resources>
 
-	<!-- Configure View Resolver -->
+	<!-- 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/pages/</value>
+			<value>/WEB-INF/web_pages/</value>
 		</property>
 		<property name="suffix">
-			<value>.jsp</value>
+			<value>.html</value>
 		</property>
 	</bean>
-
+	Configure View Resolver -->
 </beans>

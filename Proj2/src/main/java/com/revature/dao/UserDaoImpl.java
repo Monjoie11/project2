@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import com.revature.pojo.User;
 import com.revature.util.SessionFactoryUtil;
+import static com.revature.util.LoggerUtil.debug;
+
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -23,7 +25,14 @@ public class UserDaoImpl implements UserDao {
 		User user = null;
 		try {
 			tx = sess.beginTransaction();
-			user = (User) sess.get(User.class, email);
+			debug("before get");
+			Object o = sess.get(User.class, email);
+			user = (User) o;
+			if(o != null) {
+				debug("Dao: " + o.toString());
+			}
+			debug("Returned object was null." );
+
 			tx.commit();
 		}catch(Exception e) {
 			if (tx != null)

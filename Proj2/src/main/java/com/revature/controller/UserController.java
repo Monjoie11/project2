@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,16 +40,18 @@ public class UserController {
 		userService.updateWorkType(  user , workType);
 	}
 	
-	/*
-	@GetMapping("/user/{username}")
-	public User getUserByUsername(@PathVariable String username) {
-		return userService.getUserByUsername(username);
-	}
 	
+	@GetMapping("/user/{email}")
+	public User getUserByUsername(@PathVariable String email) {
+		LoggerUtil.debug("detected email: " + email);
+		return userService.getUserFromEmail(email+".com");
+	}
+	/*
 	@PostMapping(consumes = "application/json", value = "/user")
 	public String makeUser(@RequestBody User user) {
 		userService.registerUser(user);
 		return "success";
 	}
 	*/
+	
 }

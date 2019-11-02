@@ -1,5 +1,6 @@
 package com.revature.pojo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,8 +14,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.Transient;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
@@ -23,6 +29,7 @@ public class User {
 	
 	@Id
 	@Column(name = "EMAIL")
+	//@Pattern(regexp = "\\w+", message = "Must start with a letter[a-z, A-Z]")
 	private String email;
 
 	@Column(name = "PASSWORD")
@@ -40,7 +47,7 @@ public class User {
 	@ManyToMany
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
 	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
-	private Set<Company> parentCompanies;
+	private Set<Company> parentCompanies = new HashSet<Company>();
 
 	@Column(name = "BIO")
 	private String biography;
@@ -48,8 +55,8 @@ public class User {
 	@Column(name = "RESUME")
 	private String resume;
 
-	@OneToMany(mappedBy = "postId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Post> postedPost;
+	@OneToMany(mappedBy = "postingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Post> postedPost = new HashSet<Post>();
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")

@@ -44,9 +44,9 @@ public class Company {
 	private Set<User> employees = new HashSet<User>();
 
 	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Post> approvedPosts;
+	private Set<Post> approvedPosts = new HashSet<Post>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY) // naming convention -> Should be Companies_Affiliated
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 
