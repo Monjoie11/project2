@@ -46,7 +46,7 @@ public class Company{
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
-	private AccessLevel accessLevel;;
+	private AccessLevel accessLevel;
 
 	@ManyToMany(mappedBy = "parentCompanies")
 	private Set<User> employees = new HashSet<User>();

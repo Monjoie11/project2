@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,42 +26,41 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name="POSTS")
 @Component
 public class Post {
-	
+
 	@Id
-	@Column(name="POST_ID")
+	@Column(name = "POST_ID")
 	private int postId;
-	
-	@Column(name="POST_CONTENT")
+
+	@Column(name = "POST_CONTENT")
 	private String content;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name="STATUS")
+	@Column(name = "STATUS")
 	private Status status;
-	
+
 	@ManyToOne
-	@JoinColumn(name="POSTING_EMAIL")
+	@JoinColumn(name = "POSTING_EMAIL")
 	private User postingUser;
-	
-	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<User> acceptingUser = new HashSet<User>();
-	
+
 	@ManyToOne
-	@JoinColumn(name="REFERENCED_COMPANY")
+	@JoinColumn(name = "REFERENCED_COMPANY")
 	private Company referencedCompany;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="POSTED_TIME")
+	@Column(name = "POSTED_TIME")
 	private Calendar timeCreated;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="START_TIME")
+	@Column(name = "START_TIME")
 	private Calendar startTime;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="END_TIME")
+	@Column(name = "END_TIME")
 	private Calendar endTime;
-	
-	
+
 	public Status getStatus() {
 		return status;
 	}
@@ -135,7 +133,6 @@ public class Post {
 		this.endTime = endTime;
 	}
 
-
 	public Post(int postId) {
 		super();
 		this.postId = postId;
@@ -144,8 +141,6 @@ public class Post {
 	public Post() {
 		super();
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -214,8 +209,6 @@ public class Post {
 		return true;
 	}
 
-
-
 	public Post(int postId, String content, Status status, User postingUser, Set<User> acceptingUser,
 			Company referencedCompany, Calendar timeCreated, Calendar startTime, Calendar endTime) {
 		super();
@@ -230,11 +223,8 @@ public class Post {
 		this.endTime = endTime;
 	}
 
-
-
-	public static enum Status{
+	public static enum Status {
 		PENDING, ACCEPTED, COMPLETED, REJECTED, REPLIEDTO
 	}
-	
-	
+
 }
