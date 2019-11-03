@@ -59,5 +59,15 @@ public class CompanyDaoImpl implements CompanyDao {
 		sess.close();
 		return result;
 	}
+
+	@Override
+	public Company getCompanyByAccessCode(String accessCode) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		Company company = (Company) sess.get(Company.class, accessCode);
+		tx.commit();
+		sess.close();
+		return company;
+	}
 	
 }

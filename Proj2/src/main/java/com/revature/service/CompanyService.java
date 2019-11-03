@@ -39,5 +39,9 @@ public class CompanyService {
 		companyDao.updateCompany(company);
 		return accessCode;
 	}
+	
+	public Company getCompanyByAccessCode(String accessCode) {
+		return companyDao.getCompanyByAccessCode(accessCode);
+	}
 
 }

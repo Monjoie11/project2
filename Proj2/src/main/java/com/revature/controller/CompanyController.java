@@ -39,5 +39,15 @@ public class CompanyController {
 		return companyService.resetAccessCode(company);
 	
 	}
+	
+	@PostMapping(consumes = "application/json", produces = "application/json", value = "/validate-company-access")
+	public Company validateCompanyAccessCode(@RequestBody String accessCode) {
+		if(accessCode == null) {
+			return null;
+		}
+		
+		return companyService.getCompanyByAccessCode(accessCode);
+	
+	}
 
 }

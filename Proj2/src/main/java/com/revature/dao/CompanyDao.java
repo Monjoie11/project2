@@ -14,4 +14,6 @@ public interface CompanyDao {
 	public Company getCompanyByEmail(String email);
 
 	public List<Company> getAllCompanies();
+	
+	public Company getCompanyByAccessCode(String accessCode);
 }
