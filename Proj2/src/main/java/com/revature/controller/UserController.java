@@ -2,18 +2,25 @@ package com.revature.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.revature.pojo.User;
 import com.revature.pojo.User.WorkType;
 import com.revature.service.UserService;
 
 @RestController
+@SessionAttributes("user")
 public class UserController {
+	
+	
 	
 	private static UserService userService;
 	

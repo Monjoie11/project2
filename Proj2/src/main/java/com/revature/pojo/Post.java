@@ -14,16 +14,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.stereotype.Component;
+
 
 @Entity
 @Table(name="POSTS")
-public class Post implements FlatPost {
+@Component
+public class Post {
 	
 	@Id
 	@Column(name="POST_ID")
@@ -38,16 +39,13 @@ public class Post implements FlatPost {
 	
 	@ManyToOne
 	@JoinColumn(name="POSTING_EMAIL")
-	@JsonSerialize(contentAs = FlatUser.class)
 	private User postingUser;
 	
 	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonSerialize(contentAs = FlatUser.class)
 	private Set<User> acceptingUser = new HashSet<User>();
 	
 	@ManyToOne
 	@JoinColumn(name="REFERENCED_COMPANY")
-	@JsonSerialize(contentAs = FlatCompany.class)
 	private Company referencedCompany;
 	
 	@Temporal(TemporalType.TIMESTAMP)
