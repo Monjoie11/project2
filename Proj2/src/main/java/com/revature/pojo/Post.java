@@ -1,11 +1,14 @@
 package com.revature.pojo;
 
-import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,9 +16,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="POSTS")
+@Component
 public class Post {
 	
 	@Id
@@ -25,27 +35,42 @@ public class Post {
 	@Column(name="POST_CONTENT")
 	private String content;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS")
+	private Status status;
+	
 	@ManyToOne
 	@JoinColumn(name="POSTING_EMAIL")
 	private User postingUser;
 	
-	@OneToMany(mappedBy="email", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<User> acceptingUser;
+	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<User> acceptingUser = new HashSet<User>();
 	
 	@ManyToOne
 	@JoinColumn(name="REFERENCED_COMPANY")
 	private Company referencedCompany;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="POSTED_TIME")
-	private LocalDateTime timeCreated;
+	private Calendar timeCreated;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="START_TIME")
-	private LocalDateTime startTime;
+	private Calendar startTime;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="END_TIME")
-	private LocalDateTime endTime;
+	private Calendar endTime;
 	
 	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public int getPostId() {
 		return postId;
 	}
@@ -86,42 +111,30 @@ public class Post {
 		this.referencedCompany = referencedCompany;
 	}
 
-	public LocalDateTime getTimeCreated() {
+	public Calendar getTimeCreated() {
 		return timeCreated;
 	}
 
-	public void setTimeCreated(LocalDateTime timeCreated) {
+	public void setTimeCreated(Calendar timeCreated) {
 		this.timeCreated = timeCreated;
 	}
 
-	public LocalDateTime getStartTime() {
+	public Calendar getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(Calendar startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEndTime() {
+	public Calendar getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
 	}
 
-	public Post(int postId, String content, User postingUser, Set<User> acceptingUser, Company referencedCompany,
-			LocalDateTime timeCreated, LocalDateTime startTime, LocalDateTime endTime) {
-		super();
-		this.postId = postId;
-		this.content = content;
-		this.postingUser = postingUser;
-		this.acceptingUser = acceptingUser;
-		this.referencedCompany = referencedCompany;
-		this.timeCreated = timeCreated;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
 
 	public Post(int postId) {
 		super();
@@ -131,19 +144,21 @@ public class Post {
 	public Post() {
 		super();
 	}
-	
-	
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((acceptingUser == null) ? 0 : acceptingUser.hashCode());
-		result = prime * result + ((referencedCompany == null) ? 0 : referencedCompany.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + postId;
 		result = prime * result + ((postingUser == null) ? 0 : postingUser.hashCode());
+		result = prime * result + ((referencedCompany == null) ? 0 : referencedCompany.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((timeCreated == null) ? 0 : timeCreated.hashCode());
 		return result;
 	}
@@ -162,11 +177,6 @@ public class Post {
 				return false;
 		} else if (!acceptingUser.equals(other.acceptingUser))
 			return false;
-		if (referencedCompany == null) {
-			if (other.referencedCompany != null)
-				return false;
-		} else if (!referencedCompany.equals(other.referencedCompany))
-			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -184,10 +194,17 @@ public class Post {
 				return false;
 		} else if (!postingUser.equals(other.postingUser))
 			return false;
+		if (referencedCompany == null) {
+			if (other.referencedCompany != null)
+				return false;
+		} else if (!referencedCompany.equals(other.referencedCompany))
+			return false;
 		if (startTime == null) {
 			if (other.startTime != null)
 				return false;
 		} else if (!startTime.equals(other.startTime))
+			return false;
+		if (status != other.status)
 			return false;
 		if (timeCreated == null) {
 			if (other.timeCreated != null)
@@ -198,16 +215,24 @@ public class Post {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Post [postId=" + postId + ", content=" + content + ", postingUser=" + postingUser + ", acceptingUser="
-				+ acceptingUser + ", referencedCompany=" + referencedCompany + ", timeCreated=" + timeCreated
-				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
+
+	public Post(int postId, String content, Status status, User postingUser, Set<User> acceptingUser,
+			Company referencedCompany, Calendar timeCreated, Calendar startTime, Calendar endTime) {
+		super();
+		this.postId = postId;
+		this.content = content;
+		this.status = status;
+		this.postingUser = postingUser;
+		this.acceptingUser = acceptingUser;
+		this.referencedCompany = referencedCompany;
+		this.timeCreated = timeCreated;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 
 
 
-	public static enum status{
+	public static enum Status{
 		PENDING, ACCEPTED, COMPLETED, REJECTED, REPLIEDTO
 	}
 	

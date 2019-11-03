@@ -1,10 +1,13 @@
 package com.revature.pojo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,15 +15,28 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.Transient;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+@Component
+public class User{
 
+	
 	@Id
 	@Column(name = "EMAIL")
+	//@Pattern(regexp = "\\w+", message = "Must start with a letter[a-z, A-Z]")
 	private String email;
 
 	@Column(name = "PASSWORD")
@@ -35,12 +51,10 @@ public class User {
 	@Column(name = "PHONE")
 	private String phoneNumber;
 
-	@Column(name = "WORK_EXPERIENCE")
-	private int workExperience;
-
 	@ManyToMany
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
-	private Set<Company> parentCompanies;
+	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
+	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	private Set<Company> parentCompanies = new HashSet<Company>();
 
 	@Column(name = "BIO")
 	private String biography;
@@ -48,8 +62,8 @@ public class User {
 	@Column(name = "RESUME")
 	private String resume;
 
-	@OneToMany(mappedBy = "postId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Post> postedPost;
+	@OneToMany(mappedBy = "postingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Post> postedPost = new HashSet<Post>();
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")
@@ -58,9 +72,11 @@ public class User {
 	@Column(name = "RATING")
 	private double rating;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
 	private AccessLevel accessLevel;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "WORK_TYPE")
 	private WorkType workType;
 
@@ -102,14 +118,6 @@ public class User {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public int getWorkExperience() {
-		return workExperience;
-	}
-
-	public void setWorkExperience(int workExperience) {
-		this.workExperience = workExperience;
 	}
 
 	public Set<Company> getParentCompanies() {
@@ -179,10 +187,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phoneNumber=" + phoneNumber + ", workExperience=" + workExperience + ", parentCompanies="
-				+ parentCompanies + ", biography=" + biography + ", resume=" + resume + ", postedPost=" + postedPost
-				+ ", acceptedPost=" + acceptedPost + ", rating=" + rating + ", accessLevel=" + accessLevel
-				+ ", workType=" + workType + "]";
+				+ ", phoneNumber=" + phoneNumber + ", parentCompanies=" + parentCompanies + ", biography=" + biography
+				+ ", resume=" + resume + ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + ", rating="
+				+ rating + ", accessLevel=" + accessLevel + ", workType=" + workType + "]";
 	}
 
 	@Override
@@ -203,7 +210,6 @@ public class User {
 		temp = Double.doubleToLongBits(rating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((resume == null) ? 0 : resume.hashCode());
-		result = prime * result + workExperience;
 		result = prime * result + ((workType == null) ? 0 : workType.hashCode());
 		return result;
 	}
@@ -271,23 +277,20 @@ public class User {
 				return false;
 		} else if (!resume.equals(other.resume))
 			return false;
-		if (workExperience != other.workExperience)
-			return false;
 		if (workType != other.workType)
 			return false;
 		return true;
 	}
 
 	public User(String email, String password, String firstName, String lastName, String phoneNumber,
-			int workExperience, Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost,
-			Post acceptedPost, double rating, AccessLevel accessLevel, WorkType workType) {
+			Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
+			double rating, AccessLevel accessLevel, WorkType workType) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
-		this.workExperience = workExperience;
 		this.parentCompanies = parentCompanies;
 		this.biography = biography;
 		this.resume = resume;
@@ -317,5 +320,7 @@ public class User {
 		FRONTHOUSE, FLOOR, BACKHOUSE, HOST, MAITRED, WAITER, BARTENDER, BUSSER, BARBACK, SOMMELIER, HEADCHEF, PREPCHEF,
 		LINECHEF
 	}
+
+	
 
 }

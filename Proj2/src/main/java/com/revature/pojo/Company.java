@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,9 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "COMPANIES")
-public class Company {
+@Component
+public class Company{
 
 	@Id
 	@Column(name = "COMPANY_NAME")
@@ -37,17 +44,17 @@ public class Company {
 	@Column(name = "RATING")
 	private double companyRating;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCESS_LEVEL")
-	private AccessLevel accessLevel;
+	private AccessLevel accessLevel;;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "EMAIL"))
+	@ManyToMany(mappedBy = "parentCompanies")
 	private Set<User> employees = new HashSet<User>();
 
-	@OneToMany(mappedBy = "refrencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Post> approvedPosts;
+	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Post> approvedPosts = new HashSet<Post>();
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY) // naming convention -> Should be Companies_Affiliated
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 
@@ -247,5 +254,6 @@ public class Company {
 	public static enum AccessLevel {
 		OPEN, AFFILIATED, CLOSED
 	}
+
 
 }
