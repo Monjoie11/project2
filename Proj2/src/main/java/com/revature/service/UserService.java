@@ -33,9 +33,9 @@ public class UserService {
 		userDao.insertUser(user);
 	}
 	
-	public void updateExpertise(String workType) {
-		
-		//userDao.updateUser(user);
+	public void updateExpertise(User user, String workType) {
+		user.setWorkType(User.WorkType.valueOf(workType));
+		userDao.updateUser(user);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,12 +27,13 @@ public class UserController {
 		return true;
 	}
 	
-//	@PutMapping(consumes = "application/json", produces = "application/json", value = "/update-user-expertise")
-//	public boolean updateUserExpertise(@RequestBody String workType, Http) {
-//		
-//		userService.updateExpertise(workType);
-//		return false;
-//	}
+	@PutMapping(consumes = "application/json", produces = "application/json", value = "/update-user-expertise")
+	public boolean updateUserExpertise(@RequestBody String workType, HttpSession session) {
+		// TODO: error check workType
+		User user = (User) session.getAttribute("user");
+		userService.updateExpertise(user, workType);
+		return false;
+	}
 	
 	
 	
