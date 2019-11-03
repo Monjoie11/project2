@@ -32,6 +32,12 @@ public class LoginController {
 	@PostMapping(consumes = "application/json", produces = "application/json", value = "/login")
 	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap,
 			HttpSession sess) {
+		
+//		User validatedUser = new User("angularTest@tes.com", "angularTest", "angular", "test", "800-ang-ular",
+//                null, "once upon a time there was angular", "angular is hard", null, null,
+//                5.0, User.AccessLevel.OPEN, User.WorkType.BACKHOUSE);
+//        
+//        return validatedUser;
 
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
