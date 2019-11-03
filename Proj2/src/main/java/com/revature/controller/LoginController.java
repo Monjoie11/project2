@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -88,44 +90,20 @@ public class LoginController{
 
 	}
 	*/
+
 	/*
-	  
-	@PostMapping(consumes = "application/json", value = "/login")
-	public User loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		LoggerUtil.debug("Post-Login");
-		LoggerUtil.debug(user.toString());
-		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			System.out.println(bindingResult.getAllErrors().get(0).getDefaultMessage());
-			return null;
-		}
-		
-
-		User authUser = authService.validateUser(user);
-		if (authUser != null) {
-			sess.setAttribute("user", authUser);
-			modelMap.addAttribute("user", authUser);
-			return authUser;
-		}
-		
-		modelMap.addAttribute("errorMessage", "Username/Password did not match");
-		
-		return null;
-	}
-
-	*/
 	@PostMapping(consumes = "application/json", value = "/login")
 	public User loginPost(@RequestBody User user) {
 		debug("Post-Login");
 		debug( user.toString() );
-		/*
+		
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			System.out.println(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
 		
-		*/
+		
 		
 		//User(String email, String password, String firstName, String lastName, String phoneNumber,
 			//	Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
@@ -138,6 +116,38 @@ public class LoginController{
 		
 		return testUser;
 	}
-	
+	*/
+		@PostMapping(consumes = "application/json", produces = "application/json", value = "/login")
+		public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap,
+				HttpSession sess) {
+			
+//			User validatedUser = new User("angularTest@tes.com", "angularTest", "angular", "test", "800-ang-ular",
+//	                null, "once upon a time there was angular", "angular is hard", null, null,
+//	                5.0, User.AccessLevel.OPEN, User.WorkType.BACKHOUSE);
+//	        
+//	        return validatedUser;
+
+			if (bindingResult.hasErrors()) {
+				modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+				LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+				return null;
+			}
+
+			Object authEntity = authService.validateEntity(user.getEmail(), user.getPassword());
+
+			if (authEntity != null && authEntity instanceof Company) {
+				sess.setAttribute("company", authEntity);
+				modelMap.addAttribute("company", authEntity);
+				return new ResponseEntity<Object>((Company) authEntity, HttpStatus.OK);
+			} else if (authEntity != null && authEntity instanceof User) {
+				sess.setAttribute("user", authEntity);
+				modelMap.addAttribute("user", authEntity);
+				return new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			}
+
+			modelMap.addAttribute("errorMessage", "Username/Password did not match");
+
+			return new ResponseEntity<Object>(authEntity, HttpStatus.OK);
+		}
 	
 }
