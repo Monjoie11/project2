@@ -16,13 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "COMPANIES")
-//@JsonIgnoreProperties(value={"employees", "approvedPosts", "affiliatedCompanies"}, allowGetters = true, ignoreUnknown = true)
-public class Company {
+@Component
+public class Company{
 
 	@Id
 	@Column(name = "COMPANY_NAME")
@@ -253,5 +254,6 @@ public class Company {
 	public static enum AccessLevel {
 		OPEN, AFFILIATED, CLOSED
 	}
+
 
 }

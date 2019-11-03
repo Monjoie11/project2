@@ -18,13 +18,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
-@Table(name = "POSTS")
-//@JsonIgnoreProperties(value={"acceptingUser", "referencedCompany", "postingUser"}, allowGetters = true, ignoreUnknown = true)
+@Table(name="POSTS")
+@Component
 public class Post {
 
 	@Id

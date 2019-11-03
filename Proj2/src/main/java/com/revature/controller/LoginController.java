@@ -60,7 +60,7 @@ public class LoginController{
 	@GetMapping("/login/{email}")
 	public Boolean getUserByUsername(@PathVariable String email) {
 		LoggerUtil.debug("detected email: " + email);
-		return ( userService.getUserFromEmail(email+".com") != null );
+		return ( userService.getUserByEmail(email+".com") != null );
 	}
 	
 	/*
@@ -131,7 +131,7 @@ public class LoginController{
 			//	Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
 				//double rating, AccessLevel accessLevel, WorkType workType)
 		
-		//User authUser = authService.validateUser(user);
+		//User authUser = authService.validateEntity(user);
 		Post post1 = new Post();
 		User testUser = new User("test@email.com", "pass","first", "last", "number", null, "biography", "resume path", null, post1, 4.0, AccessLevel.OPEN, WorkType.BACKHOUSE);
 		//debug(authUser.toString());

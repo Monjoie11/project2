@@ -17,14 +17,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.Transient;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
-//@JsonIgnoreProperties(value={"parentCompanies", "acceptedPost", "postedPost"}, allowGetters = true, ignoreUnknown = true)
-public class User {
+@Component
+public class User{
 
 	@Id
 	@Column(name = "EMAIL")
@@ -311,5 +316,7 @@ public class User {
 		FRONTHOUSE, FLOOR, BACKHOUSE, HOST, MAITRED, WAITER, BARTENDER, BUSSER, BARBACK, SOMMELIER, HEADCHEF, PREPCHEF,
 		LINECHEF
 	}
+
+	
 
 }
