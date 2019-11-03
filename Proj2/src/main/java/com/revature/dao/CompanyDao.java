@@ -5,14 +5,15 @@ import java.util.List;
 import com.revature.pojo.Company;
 
 public interface CompanyDao {
-	public void createCompany(Company company);
+	public void updateCompany(Company company);
 
-	public Company getCompany(String companyName);
+	public void insertCompany(Company company);
 
 	public void deleteCompany(Company company);
 
-	public void updateCompany(Company company);
+	public Company getCompanyByEmail(String email);
 
 	public List<Company> getAllCompanies();
-
+	
+	public Company getCompanyByAccessCode(String accessCode);
 }

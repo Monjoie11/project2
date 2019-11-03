@@ -6,10 +6,15 @@ import java.util.List;
 import com.revature.pojo.User;
 
 public interface UserDao {
-	
-	public User getUser(String email);
-	public void createUser(User user);
-	public List<User> getAllUsers();
+
 	public void updateUser(User user);
+	
+	public void insertUser(User user);
+	
 	public void deleteUser(User user);
+	
+	public User getUserByEmail(String email);
+	
+	public List<User> getAllUsers();
+	
 }
