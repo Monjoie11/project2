@@ -13,8 +13,8 @@
 		base-package="com.revature"></context:component-scan>
 
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<mvc:resources location="../../../../angular"
-		mapping="../../../../angular/**"></mvc:resources>
+<mvc:resources location="/build-angular-here/"
+		mapping="/build-angular-here/**"></mvc:resources>
 
 	<!-- 
 	<bean
