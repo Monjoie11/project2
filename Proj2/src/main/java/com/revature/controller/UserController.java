@@ -25,12 +25,12 @@ public class UserController {
 		return true;
 	}
 	
-	@PutMapping(consumes = "application/json", produces = "application/json", value = "/update-user-expertise")
-	public boolean updateUserExpertise(@RequestBody String workType, Http) {
-		
-		userService.updateExpertise(workType);
-		return false;
-	}
+//	@PutMapping(consumes = "application/json", produces = "application/json", value = "/update-user-expertise")
+//	public boolean updateUserExpertise(@RequestBody String workType, Http) {
+//		
+//		userService.updateExpertise(workType);
+//		return false;
+//	}
 	
 	
 	

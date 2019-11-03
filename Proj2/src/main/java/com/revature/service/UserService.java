@@ -35,7 +35,7 @@ public class UserService {
 	
 	public void updateExpertise(String workType) {
 		
-		userDao.updateUser(user);
+		//userDao.updateUser(user);
 	}
 	
 }
