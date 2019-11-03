@@ -2,6 +2,7 @@ package com.revature.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,16 @@ public class UserController {
 		User user = (User) session.getAttribute("user");
 		userService.updateExpertise(user, workType);
 		return false;
+	}
+	
+	@GetMapping(produces = "application/json", value = "/user-rating")
+	public double userRatingGet(HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return -1;
+		}
+		User user = (User) session.getAttribute("user");
+		
+		return user.getRating();
 	}
 	
 	
