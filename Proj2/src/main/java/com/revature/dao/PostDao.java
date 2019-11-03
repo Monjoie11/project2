@@ -14,5 +14,7 @@ public interface PostDao {
 	public List<Post> getAllPosts();
 
 	public Post getPost(String postName);
+	
+	public List<Post> getPostsByUserEmail(String email);
 
 }

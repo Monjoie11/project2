@@ -3,14 +3,17 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
-import com.revature.util.SessionFactoryUtil;
 import com.revature.pojo.Post;
+import com.revature.util.SessionFactoryUtil;
 
+@Component
 public class PostDaoImpl implements PostDao {
 
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
@@ -107,6 +110,41 @@ public class PostDaoImpl implements PostDao {
 			sess.close();
 		}
 		return p;
+	}
+
+	@Override
+	public List<Post> getPostsByUserEmail(String email) {
+		Session sess = sf.openSession();
+		Transaction tx = null;
+		List<Post> posts = null;
+
+		try {
+			tx = sess.beginTransaction();
+			String hql = "FROM POSTS as b WHERE b.breed = :posting_email";
+			Query query = sess.createQuery(hql);
+			String posting_email = email;
+			query.setParameter("posting_email", email);
+			posts = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+
+		/*
+		 * 
+		 * SQLQuery nativeSQLQuery =
+		 * sess.createSQLQuery("Select * from bears where type = " + type);
+		 * 
+		 * bears = nativeSQLQuery.list();
+		 * 
+		 * Query query2 = sess.getNamedQuery("get_small_bears");
+		 */
+
+		return posts;
 	}
 
 }
