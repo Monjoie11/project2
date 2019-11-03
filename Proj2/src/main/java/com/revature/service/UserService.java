@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.revature.dao.UserDao;
 import com.revature.pojo.User;
 import com.revature.pojo.User.WorkType;
 import static com.revature.util.LoggerUtil.debug;
 
-@Component
+@Service
 public class UserService {
 
 	private UserDao userDao;
@@ -20,41 +21,21 @@ public class UserService {
 		this.userDao = userDao;
 	}
 	
-	public User getUserFromEmail(String email) {
-		return userDao.getUser(email);
-	}
-	
-	public String registerUser(User user) {
-		String message = null;
-		debug("UserService-registerUser");
-		if( userDao.getUser( user.getEmail() ) != null) {
-			debug("Registered email: " + user.getEmail());
-			userDao.createUser(user);
-			message = "Success registering!";
-			return message;
-		}
-		debug("Could not register email: " + user.getEmail());
-		message = "Email already registered";
-		return message;
+	public User getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
 	}
 	
 	public List<User> getAllUsers() {
-		debug("UserService-getAllUsers");
 		return userDao.getAllUsers();
 	}
 	
-	//	FRONTHOUSE, FLOOR, BACKHOUSE, HOST, MAITRED, WAITER, BARTENDER, BUSSER, BARBACK, SOMMELIER, HEADCHEF, PREPCHEF,
-	//LINECHEF
-	
-	public void updateWorkType(User user, String workType) {
-		debug("UserService-updateWorkType");
-		WorkType x = WorkType.valueOf(workType);
-		user.setWorkType(x);
-		userDao.updateUser(user);
+	public void registerUser(User user) {
+		userDao.insertUser(user);
 	}
 	
-	/*
-	 * public void registerUser(User user) { userDao.saveUser(user); }
-	 */
+	public void updateExpertise(User user, String workType) {
+		user.setWorkType(User.WorkType.valueOf(workType));
+		userDao.updateUser(user);
+	}
 	
 }
