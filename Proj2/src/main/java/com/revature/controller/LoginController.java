@@ -1,6 +1,7 @@
 package com.revature.controller;
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pojo.Company;
+import com.revature.pojo.Post;
 import com.revature.pojo.User;
+import com.revature.pojo.User.AccessLevel;
+import com.revature.pojo.User.WorkType;
 import com.revature.service.AuthService;
 import com.revature.service.UserService;
 import com.revature.util.LoggerUtil;
@@ -121,11 +126,17 @@ public class LoginController{
 		}
 		
 		*/
-		User authUser = authService.validateUser(user);
-
-		debug(authUser.toString());
 		
-		return authUser;
+		//User(String email, String password, String firstName, String lastName, String phoneNumber,
+			//	Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
+				//double rating, AccessLevel accessLevel, WorkType workType)
+		
+		//User authUser = authService.validateUser(user);
+		Post post1 = new Post();
+		User testUser = new User("test@email.com", "pass","first", "last", "number", null, "biography", "resume path", null, post1, 4.0, AccessLevel.OPEN, WorkType.BACKHOUSE);
+		//debug(authUser.toString());
+		
+		return testUser;
 	}
 	
 	
