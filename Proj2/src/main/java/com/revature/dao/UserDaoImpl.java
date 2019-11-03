@@ -65,6 +65,7 @@ public class UserDaoImpl implements UserDao {
 		Transaction tx = null;
 		List<User> result = null;
 		try {
+			tx = sess.beginTransaction();
 			Criteria crit = sess.createCriteria(User.class);
 			result = crit.list();
 		}catch(Exception e) {

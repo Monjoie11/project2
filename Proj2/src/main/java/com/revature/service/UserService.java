@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.revature.dao.UserDao;
 import com.revature.pojo.User;
 import com.revature.pojo.User.WorkType;
 import static com.revature.util.LoggerUtil.debug;
 
-@Component
+@Service
 public class UserService {
 
 	private UserDao userDao;

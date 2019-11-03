@@ -1,5 +1,37 @@
 package com.revature.controller;
 
-public class PostController {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.revature.pojo.Post;
+import com.revature.service.PostService;
+import com.revature.util.LoggerUtil;
+
+@RestController
+public class PostController {
+	
+	private static PostService postService;
+	
+	@Autowired
+	public void setPostService(PostService postService) {
+		this.postService = postService;
+	}
+
+	@GetMapping("/post/{post_id}")
+	public Boolean getPostById(@PathVariable String post_id) {
+		LoggerUtil.debug("detected post_id: " + post_id);
+		return ( postService.getPostbyId(post_id) != null );
+	}
+	
+	@GetMapping("/post")
+	public List<Post> getAllPosts() {
+		LoggerUtil.debug("grabbing all posts");
+		return postService.getAllPosts();
+	}
+	
+	
 }
