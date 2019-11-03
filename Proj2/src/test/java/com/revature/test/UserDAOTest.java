@@ -61,4 +61,9 @@ public class UserDAOTest {
 		assertEquals(u, ret_u);
 	}
 	
+	@Test
+	public void testDB() {
+		
+	}
+	
 }
