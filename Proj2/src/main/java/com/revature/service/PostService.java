@@ -21,12 +21,15 @@ public class PostService {
 	
 
 	public Post getPostbyId(String id) {
-		
-		return postDao.getPostbyId(id);
+		return postDao.getPost(id);
 	}
 	
 	public List<Post> getAllPosts() {
 		return postDao.getAllPosts();
+	}
+	
+	public Boolean doPostsIntersect() {
+		
 	}
 
 }

@@ -22,9 +22,9 @@ public class PostController {
 	}
 
 	@GetMapping("/post/{post_id}")
-	public Boolean getPostById(@PathVariable String post_id) {
+	public Post getPostById(@PathVariable String post_id) {
 		LoggerUtil.debug("detected post_id: " + post_id);
-		return ( postService.getPostbyId(post_id) != null );
+		return postService.getPostbyId(post_id);
 	}
 	
 	@GetMapping("/post")
