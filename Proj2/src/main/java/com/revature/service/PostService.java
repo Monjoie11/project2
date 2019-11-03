@@ -28,8 +28,9 @@ public class PostService {
 		return postDao.getAllPosts();
 	}
 	
-	public Boolean doPostsIntersect() {
-		
+	public Boolean doPostsIntersect(Post post1, Post post2) {
+		//postDao logic
+		return false;
 	}
 
 }
