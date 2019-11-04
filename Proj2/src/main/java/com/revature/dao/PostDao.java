@@ -5,6 +5,7 @@ import java.util.List;
 import com.revature.pojo.Post;
 
 public interface PostDao {
+	
 	public void createPost(Post post);
 
 	public void deletePost(Post post);
@@ -14,5 +15,7 @@ public interface PostDao {
 	public List<Post> getAllPosts();
 
 	public Post getPost(String postName);
+	
+	public List<Post> getPostsByUserEmail(String email);
 
 }

@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 

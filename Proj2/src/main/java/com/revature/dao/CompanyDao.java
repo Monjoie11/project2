@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.revature.pojo.Company;
 
+
 public interface CompanyDao {
+	
 	public void updateCompany(Company company);
 
 	public void insertCompany(Company company);
