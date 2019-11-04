@@ -32,7 +32,7 @@ import com.revature.service.UserService;
 import com.revature.util.LoggerUtil;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class LoginController {
 
 	private AuthService authService;
@@ -50,18 +50,19 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String loginGet(HttpSession sess, ModelMap modelMap) {
-
+		/*
 		if (sess.getAttribute("user") != null) {
 			modelMap.addAttribute("user", sess.getAttribute("user"));
 			return "home";
 		}
-
-		return "login";
+		*/
+		return "index";
 	}
 
 	@GetMapping("/login/{email}")
 	public Boolean getUserByUsername(@PathVariable String email) {
 		LoggerUtil.debug("detected email: " + email);
+		User dummy = new User();
 		return (userService.getUserByEmail(email + ".com") != null);
 	}
 
@@ -69,11 +70,6 @@ public class LoginController {
 	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap,
 			HttpSession sess) {
 
-//			User validatedUser = new User("angularTest@tes.com", "angularTest", "angular", "test", "800-ang-ular",
-//	                null, "once upon a time there was angular", "angular is hard", null, null,
-//	                5.0, User.AccessLevel.OPEN, User.WorkType.BACKHOUSE);
-//	        
-//	        return validatedUser;
 
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -82,7 +78,7 @@ public class LoginController {
 		}
 
 		Object authEntity = authService.validateEntity(user.getEmail(), user.getPassword());
-
+		LoggerUtil.debug("Inside the post method login");
 		if (authEntity != null && authEntity instanceof Company) {
 			sess.setAttribute("company", authEntity);
 			modelMap.addAttribute("company", authEntity);
@@ -90,12 +86,17 @@ public class LoginController {
 		} else if (authEntity != null && authEntity instanceof User) {
 			sess.setAttribute("user", authEntity);
 			modelMap.addAttribute("user", authEntity);
-			return new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			ResponseEntity re =  new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			LoggerUtil.debug("returnJSON:");
+			LoggerUtil.debug(re.toString());
+
+			return re;
 		}
 
 		modelMap.addAttribute("errorMessage", "Username/Password did not match");
 
 		return new ResponseEntity<Object>(authEntity, HttpStatus.OK);
+		
 	}
 
 }

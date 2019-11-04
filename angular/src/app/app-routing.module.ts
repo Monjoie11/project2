@@ -42,7 +42,7 @@ const routes: Routes = [
     component: CalendarComponent
   },
   {
-    path: '**', component: ErrorComponent
+    path: '**', component: LoginComponent
   }
 ];
 

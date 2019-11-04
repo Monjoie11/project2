@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   email: string;
   response: any;
+  password: string;
 
   constructor(private router: Router, private http: HttpClient) {
 
@@ -20,14 +21,17 @@ export class LoginComponent implements OnInit {
   }
 
   search() {
-    let obs = this.http.get('login/' + this.email);
+    //let obs = this.http.get('login/' + this.email);
+    let obs = this.http.post('login', {"email":this.email, "password":this.password} );
     obs.subscribe((response) => {
       this.response = response;
-      console.log(this.response.length);
-      if (this.response.length == 13) {
-        this.router.navigateByUrl('login');
-      } else if(this.response.length == 10) {
-        this.router.navigateByUrl('login-company'); 
+      let len = Object.keys(this.response).length;
+      console.log("Length: ");
+      console.log(len);
+      if (len == 13) {
+        this.router.navigateByUrl('user-homepage');
+      } else if(len == 10) {
+        this.router.navigateByUrl('company-homepage'); 
        } else{
          alert("Incorrect login credentials.")
        }
