@@ -20,6 +20,9 @@ import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="POSTS")
@@ -39,6 +42,7 @@ public class Post {
 	
 	@ManyToOne
 	@JoinColumn(name="POSTING_EMAIL")
+
 	private User postingUser;
 	
 	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

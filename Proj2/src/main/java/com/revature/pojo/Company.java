@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "COMPANIES")
 @Component
-public class Company implements FlatCompany{
+public class Company {
 
 	@Id
 	@Column(name = "COMPANY_NAME")
