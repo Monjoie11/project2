@@ -2,7 +2,6 @@ package com.revature.dao;
 
 import java.util.List;
 
-
 import com.revature.pojo.User;
 
 public interface UserDao {
@@ -18,3 +17,4 @@ public interface UserDao {
 	public List<User> getAllUsers();
 	
 }
+

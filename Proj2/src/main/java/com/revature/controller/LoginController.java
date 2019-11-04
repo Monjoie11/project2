@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -65,37 +69,35 @@ public class LoginController {
 		return (userService.getUserByEmail(email + ".com") != null);
 	}
 
-	@PostMapping(consumes = "application/json", produces = "application/json", value = "/login")
-	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap,
-			HttpSession sess) {
 
-//			User validatedUser = new User("angularTest@tes.com", "angularTest", "angular", "test", "800-ang-ular",
-//	                null, "once upon a time there was angular", "angular is hard", null, null,
-//	                5.0, User.AccessLevel.OPEN, User.WorkType.BACKHOUSE);
-//	        
-//	        return validatedUser;
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/login")
+	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-
+    
 		Object authEntity = authService.validateEntity(user.getEmail(), user.getPassword());
-
+		
 		if (authEntity != null && authEntity instanceof Company) {
 			sess.setAttribute("company", authEntity);
 			modelMap.addAttribute("company", authEntity);
-			return new ResponseEntity<Object>((Company) authEntity, HttpStatus.OK);
+		//	return ResponseEntity<Object>(authEntity, HttpStatus.CREATED);
 		} else if (authEntity != null && authEntity instanceof User) {
 			sess.setAttribute("user", authEntity);
 			modelMap.addAttribute("user", authEntity);
-			return new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			return responseEntity;
+			//return authEntity;
 		}
 
 		modelMap.addAttribute("errorMessage", "Username/Password did not match");
+		return null;
 
-		return new ResponseEntity<Object>(authEntity, HttpStatus.OK);
+
+	//	return authEntity;
 	}
 
 }

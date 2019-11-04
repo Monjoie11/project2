@@ -16,6 +16,7 @@
 <mvc:resources location="/build-angular-here/"
 		mapping="/build-angular-here/**"></mvc:resources>
 
+
 	<!-- 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -18,13 +18,10 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 @Entity
 @Table(name = "COMPANIES")
 @Component
 public class Company{
-
 	@Id
 	@Column(name = "COMPANY_NAME")
 	private String companyName;

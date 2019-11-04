@@ -19,14 +19,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="POSTS")
 @Component
 public class Post {
-
 	@Id
 	@Column(name = "POST_ID")
 	private int postId;
@@ -39,14 +38,15 @@ public class Post {
 	private Status status;
 
 	@ManyToOne
-	@JoinColumn(name = "POSTING_EMAIL")
-	private User postingUser;
+	@JoinColumn(name="POSTING_EMAIL")
 
-	@OneToMany(mappedBy = "acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private User postingUser;
+	
+	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<User> acceptingUser = new HashSet<User>();
 
 	@ManyToOne
-	@JoinColumn(name = "REFERENCED_COMPANY")
+	@JoinColumn(name="REFERENCED_COMPANY")
 	private Company referencedCompany;
 
 	@Temporal(TemporalType.TIMESTAMP)
