@@ -11,12 +11,12 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {
-      path: '',
+      path: 'localhost:8080/angular/Proj2/angular/',
       redirectTo: '/login', 
       pathMatch: 'full'
   } ,
   {
-      path: 'login',
+      path: 'localhost:8080/login',
       component: LoginComponent
   } ,
   {   path: 'register',

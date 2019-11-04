@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomepageComponent implements OnInit {
 
-  
+  changes(event){
+    alert("hello");
+    document.getElementById("bioLabel").innerHTML = "Company Biography"
+  }
+
   constructor() { }
 
   ngOnInit() {

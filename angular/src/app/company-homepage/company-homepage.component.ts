@@ -9,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 } */
+
 export class CompanyHomepageComponent implements OnInit {
   constructor(){}
-
   ngOnInit() {
   }
 
 }
+
+window.onload = function() {
+  alert("hi");
+  document.getElementById("bioLabel").innerHTML = "Company Bio";
+};
 
