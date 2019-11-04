@@ -50,5 +50,11 @@ public class UserDaoTest {
 	public void testGetUserByEmail() {
 		
 	}
+	
+	@Test
+	public void testDB() {
+		
+	}
+	
 
 }

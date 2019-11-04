@@ -35,9 +35,17 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void deleteUser(User user) {
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.delete(user);
-		tx.commit();
+		Transaction tx = null;
+		List<User> result = null;
+		try {
+			tx = sess.beginTransaction();
+			Criteria crit = sess.createCriteria(User.class);
+			result = crit.list();
+		}catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
 		sess.close();
 	}
 
