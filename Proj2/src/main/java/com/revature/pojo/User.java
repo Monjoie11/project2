@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "USERS")
 @Component
+
 public class User{
 
 	@Id

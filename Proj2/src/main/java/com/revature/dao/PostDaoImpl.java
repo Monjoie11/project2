@@ -11,8 +11,10 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import com.revature.domains.Bear;
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.util.LoggerUtil;
 import com.revature.util.SessionFactoryUtil;
 
 @Component
@@ -148,16 +150,31 @@ public class PostDaoImpl implements PostDao {
 
 		return posts;
 	}
-	
+	/*
+	 * @Override public List<Post> getAllPostsByCompany(String companyName) {
+	 * 
+	 * Session sess = sf.openSession(); //Company c = new Company(); Criteria crit =
+	 * sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany",
+	 * companyName)); List<Post> posts = crit.list(); sess.close(); return posts;
+	 * 
+	 * }
+	 */
+
 	@Override
-	public List<Post> getAllPostsByCompany(String companyName) {
-		
+	public List<Post> getAllPostsByCompany(String c) {
+
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", companyName));
-		List<Post> posts = crit.list();
+		//Transaction tx = sess.beginTransaction();
+
+		// Company c = new Company();
+		SQLQuery nativeSQLQuery = sess.createSQLQuery("Select * from posts where referenced_company = " + "\'"+c+"\'");
+		List<Post> posts = nativeSQLQuery.list();
+//		Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", c));
+//		posts = crit.list();
+		LoggerUtil.debug(posts.toString());
 		sess.close();
 		return posts;
-		
+
 	}
 
 }

@@ -51,7 +51,7 @@ public class PostController {
 		return postService.getPostbyId(post_id);
 	}
 	
-	
+
 	@GetMapping("/post")
 	public List<Post> getAllCompanyPosts( HttpSession session) {
 		Company company = (Company) session.getAttribute("company");
@@ -67,6 +67,22 @@ public class PostController {
 		LoggerUtil.debug("grabbing all posts");
 		return postService.getAllPostsByCompany(companyName);
 	}
-	
-	
+
+	/*
+	@GetMapping("/post")
+	public List<Post> getAllCompanyPosts( HttpSession session) {
+		Company company = (Company) session.getAttribute("company");
+		if(company == null) {
+			LoggerUtil.debug("Company was null");
+
+			return null;
+		}
+		
+		String companyName = company.getCompanyName();
+		LoggerUtil.debug(companyName);
+
+		LoggerUtil.debug("grabbing all posts");
+		return postService.getAllPostsByCompany(company);
+	}
+	*/
 }

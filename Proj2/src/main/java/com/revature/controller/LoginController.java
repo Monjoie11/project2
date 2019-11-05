@@ -66,13 +66,16 @@ public class LoginController {
 		Object authEntity = authService.validateEntity(user.getEmail(), user.getPassword());
 		
 		if (authEntity != null && authEntity instanceof Company) {
-			sess.setAttribute("company", authEntity);
-			modelMap.addAttribute("company", authEntity);
-			return new ResponseEntity<Object>((Company) authEntity, HttpStatus.CREATED);
+			Company company = (Company) authEntity;
+			sess.setAttribute("company", company);
+			modelMap.addAttribute("company", company);
+			LoggerUtil.debug("stored into session: " + company.toCustomString());
+			return new ResponseEntity<Object>(company, HttpStatus.CREATED);
 		} else if (authEntity != null && authEntity instanceof User) {
-			sess.setAttribute("user", authEntity);
-			modelMap.addAttribute("user", authEntity);
-			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>((User) authEntity, HttpStatus.OK);
+			User u = (User) authEntity;
+			sess.setAttribute("user", u);
+			modelMap.addAttribute("user", u);
+			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(u, HttpStatus.OK);
 			return responseEntity;
 			//return authEntity;
 		}
