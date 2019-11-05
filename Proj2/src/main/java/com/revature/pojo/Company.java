@@ -18,9 +18,16 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "COMPANIES")
 @Component
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "companyName")
+@JsonIdentityReference(alwaysAsId = true)
 public class Company{
 	@Id
 	@Column(name = "COMPANY_NAME")
@@ -46,13 +53,16 @@ public class Company{
 	private AccessLevel accessLevel;
 
 	@ManyToMany(mappedBy = "parentCompanies")
+	@JsonIgnore
 	private Set<User> employees = new HashSet<User>();
 
 	@OneToMany(mappedBy = "referencedCompany", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Post> approvedPosts = new HashSet<Post>();
 
 	@ManyToMany(fetch = FetchType.LAZY) // naming convention -> Should be Companies_Affiliated
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
+	@JsonIgnore
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
 
 	public String getCompanyName() {
@@ -163,6 +173,11 @@ public class Company{
 		super();
 	}
 
+	public Company(String code) {
+		super();
+		this.accessCode = code;
+	}
+	
 	@Override
 	public String toString() {
 		return "Company [companyName=" + companyName + ", companyEmail=" + companyEmail + ", companyLink=" + companyLink
@@ -171,6 +186,12 @@ public class Company{
 				+ ", affiliatedCompanies=" + affiliatedCompanies + "]";
 	}
 
+	public String toCustomString() {
+		return "Company [companyName=" + companyName + ", companyEmail=" + companyEmail + ", companyLink=" + companyLink
+				+ ", password=" + password + ", accessCode=" + accessCode + ", companyRating=" + companyRating
+				+ ", accessLevel=" + accessLevel + "]";
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -246,6 +267,8 @@ public class Company{
 		return true;
 	}
 
+	
+	
 	// open means posts go on open market boards. affiliated means the company has
 	// some control over companies. closed mean only employees can see their posts
 	public static enum AccessLevel {

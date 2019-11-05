@@ -17,5 +17,5 @@ public interface CompanyDao {
 
 	public List<Company> getAllCompanies();
 	
-	public Company getCompanyByAccessCode(String accessCode);
+	public List<Company> getCompanyByAccessCode(String accessCode);
 }

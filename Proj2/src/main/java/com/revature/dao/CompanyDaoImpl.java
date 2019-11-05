@@ -6,9 +6,11 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.revature.pojo.Company;
+import com.revature.util.LoggerUtil;
 import com.revature.util.SessionFactoryUtil;
 
 @Component
@@ -45,10 +47,12 @@ public class CompanyDaoImpl implements CompanyDao {
 	public Company getCompanyByEmail(String email) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
-		Company company = (Company) sess.get(Company.class, email);
+		Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("companyEmail", email));
+		List<Company> company = crit.list();
 		tx.commit();
 		sess.close();
-		return company;
+		LoggerUtil.debug(company.get(0).toCustomString());
+		return company.get(0);
 	}
 
 	@Override
@@ -61,13 +65,14 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	@Override
-	public Company getCompanyByAccessCode(String accessCode) {
+	public List<Company> getCompanyByAccessCode(String accessCode) {
+		
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		Company company = (Company) sess.get(Company.class, accessCode);
-		tx.commit();
+		Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("accessCode", accessCode));
+		List<Company> company = crit.list();
 		sess.close();
 		return company;
+		
 	}
 	
 }

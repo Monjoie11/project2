@@ -19,7 +19,6 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -64,7 +63,7 @@ public class User{
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")
-	@JsonIgnore
+	//@JsonIgnore
 	private Post acceptedPost;
 
 	@Column(name = "RATING")

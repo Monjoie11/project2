@@ -29,6 +29,10 @@ public class PostService {
 		return postDao.getAllPosts();
 	}
 	
+	public List<Post> getAllPostsByCompany(String companyName){
+		return postDao.getAllPostsByCompany(companyName);
+	}
+	
 	public Boolean isPostOrderedCorrectly(Post post) {
 		//value less than 0 if the time of this Calendar is before the time represented by the argument
 		Boolean checkOrder =  post.getStartTime().compareTo(post.getEndTime()) < 0 ; //->Returns false if startTime >= endTime

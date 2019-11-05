@@ -10,6 +10,7 @@ import com.revature.pojo.Post;
 import com.revature.pojo.User;
 import com.revature.pojo.User.AccessLevel;
 import com.revature.pojo.User.WorkType;
+import com.revature.util.LoggerUtil;
 
 @Service
 public class AuthService {
@@ -38,21 +39,21 @@ public class AuthService {
 		 * return validatedUser;
 		 */
 
-		
-		  User validatedUser = userService.getUserByEmail(email);
-		  
-		  if (validatedUser == null) { Company validatedCompany =
-		  companyService.getCompanyByEmail(email);
-		  
-		  if (validatedCompany != null &&
-		  password.equals(validatedCompany.getPassword())) { return validatedCompany; }
-		  }
-		  
-		  if (validatedUser != null && password.equals(validatedUser.getPassword())) {
-		  return validatedUser; }
-		  
-		  return null;
-		 
+		User validatedUser = userService.getUserByEmail(email);
+
+		if (validatedUser == null) {
+			Company validatedCompany = companyService.getCompanyByEmail(email);
+
+			if (validatedCompany != null && password.equals(validatedCompany.getPassword())) {
+				return validatedCompany;
+			}
+		}
+
+		if (validatedUser != null && password.equals(validatedUser.getPassword())) {
+			return validatedUser;
+		}
+
+		return null;
 
 	}
 

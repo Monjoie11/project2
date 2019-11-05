@@ -8,8 +8,10 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import com.revature.pojo.Company;
 import com.revature.pojo.Post;
 import com.revature.util.SessionFactoryUtil;
 
@@ -145,6 +147,17 @@ public class PostDaoImpl implements PostDao {
 		 */
 
 		return posts;
+	}
+	
+	@Override
+	public List<Post> getAllPostsByCompany(String companyName) {
+		
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", companyName));
+		List<Post> posts = crit.list();
+		sess.close();
+		return posts;
+		
 	}
 
 }
