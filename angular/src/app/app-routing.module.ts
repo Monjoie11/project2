@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './register/register.component';
-import {RegisterCompanyComponent} from './register-company/register-company.component';
-import {ErrorComponent} from './error/error.component';
+import {RegisterComponent} from './user-register/register.component';
+import{RegisterCompanyComponent} from './company-register/register-company.component'
 import {CompanyHomepageComponent} from './company-homepage/company-homepage.component';
+import {ErrorComponent} from './error/error.component';
 import {UserHomepageComponent} from './user-homepage/user-homepage.component';
 import { MarketboardComponent } from './marketboard/marketboard.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarComponent } from './company-calendar/calendar.component';
 
 const routes: Routes = [
   {
-      path: 'localhost:8080/angular/Proj2/angular/',
-      redirectTo: '/login', 
+      path: '',
+      redirectTo: 'login', 
       pathMatch: 'full'
   } ,
   {
-      path: 'localhost:8080/login',
+      path: 'login',
       component: LoginComponent
   } ,
   {   path: 'register',

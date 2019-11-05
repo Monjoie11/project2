@@ -13,12 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class CompanyHomepageComponent implements OnInit {
   constructor(){}
   ngOnInit() {
+    document.getElementById("bioLabel").innerHTML = "Company Bio";
+    let ele = document.getElementById("job-drop-down")
+    ele.parentNode.removeChild(ele); 
   }
 
 }
 
-window.onload = function() {
-  alert("hi");
-  document.getElementById("bioLabel").innerHTML = "Company Bio";
-};
 

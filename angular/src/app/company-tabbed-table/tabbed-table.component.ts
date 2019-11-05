@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ChangeDetectorRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 export interface PeriodicElement {
   postId: number;
@@ -30,9 +32,23 @@ export class TabbedTableComponent2 implements OnInit {
   displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
   displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  response: any;
+  constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-  }
+      let obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
+      obs.subscribe((response) => {
+        this.response = response;
+       var result = JSON.stringify(this.response);
+        
+        var result2 = JSON.parse(result);
+        ELEMENT_DATA[0]['postId'] = result2['height'];
+  
+      });
+      this.refresh();
+    }
 
-}
+    refresh(){
+      this.changeDetectorRefs.detectChanges();
+    }
+  }

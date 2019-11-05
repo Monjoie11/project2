@@ -13,7 +13,7 @@
                 <tr>
                     <td class="full">
                         <mat-form-field class="full">
-                            <input matInput placeholder="Company Name" name="company-name">
+                            <input matInput placeholder="Company Name" name="companyName">
                         </mat-form-field>
                     </td>
                 </tr>
@@ -22,12 +22,12 @@
                 <tr>
                     <td class="half">
                         <mat-form-field class="full">
-                            <input type="email" matInput placeholder="Company Email" name="company-email">
+                            <input type="email" matInput placeholder="Company Email" name="companyEmail">
                         </mat-form-field>
                     </td>
                     <td class="half">
                         <mat-form-field class="full">
-                            <input type="password" matInput placeholder="Company Password" name="company-password">
+                            <input type="password" matInput placeholder="Company Password" name="companyPassword">
                         </mat-form-field>
                     </td>
                 </tr>
@@ -36,12 +36,12 @@
                 <tr>
                     <td class="half">
                         <mat-form-field class="full">
-                            <input type="text" matInput placeholder="Website URL" name="company-website-url">
+                            <input type="text" matInput placeholder="Website URL" name="companyWebsiteUrl">
                         </mat-form-field>
                     </td>
                     <td class="half">
                         <mat-form-field class="full">
-                            <mat-select placeholder="Access Level" [(ngModel)]="selectedValue" name="company-access-level">
+                            <mat-select placeholder="Access Level" [(ngModel)]="selectedValue" name="companyAccessLevel">
                                 <mat-option value="Open Shop">Open Shop</mat-option>
                                 <mat-option value="Affiliated Shop">Affiliated Shop</mat-option>
                                 <mat-option value="Closed Shop">Closed Shop</mat-option>
@@ -51,7 +51,7 @@
                     </td>
                     <td class="third" *ngIf="selectedValue == 'Affiliated Shop'">
                         <mat-form-field class="company-code" *ngFor="let container of containers">
-                            <input type="text" matInput placeholder="Company Code" name="company-code">
+                            <input type="text" matInput placeholder="Company Code" name="companyCode">
                         </mat-form-field>
                     </td>
                 </tr>

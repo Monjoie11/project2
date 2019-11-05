@@ -13,27 +13,27 @@ import {
   MatButtonModule
   } from '@angular/material';
   import {MatToolbarModule} from '@angular/material/toolbar';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './user-register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
-import { RegisterCompanyComponent } from './register-company/register-company.component';
+import { RegisterCompanyComponent } from './company-register/register-company.component';
 import { CompanyHomepageComponent } from './company-homepage/company-homepage.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
-import { TabbedTableComponent } from './tabbed-table/tabbed-table.component';
+import { ProfilePictureComponent } from './homepage-header/profile-picture.component';
+import { TabbedTableComponent } from './user-tabbed-table/tabbed-table.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
-import { JobDropdownComponent } from './job-dropdown/job-dropdown.component';
-import { TabbedTableComponent2 } from './tabbed-table2/tabbed-table.component';
+import { JobDropdownComponent } from './user-job-dropdown/job-dropdown.component';
+import { TabbedTableComponent2 } from './company-tabbed-table/tabbed-table.component';
 import { BioComponent } from './bio/bio.component';
 import { RatingModule } from 'ng-starrating';
-import { StarRatingComponent } from './star-rating/star-rating.component';
+import { StarRatingComponent } from './company-star-rating/star-rating.component';
 import { MarketboardComponent } from './marketboard/marketboard.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarComponent } from './company-calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

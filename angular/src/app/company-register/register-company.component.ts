@@ -8,14 +8,13 @@ import { Router } from "@angular/router";
   styleUrls: ['./register-company.component.css']
 })
 export class RegisterCompanyComponent implements OnInit {
-  userFirstName: string;
-  userLastName: string;
-  userEmail: string;
-  userPassword: string;
-  userTelephone: string;
-  userAccessLevel: string;
-  userCode: string;
-  userBiography: string;
+  companyName: string;
+  companyEmail: string;
+  companyPassword: string;
+  companyWebsiteUrl: string;
+  companyAccessLevel: string;
+  companyCode: string;
+  companyBiography: string;
   response: any;
 
   public containers = [0];
@@ -26,7 +25,7 @@ export class RegisterCompanyComponent implements OnInit {
   }
 
   search() {
-    let obs = this.http.post('register/', { firstName: this.userFirstName, lastName: this.userLastName, email: this.userEmail, password: this.userPassword, telephone: this.userTelephone, accessLevel: this.userAccessLevel, userCode: this.userCode, biography: this.userBiography })
+    let obs = this.http.post('register/', { companyName: this.companyName, email: this.companyEmail, password: this.companyPassword, telephone: this.companyWebsiteUrl, accessLevel: this.companyAccessLevel, userCode: this.companyCode, biography: this.companyBiography })
     obs.subscribe((response) => {
       this.response = response;
       if (this.response == true) {
@@ -58,5 +57,6 @@ export class RegisterCompanyComponent implements OnInit {
       }
     }
   }
+
 
 }
