@@ -25,10 +25,8 @@ export class TabbedTableComponent implements OnInit {
      var result = JSON.stringify(this.response);
       
       var result2 = JSON.parse(result);
-
-      //alert(result2['height']);
       this.postData[0] = (result2['height']);
-      //this.postData = result2['height'];
+
     });
   }
 
