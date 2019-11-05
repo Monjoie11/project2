@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "USERS")
 @Component
-
 public class User{
 
 	@Id
@@ -46,7 +45,6 @@ public class User{
 	private String phoneNumber;
 
 	@ManyToMany
-	//@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME")) //from devel
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
 	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
 	@JsonIgnore

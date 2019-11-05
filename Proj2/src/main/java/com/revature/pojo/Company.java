@@ -23,11 +23,16 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+
+/*
+ * @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+ * property = "companyName")
+ * 
+ * @JsonIdentityReference(alwaysAsId = true)
+ */
 @Entity
 @Table(name = "COMPANIES")
 @Component
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "companyName")
-@JsonIdentityReference(alwaysAsId = true)
 public class Company{
 	@Id
 	@Column(name = "COMPANY_NAME")

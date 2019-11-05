@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.Company;
@@ -70,21 +71,20 @@ public class LoginController {
 			sess.setAttribute("company", company);
 			modelMap.addAttribute("company", company);
 			LoggerUtil.debug("stored into session: " + company.toCustomString());
-			return new ResponseEntity<Object>(company, HttpStatus.CREATED);
+			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(company, HttpStatus.OK);
+			return responseEntity;
+			
 		} else if (authEntity != null && authEntity instanceof User) {
 			User u = (User) authEntity;
 			sess.setAttribute("user", u);
 			modelMap.addAttribute("user", u);
 			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(u, HttpStatus.OK);
 			return responseEntity;
-			//return authEntity;
 		}
 
 		modelMap.addAttribute("errorMessage", "Username/Password did not match");
 		return null;
 
-
-	//	return authEntity;
 	}
 
 }

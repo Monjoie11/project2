@@ -65,7 +65,9 @@ public class PostController {
 		LoggerUtil.debug(companyName);
 
 		LoggerUtil.debug("grabbing all posts");
-		return postService.getAllPostsByCompany(companyName);
+		List<Post> companyPosts = postService.getAllPostsByCompany(companyName);
+		
+		return companyPosts;
 	}
 
 	/*
