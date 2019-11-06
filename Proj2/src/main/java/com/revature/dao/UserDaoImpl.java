@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import com.revature.pojo.User;
+import com.revature.util.LoggerUtil;
 import com.revature.util.SessionFactoryUtil;
 
 @Component
@@ -19,7 +20,12 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateUser(User user) {
 		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+
+		LoggerUtil.debug(user.toString());
 		sess.update(user);
+		tx.commit();
+
 		sess.close();
 	}
 
@@ -28,6 +34,7 @@ public class UserDaoImpl implements UserDao {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(user);
+
 		tx.commit();
 		sess.close();
 	}

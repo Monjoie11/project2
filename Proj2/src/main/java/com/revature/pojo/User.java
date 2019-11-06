@@ -69,9 +69,9 @@ public class User {
 	@JsonIgnore
 	private Set<Post> postedPost = new HashSet<Post>();
 
-	@OneToMany(mappedBy = "acceptingingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "acceptingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
-	private Post acceptedPost;
+	private Set<Post> acceptedPost = new HashSet<Post>();;
 
 	public String getEmail() {
 		return email;
@@ -169,17 +169,15 @@ public class User {
 		this.postedPost = postedPost;
 	}
 
-	public Post getAcceptedPost() {
-		return acceptedPost;
-	}
-
-	public void setAcceptedPost(Post acceptedPost) {
-		this.acceptedPost = acceptedPost;
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
 	}
 
 	public User(String email, String password, String firstName, String lastName, String phoneNumber, double rating,
 			AccessLevel accessLevel, WorkType workType, String biography, String resume, Set<Company> parentCompanies,
-			Set<Post> postedPost, Post acceptedPost) {
+			Set<Post> postedPost, Set<Post> acceptedPost) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -196,10 +194,8 @@ public class User {
 		this.acceptedPost = acceptedPost;
 	}
 
-	public User(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
+	public void setAcceptedPost(Set<Post> acceptedPost) {
+		this.acceptedPost = acceptedPost;
 	}
 
 	public User() {
@@ -300,8 +296,7 @@ public class User {
 	public String toString() {
 		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", accessLevel=" + accessLevel + ", workType="
-				+ workType + ", biography=" + biography + ", resume=" + resume + ", parentCompanies=" + parentCompanies
-				+ ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + "]";
+				+ workType + ", biography=" + biography + ", resume=" + resume + "]";
 	}
 
 	public static enum AccessLevel {

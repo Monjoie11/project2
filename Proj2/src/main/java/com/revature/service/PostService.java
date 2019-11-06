@@ -22,7 +22,7 @@ public class PostService {
 	}
 	
 
-	public Post getPostbyId(String id) {
+	public Post getPostbyId(int id) {
 		return postDao.getPost(id);
 	}
 	

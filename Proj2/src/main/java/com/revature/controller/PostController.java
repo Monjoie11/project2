@@ -44,11 +44,14 @@ public class PostController {
 	
 	@GetMapping("/post/{post_id}")
 	public Post getPostById(@PathVariable String post_id) {
-		if(post_id == null) {
+		if(!post_id.chars().allMatch( Character::isDigit )) {
 			return null;
 		}
-		LoggerUtil.debug("detected post_id: " + post_id);
-		return postService.getPostbyId(post_id);
+		int id = Integer.parseInt(post_id);
+		LoggerUtil.debug("detected post_id: " + id);
+		Post post = postService.getPostbyId(id);
+		LoggerUtil.debug(post.toString());
+		return post;
 	}
 	
 

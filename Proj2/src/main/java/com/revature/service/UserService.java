@@ -14,7 +14,7 @@ import static com.revature.util.LoggerUtil.debug;
 @Service
 public class UserService {
 
-	private UserDao userDao;
+	private static UserDao userDao;
 	
 	@Autowired
 	public void setUserDao(UserDao userDao) {
@@ -33,8 +33,8 @@ public class UserService {
 		userDao.insertUser(user);
 	}
 	
-	public void updateExpertise(User user, String workType) {
-		user.setWorkType(User.WorkType.valueOf(workType));
+	public void updateExpertise(User user, User.WorkType workType) {
+		user.setWorkType(workType);
 		userDao.updateUser(user);
 	}
 	

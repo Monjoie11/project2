@@ -97,14 +97,14 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public Post getPost(String postName) {
+	public Post getPost(int id) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		Post p = null;
 		try {
 			tx = sess.beginTransaction();
-			p = (Post) sess.get(Post.class, postName);
+			p = (Post) sess.get(Post.class, id);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
