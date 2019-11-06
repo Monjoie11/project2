@@ -1,0 +1,12 @@
+
+mat-card{
+    min-width: 30%;
+    max-width: 10px;
+    margin-left: 35%;
+}
+#placeholder{
+    height: 20%;
+}
+#submit-post{
+    margin-top: 5%;
+}

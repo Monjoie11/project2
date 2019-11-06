@@ -28,6 +28,7 @@
     "@fullcalendar/daygrid": "^4.3.0",
     "hammerjs": "^2.0.8",
     "ng-starrating": "^1.0.7",
+    "ngx-material-timepicker": "^5.2.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

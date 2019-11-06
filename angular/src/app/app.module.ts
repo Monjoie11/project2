@@ -37,6 +37,12 @@ import { CalendarComponent } from './company-calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PostAdditionFormComponent } from './post-addition-form/post-addition-form.component';
+import {
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,7 @@ import { MatSortModule } from '@angular/material/sort';
     StarRatingComponent,
     MarketboardComponent,
     CalendarComponent,
+    PostAdditionFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,10 @@ import { MatSortModule } from '@angular/material/sort';
     FullCalendarModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

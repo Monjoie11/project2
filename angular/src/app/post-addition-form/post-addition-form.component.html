@@ -1,0 +1,26 @@
+<div id="placeholder"></div>
+<div class="form-div">
+    <mat-card>
+        <mat-card-header>Select date and time for your shift</mat-card-header>
+        <mat-card-content fxLayout="column">
+            <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+            <!--               <mat-form-field> -->
+            <!--                 <input matInput placeholder="Start Time"> -->
+               <input placeholder="Start time" aria-label="12hr format" [ngxTimepicker]="default1" readonly>
+            <ngx-material-timepicker #default1></ngx-material-timepicker>
+            <!--             </mat-form-field> -->
+            <!--               <mat-form-field>
+                    <input matInput placeholder="End Time">
+            </mat-form-field> -->
+               <input placeholder="End time" aria-label="12hr format" [ngxTimepicker]="default2" readonly>
+            <ngx-material-timepicker #default2></ngx-material-timepicker>
+            <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Submit Post</button>
+            <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Cancel</button>
+        </mat-card-content>
+    </mat-card>
+</div>
+<!-- start time, end time, posted time -->

@@ -2,3 +2,6 @@
     margin-left: 2%;
     margin-right: 2%;
 }
+#post-button {
+    min-width: 5%;
+}

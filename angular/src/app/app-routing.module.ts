@@ -8,6 +8,7 @@ import {ErrorComponent} from './error/error.component';
 import {UserHomepageComponent} from './user-homepage/user-homepage.component';
 import { MarketboardComponent } from './marketboard/marketboard.component';
 import { CalendarComponent } from './company-calendar/calendar.component';
+import { PostAdditionFormComponent } from './post-addition-form/post-addition-form.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,9 @@ const routes: Routes = [
 
   {   path: 'calendar',
     component: CalendarComponent
+  },
+  {   path: 'post',
+    component: PostAdditionFormComponent
   },
   {
     path: '**', component: ErrorComponent
