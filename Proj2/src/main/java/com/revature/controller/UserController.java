@@ -45,14 +45,17 @@ public class UserController {
 			return null;
 		}
 		
-		if (user != null) {
+		User existingUser = userService.getUserByEmail(user.getEmail());
+		if(existingUser == null) {
 			LoggerUtil.debug(user.toString());
 			userService.registerUser(user);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		}
 		
-		return null;
+		ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
+		return responseEntity;
+		
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-email/{email}")
