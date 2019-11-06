@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -385,6 +388,52 @@ public class UserController {
 			return responseEntity;
 		} catch(Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: removeUserPost FAILED ON: " + post.toString());
+			return null;
+		}
+
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-user-by-email/{email}")
+	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(email == null) {
+			return null;
+		}
+		
+
+		
+		try {
+			User user = userService.getUserByEmail(email);
+			ResponseEntity<User> responseEntity = new ResponseEntity<User>(user, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: getUserByEmail FAILED ON: " + email);
+			return null;
+		}
+
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-all-user")
+	public ResponseEntity<List<User>> getAllUser(BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		try {
+			List<User> listOfUsers = userService.getAllUsers();
+			ResponseEntity<List<User>> responseEntity = new ResponseEntity<List<User>>(listOfUsers, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: getAllUser FAILED ON: ?");
 			return null;
 		}
 
