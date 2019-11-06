@@ -86,4 +86,11 @@ public class PostService {
 		return true;
 	}
 
+
+	public List<Post> getAllPostsByUserEmail(String email) {
+		// TODO Auto-generated method stub
+		return postDao.getPostsByUserEmail(email);
+		
+	}
+
 }

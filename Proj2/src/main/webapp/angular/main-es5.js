@@ -526,22 +526,28 @@
                     path: 'login',
                     component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"]
                 },
-                { path: 'register',
+                {
+                    path: 'register',
                     component: _user_register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"]
                 },
-                { path: 'register-company',
+                {
+                    path: 'register-company',
                     component: _company_register_register_company_component__WEBPACK_IMPORTED_MODULE_5__["RegisterCompanyComponent"]
                 },
-                { path: 'company-homepage',
+                {
+                    path: 'company-homepage',
                     component: _company_homepage_company_homepage_component__WEBPACK_IMPORTED_MODULE_6__["CompanyHomepageComponent"]
                 },
-                { path: 'user-homepage',
+                {
+                    path: 'user-homepage',
                     component: _user_homepage_user_homepage_component__WEBPACK_IMPORTED_MODULE_8__["UserHomepageComponent"]
                 },
-                { path: 'marketboard',
+                {
+                    path: 'marketboard',
                     component: _marketboard_marketboard_component__WEBPACK_IMPORTED_MODULE_9__["MarketboardComponent"]
                 },
-                { path: 'calendar',
+                {
+                    path: 'calendar',
                     component: _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_10__["CalendarComponent"]
                 },
                 {

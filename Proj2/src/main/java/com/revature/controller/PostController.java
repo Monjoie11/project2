@@ -20,32 +20,31 @@ import com.revature.util.LoggerUtil;
 
 @RestController
 public class PostController {
-	
+
 	private static PostService postService;
-	
+
 	@Autowired
 	public void setPostService(PostService postService) {
 		this.postService = postService;
 	}
 
-	
 	@PostMapping("/post/create")
 	public Boolean createPost(@RequestBody Post post, HttpSession sess) {
-		if(post == null) {
+		if (post == null) {
 			return false;
 		}
 		LoggerUtil.debug("Creating a post");
-		User user = ((User)sess.getAttribute("user"));
+		User user = ((User) sess.getAttribute("user"));
 		post.setPostingUser(user);
-		//postService.createPostIfValid(post);
-		
+		// postService.createPostIfValid(post);
+
 		return true;
 	}
-	
-	@GetMapping( produces = "application/json", value ="/post/{post_id}")
+
+	@GetMapping(produces = "application/json", value = "/post/{post_id}")
 	public Post getPostById(@PathVariable("post_id") String post_id) {
 		LoggerUtil.debug(post_id);
-		if(!post_id.chars().allMatch( Character::isDigit )) {
+		if (!post_id.chars().allMatch(Character::isDigit)) {
 			return null;
 		}
 		int id = Integer.parseInt(post_id);
@@ -54,41 +53,39 @@ public class PostController {
 		LoggerUtil.debug(post.toCustomString());
 		return post;
 	}
-	
 
-	@GetMapping("/company/post")
-	public List<Post> getAllCompanyPosts( HttpSession session) {
+	@GetMapping("/company/posts")
+	public List<Post> getAllCompanyPosts(HttpSession session) {
 		Company company = (Company) session.getAttribute("company");
-		if(company == null) {
+		if (company == null) {
 			LoggerUtil.debug("Company was null");
 
 			return null;
 		}
-		
+
 		String companyName = company.getCompanyName();
 		LoggerUtil.debug(companyName);
 
 		LoggerUtil.debug("grabbing all posts");
 		List<Post> companyPosts = postService.getAllPostsByCompany(companyName);
-		
+
 		return companyPosts;
 	}
 
-	/*
-	@GetMapping("/post")
-	public List<Post> getAllCompanyPosts( HttpSession session) {
-		Company company = (Company) session.getAttribute("company");
-		if(company == null) {
-			LoggerUtil.debug("Company was null");
+	@GetMapping("/user/posts")
+	public List<Post> getAllUserPosts(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			LoggerUtil.debug("Invalid user!");
 
 			return null;
 		}
-		
-		String companyName = company.getCompanyName();
-		LoggerUtil.debug(companyName);
 
-		LoggerUtil.debug("grabbing all posts");
-		return postService.getAllPostsByCompany(company);
+		String email = user.getEmail();
+		LoggerUtil.debug("Detected email: " + email);
+		List<Post> userPosts = postService.getAllPostsByUserEmail(email);
+
+		return userPosts;
 	}
-	*/
+
 }
