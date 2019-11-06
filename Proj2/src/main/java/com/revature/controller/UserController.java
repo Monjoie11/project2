@@ -202,7 +202,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("invalid enum type: " + s);
+			LoggerUtil.error("invalid enum type for access level in userController: " + s);
 			return null;
 		}
 		
@@ -228,7 +228,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("invalid enum type: " + s);
+			LoggerUtil.error("invalid enum type for workType in userController: " + s);
 			return null;
 		}
 		
@@ -254,7 +254,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + biography);
+			LoggerUtil.error("CLASS: UserController FUNC: updateUserBiography FAILED ON: " + biography);
 			return null;
 		}
 
@@ -280,7 +280,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + resume);
+			LoggerUtil.error("CLASS: UserController FUNC: updateUserResume FAILED ON: " + resume);
 			return null;
 		}
 
@@ -306,7 +306,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + company.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: addUserCompanyAffilation FAILED ON: " + company.toString());
 			return null;
 		}
 
@@ -332,13 +332,13 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + company.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: removeUserCompanyAffilation FAILED ON: " + company.toString());
 			return null;
 		}
 
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-companyaffiliation")
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-post")
 	public ResponseEntity<Boolean> addUserPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 		
 		if (bindingResult.hasErrors()) {
@@ -358,13 +358,13 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + post.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: addUserPost FAILED ON: " + post.toString());
 			return null;
 		}
 
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-companyaffiliation")
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-post")
 	public ResponseEntity<Boolean> removeUserPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 		
 		if (bindingResult.hasErrors()) {
@@ -384,7 +384,7 @@ public class UserController {
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + post.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: removeUserPost FAILED ON: " + post.toString());
 			return null;
 		}
 
