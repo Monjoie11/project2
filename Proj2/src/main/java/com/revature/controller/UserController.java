@@ -3,7 +3,11 @@ package com.revature.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,35 +33,62 @@ public class UserController {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/register-user")
-	public boolean registerPost(@RequestBody User user) {
-		if (user == null) {
-			return false;
+	public ResponseEntity<Boolean> registerPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
 		}
-		LoggerUtil.debug(user.toString());
-
-		userService.registerUser(user);
-
-		return true;
+		
+		if (user != null) {
+			LoggerUtil.debug(user.toString());
+			userService.registerUser(user);
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		}
+		
+		return null;
 	}
 
-	@PutMapping(consumes = "application/json", produces = "application/json", value = "/update-user-expertise/{workType}")
-	public boolean updateUserExpertise(@PathVariable("workType") String s, HttpSession session) {
-		// TODO: error check workType
-		User.WorkType workT = WorkType.valueOf(s);
-		LoggerUtil.debug(workT.toString());
-		User user = (User) session.getAttribute("user");
-		userService.updateExpertise(user, workT);
-		return false;
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-expertise/{workType}")
+	public ResponseEntity<Boolean> updateUserExpertise(@PathVariable("workType") String s, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(s == null) {
+			return null;
+		}
+		
+		User user = (User) sess.getAttribute("user");
+		user.setWorkType(WorkType.valueOf(s));
+		userService.updateExpertise(user, null);
+		ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+		return responseEntity;
+		
 	}
 
-	@GetMapping(produces = "application/json", value = "/user-rating")
-	public double userRatingGet(HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			return -1;
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/user-rating")
+	public ResponseEntity<Double> userRatingGet(BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
 		}
-		User user = (User) session.getAttribute("user");
-
-		return user.getRating();
+		
+		User user = (User) sess.getAttribute("user");
+		
+		if(user == null) {
+			return null;
+		}
+		
+		ResponseEntity<Double> responseEntity = new ResponseEntity<Double>(user.getRating(), HttpStatus.OK);
+		return responseEntity;
 	}
 
 }
