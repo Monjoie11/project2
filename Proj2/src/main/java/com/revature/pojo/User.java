@@ -296,7 +296,14 @@ public class User {
 	public String toString() {
 		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", accessLevel=" + accessLevel + ", workType="
-				+ workType + ", biography=" + biography + ", resume=" + resume + "]";
+				+ workType + ", biography=" + biography + ", resume=" + resume + ", parentCompanies=" + parentCompanies
+				+ ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + "]";
+	}
+	
+	public String toCustomString() {
+		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", accessLevel=" + accessLevel + ", workType="
+				+ workType + ", biography=" + biography + ", resume=" + resume +  "]";
 	}
 
 	public static enum AccessLevel {

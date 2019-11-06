@@ -30,32 +30,33 @@ public class PostController {
 
 	
 	@PostMapping("/post/create")
-	public Boolean createPost(@RequestBody Post post, ModelMap map) {
+	public Boolean createPost(@RequestBody Post post, HttpSession sess) {
 		if(post == null) {
 			return false;
 		}
 		LoggerUtil.debug("Creating a post");
-		User user = ((User)map.get("user"));
+		User user = ((User)sess.getAttribute("user"));
 		post.setPostingUser(user);
-		postService.createPostIfValid(post);
+		//postService.createPostIfValid(post);
 		
 		return true;
 	}
 	
-	@GetMapping("/post/{post_id}")
-	public Post getPostById(@PathVariable String post_id) {
+	@GetMapping( produces = "application/json", value ="/post/{post_id}")
+	public Post getPostById(@PathVariable("post_id") String post_id) {
+		LoggerUtil.debug(post_id);
 		if(!post_id.chars().allMatch( Character::isDigit )) {
 			return null;
 		}
 		int id = Integer.parseInt(post_id);
 		LoggerUtil.debug("detected post_id: " + id);
 		Post post = postService.getPostbyId(id);
-		LoggerUtil.debug(post.toString());
+		LoggerUtil.debug(post.toCustomString());
 		return post;
 	}
 	
 
-	@GetMapping("/post")
+	@GetMapping("/company/post")
 	public List<Post> getAllCompanyPosts( HttpSession session) {
 		Company company = (Company) session.getAttribute("company");
 		if(company == null) {

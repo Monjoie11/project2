@@ -224,7 +224,10 @@ public class Post {
 				+ ", acceptingUser=" + acceptingUser + ", referencedCompany=" + referencedCompany + "]";
 	}
 
-
+	public String toCustomString() {
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + timeCreated
+				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
+	}
 
 	public static enum Status {
 		PENDING, ACCEPTED, COMPLETED, REJECTED, REPLIEDTO
