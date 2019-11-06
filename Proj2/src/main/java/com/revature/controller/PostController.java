@@ -47,7 +47,6 @@ public class PostController {
 	
 	@PostMapping("/post/update/{id}")
 	public Boolean acceptPost(@RequestBody Post post ) {
-		
 		//LoggerUtil.debug("Accepting post # " + id);
 		//accept post here
 		//postService.createPostIfValid(post);
