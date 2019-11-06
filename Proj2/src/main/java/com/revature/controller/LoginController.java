@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.revature.service.UserService;
 import com.revature.util.LoggerUtil;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class LoginController {
 
 	private AuthService authService;
@@ -39,15 +41,15 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String loginGet(HttpSession sess, ModelMap modelMap) {
-
+		/*
 		if (sess.getAttribute("user") != null) {
 			modelMap.addAttribute("user", sess.getAttribute("user"));
 			return "home";
 		}
-
-		return "login";
+		*/
+		return "index";
 	}
-//hi jeff
+
 	@GetMapping("/login/{email}")
 	public Boolean getUserByUsername(@PathVariable String email) {
 		LoggerUtil.debug("detected email: " + email);
