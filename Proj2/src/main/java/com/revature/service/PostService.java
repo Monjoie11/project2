@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.revature.util.LoggerUtil;
 
 import com.revature.dao.PostDao;
+import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.util.LoggerUtil;
 
 @Service
 public class PostService {
@@ -21,12 +22,22 @@ public class PostService {
 	}
 	
 
-	public Post getPostbyId(String id) {
+	public Post getPostbyId(int id) {
 		return postDao.getPost(id);
 	}
 	
 	public List<Post> getAllPosts() {
 		return postDao.getAllPosts();
+	}
+	
+	/*
+	public List<Post> getAllPostsByCompany(String companyName){
+		return postDao.getAllPostsByCompany(companyName);
+	}
+	*/
+	
+	public List<Post> getAllPostsByCompany(String companyName){
+		return postDao.getAllPostsByCompany(companyName);
 	}
 	
 	public Boolean isPostOrderedCorrectly(Post post) {

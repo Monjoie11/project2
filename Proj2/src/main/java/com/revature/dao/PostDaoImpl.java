@@ -8,9 +8,13 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+
+import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.util.LoggerUtil;
 import com.revature.util.SessionFactoryUtil;
 
 @Component
@@ -93,14 +97,14 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public Post getPost(String postName) {
+	public Post getPost(int id) {
 		// TODO Auto-generated method stub
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		Post p = null;
 		try {
 			tx = sess.beginTransaction();
-			p = (Post) sess.get(Post.class, postName);
+			p = (Post) sess.get(Post.class, id);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -146,5 +150,55 @@ public class PostDaoImpl implements PostDao {
 
 		return posts;
 	}
+	/*
+	 * @Override public List<Post> getAllPostsByCompany(String companyName) {
+	 * 
+	 * Session sess = sf.openSession(); //Company c = new Company(); Criteria crit =
+	 * sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany",
+	 * companyName)); List<Post> posts = crit.list(); sess.close(); return posts;
+	 * 
+	 * }
+	 */
+
+	@Override
+	public List<Post> getAllPostsByCompany(String companyName) {
+
+		Session sess = sf.openSession();
+		
+		
+		
+
+		Transaction tx = null;
+		List<Post> posts = null;
+
+		try {
+			tx = sess.beginTransaction();
+			Query query = sess.createQuery("from Post where referencedCompany.companyName = :referencedCompany");
+			query.setParameter("referencedCompany", companyName);
+			posts = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+	
+		return posts;
+
+	}
+	
+	
+	//Transaction tx = sess.beginTransaction();
+
+	// Company c = new Company();
+	
+//	SQLQuery nativeSQLQuery = sess.createSQLQuery("Select * from posts where referenced_company = " + "\'"+c+"\'");
+//	List<Post> posts = nativeSQLQuery.list();
+//	Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", c));
+//	posts = crit.list();
+	
 
 }

@@ -1,31 +1,22 @@
 package com.revature.pojo;
 
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="POSTS")
+@Table(name = "POSTS")
 @Component
 public class Post {
+	
 	@Id
 	@Column(name = "POST_ID")
 	private int postId;
@@ -37,37 +28,29 @@ public class Post {
 	@Column(name = "STATUS")
 	private Status status;
 
-	@ManyToOne
-	@JoinColumn(name="POSTING_EMAIL")
-
-	private User postingUser;
-	
-	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<User> acceptingUser = new HashSet<User>();
-
-	@ManyToOne
-	@JoinColumn(name="REFERENCED_COMPANY")
-	private Company referencedCompany;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "POSTED_TIME")
-	private Calendar timeCreated;
+	private String timeCreated;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "START_TIME")
-	private Calendar startTime;
+	private String startTime;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "END_TIME")
-	private Calendar endTime;
+	private String endTime;
 
-	public Status getStatus() {
-		return status;
-	}
+	@ManyToOne
+	@JoinColumn(name = "POSTING_EMAIL")
+	@JsonIgnore
+	private User postingUser;
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+	@ManyToOne
+	@JoinColumn(name = "ACCEPTING_EMAIL")
+	@JsonIgnore
+	private User acceptingUser;
+
+	@ManyToOne
+	@JoinColumn(name = "REFERENCED_COMPANY")
+	@JsonIgnore
+	private Company referencedCompany;
 
 	public int getPostId() {
 		return postId;
@@ -85,6 +68,38 @@ public class Post {
 		this.content = content;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public String getTimeCreated() {
+		return timeCreated;
+	}
+
+	public void setTimeCreated(String timeCreated) {
+		this.timeCreated = timeCreated;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
 	public User getPostingUser() {
 		return postingUser;
 	}
@@ -93,11 +108,11 @@ public class Post {
 		this.postingUser = postingUser;
 	}
 
-	public Set<User> getAcceptingUser() {
+	public User getAcceptingUser() {
 		return acceptingUser;
 	}
 
-	public void setAcceptingUser(Set<User> acceptingUser) {
+	public void setAcceptingUser(User acceptingUser) {
 		this.acceptingUser = acceptingUser;
 	}
 
@@ -109,35 +124,27 @@ public class Post {
 		this.referencedCompany = referencedCompany;
 	}
 
-	public Calendar getTimeCreated() {
-		return timeCreated;
-	}
-
-	public void setTimeCreated(Calendar timeCreated) {
+	public Post(int postId, String content, Status status, String timeCreated, String startTime, String endTime,
+			User postingUser, User acceptingUser, Company referencedCompany) {
+		super();
+		this.postId = postId;
+		this.content = content;
+		this.status = status;
 		this.timeCreated = timeCreated;
-	}
-
-	public Calendar getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Calendar startTime) {
 		this.startTime = startTime;
-	}
-
-	public Calendar getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
+		this.postingUser = postingUser;
+		this.acceptingUser = acceptingUser;
+		this.referencedCompany = referencedCompany;
 	}
-
+	
+	
 	public Post(int postId) {
 		super();
 		this.postId = postId;
 	}
 
+	
 	public Post() {
 		super();
 	}
@@ -209,18 +216,17 @@ public class Post {
 		return true;
 	}
 
-	public Post(int postId, String content, Status status, User postingUser, Set<User> acceptingUser,
-			Company referencedCompany, Calendar timeCreated, Calendar startTime, Calendar endTime) {
-		super();
-		this.postId = postId;
-		this.content = content;
-		this.status = status;
-		this.postingUser = postingUser;
-		this.acceptingUser = acceptingUser;
-		this.referencedCompany = referencedCompany;
-		this.timeCreated = timeCreated;
-		this.startTime = startTime;
-		this.endTime = endTime;
+	
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + timeCreated
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", postingUser=" + postingUser
+				+ ", acceptingUser=" + acceptingUser + ", referencedCompany=" + referencedCompany + "]";
+	}
+
+	public String toCustomString() {
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + timeCreated
+				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 
 	public static enum Status {

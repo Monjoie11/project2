@@ -19,14 +19,12 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 @Table(name = "USERS")
 @Component
-public class User{
+public class User {
 
 	@Id
 	@Column(name = "EMAIL")
@@ -45,28 +43,6 @@ public class User{
 	@Column(name = "PHONE")
 	private String phoneNumber;
 
-	@ManyToMany
-	//@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME")) //from devel
-	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
-	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
-	@JsonIgnore
-	private Set<Company> parentCompanies = new HashSet<Company>();
-
-	@Column(name = "BIO")
-	private String biography;
-
-	@Column(name = "RESUME")
-	private String resume;
-
-	@OneToMany(mappedBy = "postingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonIgnore
-	private Set<Post> postedPost = new HashSet<Post>();
-
-	@ManyToOne
-	@JoinColumn(name = "POST_ID")
-	@JsonIgnore
-	private Post acceptedPost;
-
 	@Column(name = "RATING")
 	private double rating;
 
@@ -77,6 +53,25 @@ public class User{
 	@Enumerated(EnumType.STRING)
 	@Column(name = "WORK_TYPE")
 	private WorkType workType;
+
+	@Column(name = "BIO")
+	private String biography;
+
+	@Column(name = "RESUME")
+	private String resume;
+
+	@ManyToMany
+	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
+	@JsonIgnore
+	private Set<Company> parentCompanies = new HashSet<Company>();
+
+	@OneToMany(mappedBy = "postingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	private Set<Post> postedPost = new HashSet<Post>();
+
+	@OneToMany(mappedBy = "acceptingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	private Set<Post> acceptedPost = new HashSet<Post>();;
 
 	public String getEmail() {
 		return email;
@@ -118,46 +113,6 @@ public class User{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Set<Company> getParentCompanies() {
-		return parentCompanies;
-	}
-
-	public void setParentCompanies(Set<Company> parentCompanies) {
-		this.parentCompanies = parentCompanies;
-	}
-
-	public String getBiography() {
-		return biography;
-	}
-
-	public void setBiography(String biography) {
-		this.biography = biography;
-	}
-
-	public String getResume() {
-		return resume;
-	}
-
-	public void setResume(String resume) {
-		this.resume = resume;
-	}
-
-	public Set<Post> getPostedPost() {
-		return postedPost;
-	}
-
-	public void setPostedPost(Set<Post> postedPost) {
-		this.postedPost = postedPost;
-	}
-
-	public Post getAcceptedPost() {
-		return acceptedPost;
-	}
-
-	public void setAcceptedPost(Post acceptedPost) {
-		this.acceptedPost = acceptedPost;
-	}
-
 	public double getRating() {
 		return rating;
 	}
@@ -182,12 +137,69 @@ public class User{
 		this.workType = workType;
 	}
 
-	@Override
-	public String toString() {
-		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phoneNumber=" + phoneNumber + ", parentCompanies=" + parentCompanies + ", biography=" + biography
-				+ ", resume=" + resume + ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + ", rating="
-				+ rating + ", accessLevel=" + accessLevel + ", workType=" + workType + "]";
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public Set<Company> getParentCompanies() {
+		return parentCompanies;
+	}
+
+	public void setParentCompanies(Set<Company> parentCompanies) {
+		this.parentCompanies = parentCompanies;
+	}
+
+	public Set<Post> getPostedPost() {
+		return postedPost;
+	}
+
+	public void setPostedPost(Set<Post> postedPost) {
+		this.postedPost = postedPost;
+	}
+
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+	public User(String email, String password, String firstName, String lastName, String phoneNumber, double rating,
+			AccessLevel accessLevel, WorkType workType, String biography, String resume, Set<Company> parentCompanies,
+			Set<Post> postedPost, Set<Post> acceptedPost) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.rating = rating;
+		this.accessLevel = accessLevel;
+		this.workType = workType;
+		this.biography = biography;
+		this.resume = resume;
+		this.parentCompanies = parentCompanies;
+		this.postedPost = postedPost;
+		this.acceptedPost = acceptedPost;
+	}
+
+	public void setAcceptedPost(Set<Post> acceptedPost) {
+		this.acceptedPost = acceptedPost;
+	}
+
+	public User() {
+		super();
 	}
 
 	@Override
@@ -280,34 +292,18 @@ public class User{
 		return true;
 	}
 
-	public User(String email, String password, String firstName, String lastName, String phoneNumber,
-			Set<Company> parentCompanies, String biography, String resume, Set<Post> postedPost, Post acceptedPost,
-			double rating, AccessLevel accessLevel, WorkType workType) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.parentCompanies = parentCompanies;
-		this.biography = biography;
-		this.resume = resume;
-		this.postedPost = postedPost;
-		this.acceptedPost = acceptedPost;
-		this.rating = rating;
-		this.accessLevel = accessLevel;
-		this.workType = workType;
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", accessLevel=" + accessLevel + ", workType="
+				+ workType + ", biography=" + biography + ", resume=" + resume + ", parentCompanies=" + parentCompanies
+				+ ", postedPost=" + postedPost + ", acceptedPost=" + acceptedPost + "]";
 	}
-
-	public User(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
-
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public String toCustomString() {
+		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", accessLevel=" + accessLevel + ", workType="
+				+ workType + ", biography=" + biography + ", resume=" + resume +  "]";
 	}
 
 	public static enum AccessLevel {
@@ -318,7 +314,5 @@ public class User{
 		FRONTHOUSE, FLOOR, BACKHOUSE, HOST, MAITRED, WAITER, BARTENDER, BUSSER, BARBACK, SOMMELIER, HEADCHEF, PREPCHEF,
 		LINECHEF
 	}
-
-	
 
 }
