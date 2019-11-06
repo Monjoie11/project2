@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class LoginController {
 
 		return "login";
 	}
+
 //hi jeff
 	@GetMapping("/login/{email}")
 	public Boolean getUserByUsername(@PathVariable String email) {
@@ -53,18 +55,18 @@ public class LoginController {
 		return (userService.getUserByEmail(email + ".com") != null);
 	}
 
-
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/login")
-	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+	public ResponseEntity<Object> loginPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap,
+			HttpSession sess) {
 
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-    
+
 		Object authEntity = authService.validateEntity(user.getEmail(), user.getPassword());
-		
+
 		if (authEntity != null && authEntity instanceof Company) {
 			Company company = (Company) authEntity;
 			sess.setAttribute("company", company);
@@ -77,14 +79,22 @@ public class LoginController {
 			modelMap.addAttribute("user", u);
 			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(u, HttpStatus.OK);
 			return responseEntity;
-			//return authEntity;
+			// return authEntity;
 		}
 
 		modelMap.addAttribute("errorMessage", "Username/Password did not match");
 		return null;
-
-
-	//	return authEntity;
 	}
+	
+	@PostMapping(consumes = "string", value = "/logout")
+	public String signOut(HttpServletRequest request, HttpSession sess) {
+		request.getSession().invalidate();
+		LoggerUtil.debug("signed out");
+		
+		
+		return null;
+	}
+
+	// return authEntity;
 
 }

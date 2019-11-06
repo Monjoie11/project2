@@ -2,6 +2,8 @@ package com.revature.service;
 
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.revature.dao.PostDao;
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.pojo.Post.Status;
 import com.revature.util.LoggerUtil;
 
 @Service
@@ -22,8 +25,12 @@ public class PostService {
 	}
 	
 
-	public Post getPostbyId(String id) {
-		return postDao.getPost(id);
+	public Post getPostbyId(int id) {
+		Post p = postDao.getPost(id);
+		if(p == null) {
+			return null;
+		}
+		return p;
 	}
 	
 	public List<Post> getAllPosts() {
@@ -36,7 +43,7 @@ public class PostService {
 	}
 	*/
 	
-	public List<Post> getAllPostsByCompany(String companyName){
+	public ArrayList<Post> getAllPostsByCompany(String companyName){
 		return postDao.getAllPostsByCompany(companyName);
 	}
 	
@@ -83,6 +90,23 @@ public class PostService {
 			return false;
 		}
 		postDao.createPost(post);
+		return true;
+	}
+	
+	public Boolean getAndUpdatePostStatus(int id, boolean accept) {
+		
+		Post p = postDao.getPost(id);
+		if(p==null) {
+			return false;
+		}
+		if(accept) {
+			p.setStatus(Status.ACCEPTED);
+		}else {
+			p.setStatus(Status.REJECTED);
+		}
+		LoggerUtil.debug("updating post: " + id);
+		postDao.updatePost(p);
+
 		return true;
 	}
 

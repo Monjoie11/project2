@@ -1,10 +1,11 @@
 package com.revature.controller;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
 import com.revature.pojo.User;
@@ -42,30 +45,60 @@ public class PostController {
 		return true;
 	}
 	
+	@PostMapping("/post/update/{id}")
+	public Boolean acceptPost(@RequestBody Post post ) {
+		
+		LoggerUtil.debug("Accepting post # " + id);
+		//accept post here
+		//postService.createPostIfValid(post);
+		//postService.getAndUpdatePostStatus(id, true);
+		return true;
+	}
+	
 	@GetMapping("/post/{post_id}")
 	public Post getPostById(@PathVariable String post_id) {
-		if(post_id == null) {
+		if(!post_id.chars().allMatch( Character::isDigit )) {
 			return null;
 		}
-		LoggerUtil.debug("detected post_id: " + post_id);
-		return postService.getPostbyId(post_id);
+		int id = Integer.parseInt(post_id);
+		LoggerUtil.debug("detected post_id: " + id);
+		Post post = postService.getPostbyId(id);
+		LoggerUtil.debug(post.toString());
+		return post;
 	}
 	
 
-	@GetMapping("/post")
-	public List<Post> getAllCompanyPosts( HttpSession session) {
+	@GetMapping(value="/post",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ArrayList<Post> getAllCompanyPosts( HttpSession session) {
 		Company company = (Company) session.getAttribute("company");
 		if(company == null) {
 			LoggerUtil.debug("Company was null");
 
 			return null;
-		}
-		
+		}		
 		String companyName = company.getCompanyName();
-		LoggerUtil.debug(companyName);
-
-		LoggerUtil.debug("grabbing all posts");
-		return postService.getAllPostsByCompany(companyName);
+		LoggerUtil.debug("grabbing all posts from " + companyName);
+		ArrayList<Post> posts = postService.getAllPostsByCompany(companyName);
+//		ArrayList<Post> x = new ArrayList<Post>();
+//		x.add(new Post());
+//		Post L = new Post();
+//		L.setContent("testcont");
+//		x.add(L);
+//		
+		for(Post p: posts) {
+			LoggerUtil.debug(p.toString());
+		}
+//		
+//		String result = null;
+//		try {
+//			result = om.writeValueAsString(x);
+//			LoggerUtil.debug(result);
+//		} catch (JsonProcessingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		//response.getWriter().write(om.writeValueAsString(reimbList));
+		return posts;
 	}
 
 	/*

@@ -46,7 +46,6 @@ public class User{
 	private String phoneNumber;
 
 	@ManyToMany
-	//@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME")) //from devel
 	@JoinTable(name = "COMPANY_USER", joinColumns = @JoinColumn(name = "EMAIL"), 
 	inverseJoinColumns = @JoinColumn(name = "COMPANY_NAME"))
 	@JsonIgnore
@@ -64,7 +63,7 @@ public class User{
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")
-	//@JsonIgnore
+	@JsonIgnore
 	private Post acceptedPost;
 
 	@Column(name = "RATING")

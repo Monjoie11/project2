@@ -1,8 +1,8 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.pojo.Company;
 import com.revature.pojo.Post;
 
 public interface PostDao {
@@ -15,10 +15,10 @@ public interface PostDao {
 
 	public List<Post> getAllPosts();
 
-	public Post getPost(String postName);
+	public Post getPost(int postId);
 	
 	public List<Post> getPostsByUserEmail(String email);
 	
-	public List<Post> getAllPostsByCompany(String companyName);
+	public ArrayList<Post> getAllPostsByCompany(String companyName);
 
 }

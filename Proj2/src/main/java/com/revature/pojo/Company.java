@@ -26,8 +26,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "COMPANIES")
 @Component
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "companyName")
-@JsonIdentityReference(alwaysAsId = true)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "companyName")
+//@JsonIdentityReference(alwaysAsId = true)
 public class Company{
 	@Id
 	@Column(name = "COMPANY_NAME")

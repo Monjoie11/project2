@@ -1,5 +1,6 @@
 package com.revature.pojo;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,19 +18,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
-@Table(name="POSTS")
+@Table(name = "POSTS")
 @Component
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "postId")
-@JsonIdentityReference(alwaysAsId = true)
-public class Post {
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "postId")
+//@JsonIdentityReference(alwaysAsId = true)
+public class Post implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "POST_ID")
 	private int postId;
@@ -42,15 +44,14 @@ public class Post {
 	private Status status;
 
 	@ManyToOne
-	@JoinColumn(name="POSTING_EMAIL")
-
+	@JoinColumn(name = "POSTING_EMAIL")
 	private User postingUser;
-	
-	@OneToMany(mappedBy="acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "acceptedPost", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<User> acceptingUser = new HashSet<User>();
 
 	@ManyToOne
-	@JoinColumn(name="REFERENCED_COMPANY")
+	@JoinColumn(name = "REFERENCED_COMPANY")
 	private Company referencedCompany;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -64,6 +65,16 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "END_TIME")
 	private Calendar endTime;
+
+	@JsonInclude()
+	@Transient
+	private String timeCreateString;
+	@JsonInclude()
+	@Transient
+	private String startTimeString;
+	@JsonInclude()
+	@Transient
+	private String endTimeString;
 
 	public Status getStatus() {
 		return status;
@@ -135,6 +146,30 @@ public class Post {
 
 	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
+	}
+
+	public String getTimeCreateString() {
+		return timeCreateString;
+	}
+
+	public void setTimeCreateString(String timeCreateString) {
+		this.timeCreateString = timeCreateString;
+	}
+
+	public String getStartTimeString() {
+		return startTimeString;
+	}
+
+	public void setStartTimeString(String startTimeString) {
+		this.startTimeString = startTimeString;
+	}
+
+	public String getEndTimeString() {
+		return endTimeString;
+	}
+
+	public void setEndTimeString(String endTimeString) {
+		this.endTimeString = endTimeString;
 	}
 
 	public Post(int postId) {
@@ -225,6 +260,13 @@ public class Post {
 		this.timeCreated = timeCreated;
 		this.startTime = startTime;
 		this.endTime = endTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", postingUser=" + postingUser
+				+ ", acceptingUser=" + acceptingUser + ", referencedCompany=" + referencedCompany + ", timeCreated="
+				+ timeCreated + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 
 	public static enum Status {
