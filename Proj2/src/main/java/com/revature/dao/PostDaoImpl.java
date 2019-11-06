@@ -121,13 +121,11 @@ public class PostDaoImpl implements PostDao {
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		List<Post> posts = null;
-
 		try {
 			tx = sess.beginTransaction();
-			String hql = "FROM POSTS as b WHERE b.breed = :posting_email";
+			String hql = "FROM POSTS where posting_email = :email";
 			Query query = sess.createQuery(hql);
-			String posting_email = email;
-			query.setParameter("posting_email", email);
+			query.setParameter("email", email);
 			posts = query.list();
 			tx.commit();
 		} catch (Exception e) {
@@ -137,37 +135,12 @@ public class PostDaoImpl implements PostDao {
 		} finally {
 			sess.close();
 		}
-
-		/*
-		 * 
-		 * SQLQuery nativeSQLQuery =
-		 * sess.createSQLQuery("Select * from bears where type = " + type);
-		 * 
-		 * bears = nativeSQLQuery.list();
-		 * 
-		 * Query query2 = sess.getNamedQuery("get_small_bears");
-		 */
-
 		return posts;
 	}
-	/*
-	 * @Override public List<Post> getAllPostsByCompany(String companyName) {
-	 * 
-	 * Session sess = sf.openSession(); //Company c = new Company(); Criteria crit =
-	 * sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany",
-	 * companyName)); List<Post> posts = crit.list(); sess.close(); return posts;
-	 * 
-	 * }
-	 */
-
+	
 	@Override
 	public List<Post> getAllPostsByCompany(String companyName) {
-
 		Session sess = sf.openSession();
-		
-		
-		
-
 		Transaction tx = null;
 		List<Post> posts = null;
 
@@ -184,21 +157,8 @@ public class PostDaoImpl implements PostDao {
 		} finally {
 			sess.close();
 		}
-		
-	
 		return posts;
 
 	}
-	
-	
-	//Transaction tx = sess.beginTransaction();
-
-	// Company c = new Company();
-	
-//	SQLQuery nativeSQLQuery = sess.createSQLQuery("Select * from posts where referenced_company = " + "\'"+c+"\'");
-//	List<Post> posts = nativeSQLQuery.list();
-//	Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", c));
-//	posts = crit.list();
-	
 
 }
