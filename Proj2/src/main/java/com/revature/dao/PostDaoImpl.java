@@ -161,7 +161,7 @@ public class PostDaoImpl implements PostDao {
 	 */
 
 	@Override
-	public List<Post> getAllPostsByCompany(String company) {
+	public List<Post> getAllPostsByCompany(String companyName) {
 
 		Session sess = sf.openSession();
 		
@@ -173,10 +173,8 @@ public class PostDaoImpl implements PostDao {
 
 		try {
 			tx = sess.beginTransaction();
-			String hql = "FROM POSTS as b WHERE b.referencedCompany = :REFERENCED_COMPANY";
-			Query query = sess.createQuery(hql);
-			String REFERENCED_COMPANY = company;
-			query.setParameter("REFERENCED_COMPANY", company);
+			Query query = sess.createQuery("from Post where referencedCompany.companyName = :referencedCompany");
+			query.setParameter("referencedCompany", companyName);
 			posts = query.list();
 			tx.commit();
 		} catch (Exception e) {
@@ -187,19 +185,20 @@ public class PostDaoImpl implements PostDao {
 			sess.close();
 		}
 		
-		//Transaction tx = sess.beginTransaction();
-
-		// Company c = new Company();
-		
-	//	SQLQuery nativeSQLQuery = sess.createSQLQuery("Select * from posts where referenced_company = " + "\'"+c+"\'");
-	//	List<Post> posts = nativeSQLQuery.list();
-//		Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", c));
-//		posts = crit.list();
-		
-		LoggerUtil.debug(posts.toString());
-		sess.close();
+	
 		return posts;
 
 	}
+	
+	
+	//Transaction tx = sess.beginTransaction();
+
+	// Company c = new Company();
+	
+//	SQLQuery nativeSQLQuery = sess.createSQLQuery("Select * from posts where referenced_company = " + "\'"+c+"\'");
+//	List<Post> posts = nativeSQLQuery.list();
+//	Criteria crit = sess.createCriteria(Post.class).add(Restrictions.eq("referencedCompany", c));
+//	posts = crit.list();
+	
 
 }

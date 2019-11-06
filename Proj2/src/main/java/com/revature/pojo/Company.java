@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "COMPANIES")
 @Component
 public class Company{
+	
 	@Id
 	@Column(name = "COMPANY_NAME")
 	private String companyName;
@@ -65,7 +66,7 @@ public class Company{
 	@JsonIgnore
 	private Set<Post> approvedPosts = new HashSet<Post>();
 
-	@ManyToMany(fetch = FetchType.LAZY) // naming convention -> Should be Companies_Affiliated
+	@ManyToMany(fetch = FetchType.LAZY) 
 	@JoinTable(name = "AFFILIATED_COMPANIES", joinColumns = @JoinColumn(name = "COMPANY_NAME"), inverseJoinColumns = @JoinColumn(name = "AFFILIATE_NAME"))
 	@JsonIgnore
 	private Set<Company> affiliatedCompanies = new HashSet<Company>();
