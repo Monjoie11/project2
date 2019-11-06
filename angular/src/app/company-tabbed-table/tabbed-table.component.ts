@@ -1,8 +1,9 @@
-import { Component, OnInit,  ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router, Data } from "@angular/router";
+import { MatTableDataSource } from '@angular/material';
 
-export interface PeriodicElement {
+export interface Element {
   postId: number;
   postingUser: string;
   acceptingUser: string;
@@ -10,18 +11,10 @@ export interface PeriodicElement {
   startTime: string;
   endTime: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 2, postingUser: 'Hannah', acceptingUser: 'Jeff', postedTime: '9:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 3, postingUser: 'Java', acceptingUser: 'Shalom', postedTime: '8:30', startTime: '10:00', endTime: '1:00'},
-  {postId: 4, postingUser: 'Jesus', acceptingUser: 'Jared', postedTime: '10:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 5, postingUser: 'Rulez!!', acceptingUser: 'Michael', postedTime: '11:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 6, postingUser: 'Carbon', acceptingUser: 'Andrew', postedTime: '11:30', startTime: '10:00', endTime: '1:00'},
-  {postId: 7, postingUser: 'Nitrogen', acceptingUser: 'Jacoburu', postedTime: '12:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 8, postingUser: 'Oxygen', acceptingUser: 'Tony', postedTime: '1:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 9, postingUser: 'Fluorine', acceptingUser: 'Ariel', postedTime: '5:00', startTime: '10:00', endTime: '1:00'},
-  {postId: 10, postingUser: 'Neon', acceptingUser: 'Harambe', postedTime: '4:30', startTime: '10:00', endTime: '1:00'},
-];
+
+//var ELEMENT_DATA: Element[] = [
+    //{postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
+//];
 
 @Component({
   selector: 'app-tabbed-table2',
@@ -30,25 +23,126 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TabbedTableComponent2 implements OnInit {
   displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+  //dataSource = ELEMENT_DATA;
+  dataSource: any[] = [];
   response: any;
-  constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) {
+   // this.dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+
+
+   }
 
   ngOnInit() {
-      let obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
+    let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+    obs.subscribe((response) => {
+      this.response = response;
+      var result = JSON.stringify(this.response);
+      var result2 = JSON.parse(result);
+      var rowCounter: number = 0;
+
+      for (var key of Object.keys(result2['results'])) {
+       let model = {postId: result2['results'][rowCounter]['name']}
+       this.dataSource.push(model); 
+       rowCounter++;
+       if(rowCounter == 20){ //comment this out later
+         break;
+       }
+      }
+      this.dataSource = [...this.dataSource];
+    });
+    //this.refresh();
+  }
+
+/*   refresh() {
+    this.changeDetectorRefs.detectChanges();
+  } */
+
+  yourFn($event){
+    this.dataSource = [];
+    if($event.index === 0){
+      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
       obs.subscribe((response) => {
         this.response = response;
-       var result = JSON.stringify(this.response);
-        
+        var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
-        ELEMENT_DATA[0]['postId'] = result2['height'];
+        var rowCounter: number = 0;
   
+        for (var key of Object.keys(result2['results'])) {
+          let model = {postId: result2['results'][rowCounter]['name']}
+          this.dataSource.push(model); 
+         rowCounter++;
+         if(rowCounter == 20){ //comment this out later
+           break;
+         }
+        }
+        this.dataSource = [...this.dataSource];
       });
-      this.refresh();
-    }
-
-    refresh(){
-      this.changeDetectorRefs.detectChanges();
-    }
-  }
+    } 
+    if($event.index === 1){
+      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      obs.subscribe((response) => {
+        this.response = response;
+        var result = JSON.stringify(this.response);
+        var result2 = JSON.parse(result);
+        var rowCounter: number = 0;
+  
+        for (var key of Object.keys(result2['results'])) {
+         if(result2['results'][rowCounter]['name'].startsWith("B")){
+          let model = {postId: result2['results'][rowCounter]['name']}
+          this.dataSource.push(model); 
+         }
+         rowCounter++;
+         if(rowCounter == 20){ //comment this out later
+           break;
+         }
+        }
+        this.dataSource = [...this.dataSource];
+      });
+    } 
+    if($event.index === 2){
+      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      obs.subscribe((response) => {
+        this.response = response;
+        var result = JSON.stringify(this.response);
+        var result2 = JSON.parse(result);
+        var rowCounter: number = 0;
+  
+        for (var key of Object.keys(result2['results'])) {
+         if(result2['results'][rowCounter]['name'].startsWith("C")){
+          let model = {postId: result2['results'][rowCounter]['name']}
+          this.dataSource.push(model); 
+         }
+         rowCounter++;
+         if(rowCounter == 20){ //comment this out later
+           break;
+         }
+        }
+        this.dataSource = [...this.dataSource];
+      });
+    } 
+    if($event.index === 3){
+      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      obs.subscribe((response) => {
+        this.response = response;
+        var result = JSON.stringify(this.response);
+        var result2 = JSON.parse(result);
+        var rowCounter: number = 0;
+  
+        for (var key of Object.keys(result2['results'])) {
+         if(result2['results'][rowCounter]['name'].startsWith("V")){
+          let model = {postId: result2['results'][rowCounter]['name']}
+          this.dataSource.push(model); 
+         }
+         rowCounter++;
+         if(rowCounter == 20){ //comment this out later
+           break;
+         }
+        }
+        this.dataSource = [...this.dataSource];
+      });
+    } 
+}
+}

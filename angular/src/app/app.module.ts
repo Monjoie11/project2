@@ -35,6 +35,8 @@ import { MarketboardComponent } from './marketboard/marketboard.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './company-calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     BioComponent,
     StarRatingComponent,
     MarketboardComponent,
-    CalendarComponent
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     RatingModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

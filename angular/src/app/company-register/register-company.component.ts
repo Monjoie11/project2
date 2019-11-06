@@ -25,7 +25,7 @@ export class RegisterCompanyComponent implements OnInit {
   }
 
   search() {
-    let obs = this.http.post('register/', { companyName: this.companyName, email: this.companyEmail, password: this.companyPassword, telephone: this.companyWebsiteUrl, accessLevel: this.companyAccessLevel, userCode: this.companyCode, biography: this.companyBiography })
+    let obs = this.http.post('register/', {companyName: this.companyName, email: this.companyEmail, password: this.companyPassword, telephone: this.companyWebsiteUrl, accessLevel: this.companyAccessLevel, userCode: this.companyCode, biography: this.companyBiography})
     obs.subscribe((response) => {
       this.response = response;
       if (this.response == true) {
