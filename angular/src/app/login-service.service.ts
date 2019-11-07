@@ -10,7 +10,7 @@ export class LoginServiceService {
   password:string;
   response: any;
   loginRequest(email, password) {
-    let obs = this.http.post('login/', { email: email, password: password})
+    let obs = this.http.post('login', { email: email, password: password})
     obs.subscribe((response) => {
       this.response = response;
        return response;

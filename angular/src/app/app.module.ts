@@ -45,7 +45,8 @@ import {
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {LoginServiceService} from './login-service.service'
 import { UserRegisterServiceService } from './user-register-service.service'
-import { CompanyRegisterServiceService } from './company-register-service.service'
+import { CompanyRegisterServiceService } from './company-register-service.service';
+import { MbTabbedTableComponent } from './mb-tabbed-table/mb-tabbed-table.component'
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CompanyRegisterServiceService } from './company-register-service.servic
     MarketboardComponent,
     CalendarComponent,
     PostAdditionFormComponent,
+    MbTabbedTableComponent,
   ],
   imports: [
     BrowserModule,

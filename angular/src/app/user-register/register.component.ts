@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   userAccessLevel: string;
   userCode: string;
   userBiography: string;
+  workType: string;
   result: any;
 
   public containers = [0];
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography)
+    this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography, this.workType)
     if (this.result == true) {
       alert("registration successful");
       this.router.navigateByUrl('login');

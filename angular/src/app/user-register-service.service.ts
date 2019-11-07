@@ -15,8 +15,8 @@ export class UserRegisterServiceService {
   userCode: string;
   userBiography: string;
   response: any;
-  registerUser(userFirstName, userLastName, userEmail, userPassword, userTelephone, userAccessLevel, userCode, userBiography) {
-    let obs = this.http.post('register/', {userFirstName: userFirstName, userLastName: userLastName, userEmail: userEmail, userPassword: userPassword, userTelephone: userTelephone, userAccessLevel: userAccessLevel, userCode: userCode, userBiography: userBiography})
+  registerUser(userFirstName, userLastName, userEmail, userPassword, userTelephone, userAccessLevel, userCode, userBiography, workType) {
+    let obs = this.http.post('register-user', {firstName: userFirstName, lastName: userLastName, email: userEmail, password: userPassword, userTelephone: userTelephone, accessLevel: userAccessLevel, userCode: userCode, userBiography: userBiography, workType: workType})
     obs.subscribe((response) => {
       this.response = response;
       return response;

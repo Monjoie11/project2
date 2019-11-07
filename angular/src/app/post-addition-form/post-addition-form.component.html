@@ -3,16 +3,27 @@
     <mat-card>
         <mat-card-header>Select date and time for your shift</mat-card-header>
         <mat-card-content fxLayout="column">
+            <mat-select placeholder="Select company" [(ngModel)]="selectedValue" id="companyName" name="companyName"
+                [(ngModel)]="companyName">
+                <mat-option value="Company 1">company name 1</mat-option>
+                <mat-option value="Company 2">company name 2</mat-option>
+                <mat-option value="Company 3">company name 3</mat-option>
+                <mat-option value="Company 4">company name 4</mat-option>
+                <mat-option value="Company 5">company name 5</mat-option>
+            </mat-select>
             <mat-form-field class="example-full-width">
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="shiftDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker></mat-datepicker>
             </mat-form-field>
-               <input placeholder="Start time" aria-label="12hr format" [ngxTimepicker]="default1" readonly>
+               <input placeholder="Start time" aria-label="12hr format" [ngxTimepicker]="default1" readonly
+                [(ngModel)]="startTime">
             <ngx-material-timepicker #default1></ngx-material-timepicker>
-               <input placeholder="End time" aria-label="12hr format" [ngxTimepicker]="default2" readonly>
+               <input placeholder="End time" aria-label="12hr format" [ngxTimepicker]="default2" readonly
+                [(ngModel)]="endTime">
             <ngx-material-timepicker #default2></ngx-material-timepicker>
-            <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Submit Post</button>
+            <button (click)='postEvent($event)' mat-raised-button color="primary" id="submit-post"
+                routerLink="/marketboard">Submit Post</button>
             <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Cancel</button>
         </mat-card-content>
     </mat-card>

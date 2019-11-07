@@ -27,13 +27,5 @@
   }
 
   #accept-button{
-    background-color: green;
-    color: white;
-    margin: 0;
-  }
-
-  #deny-button{
-    background-color: red;
-    color: white;
-    margin: 0;
+      background-color: green;
   }

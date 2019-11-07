@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router, Data } from "@angular/router";
 
 @Component({
-  selector: 'app-tabbed-table2',
-  templateUrl: './tabbed-table.component.html',
-  styleUrls: ['./tabbed-table.component.css']
+  selector: 'app-mb-tabbed-table',
+  templateUrl: './mb-tabbed-table.component.html',
+  styleUrls: ['./mb-tabbed-table.component.css']
 })
-export class TabbedTableComponent2 implements OnInit {
+export class MbTabbedTableComponent implements OnInit {
   displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'accept-button', 'deny-button'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'accept-button'];
   displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
   displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
   dataSource: any[] = [];
@@ -40,7 +40,7 @@ export class TabbedTableComponent2 implements OnInit {
   }
 
   acceptPost(id){
-    let obs = this.http.put('/accept-company-acceptedpost/' + id, id);
+    let obs = this.http.put('/add-user-acceptedpost/' + id, id);
     obs.subscribe((response) => {
       this.response = response;
       var result = JSON.stringify(this.response);
@@ -49,21 +49,6 @@ export class TabbedTableComponent2 implements OnInit {
         alert("Post accepted")
       } else {
         alert("Error accepting post")
-      }
-      this.dataSource = [...this.dataSource];
-    });
-  }
-
-  denyPost(id){
-    let obs = this.http.put('/reject-company-acceptedpost/' + id, id);
-    obs.subscribe((response) => {
-      this.response = response;
-      var result = JSON.stringify(this.response);
-      var result2 = JSON.parse(result);
-      if(result2 == true){
-        alert("Post denied")
-      } else {
-        alert("Error denying post")
       }
       this.dataSource = [...this.dataSource];
     });
@@ -155,3 +140,19 @@ export class TabbedTableComponent2 implements OnInit {
     } 
 }
 }
+
+/* import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-mb-tabbed-table',
+  templateUrl: './mb-tabbed-table.component.html',
+  styleUrls: ['./mb-tabbed-table.component.css']
+})
+export class MbTabbedTableComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+} */

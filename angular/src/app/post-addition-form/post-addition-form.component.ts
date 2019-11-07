@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { PostAdditionServiceService } from '../post-addition-service.service'
 
 @Component({
   selector: 'app-post-addition-form',
@@ -7,14 +8,28 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
   styleUrls: ['./post-addition-form.component.css']
 })
 export class PostAdditionFormComponent implements OnInit {
-  events: string[] = [];
+  companyName: string;
+  shiftDate: any;
+  startTime: string;
+  endTime: string;
+  result: any;
+  svc: PostAdditionServiceService;
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.events.push(`${type}: ${event.value}`);
+  constructor(svc: PostAdditionServiceService) { 
+    this.svc = svc;
   }
-  constructor() { }
 
   ngOnInit() {
+  }
+
+  postEvent(){
+    this.result = this.svc.addPost(this.shiftDate, this.startTime, this.endTime, this.companyName);
+    if(this.result == true){
+      alert("Post was Added")
+    } else {
+      alert("Post failed")
+    }
+
   }
 
 }
