@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import com.revature.dao.CompanyDao;
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.pojo.Post.Status;
 
 @Service
 public class CompanyService {
 
 	private CompanyDao companyDao;
+	private PostService postService;
 
 	@Autowired
 	public void setCompanyDao(CompanyDao companyDao) {
@@ -46,4 +48,17 @@ public class CompanyService {
 		return company.get(0);
 
 	}
+	
+	public void approveUserPost(String postID) {
+		int id = Integer.valueOf(postID);
+		Post post = postService.getPostbyId(id);
+		post.setStatus(Status.ACCEPTED);
+	}
+	
+	public void denyUserPost(String postID) {
+		int id = Integer.valueOf(postID);
+		Post post = postService.getPostbyId(id);
+		post.setStatus(Status.REJECTED);
+	}
+	
 }

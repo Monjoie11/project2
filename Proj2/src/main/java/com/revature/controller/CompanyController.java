@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.pojo.Company;
+import com.revature.pojo.Post;
 import com.revature.service.CompanyService;
 import com.revature.util.LoggerUtil;
 
@@ -66,6 +66,25 @@ public class CompanyController {
 		ResponseEntity<Company> re = new ResponseEntity<Company>(company, HttpStatus.OK);
 		return re;
 
+	}
+	
+	//-----
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/company-action/{postID}/{action}")
+	public ResponseEntity<Boolean> companyActionOnPost(@RequestBody String postID, String action, ModelMap modelMap, HttpSession sess) {
+		if(postID == null || action == null) {
+			ResponseEntity<Boolean> re = new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
+			return re;
+		}
+		
+		if("approved".equals(action)) {
+			companyService.approveUserPost(postID);
+		} else if ("deny".equals(action)) {
+			companyService.denyUserPost(postID);
+		}
+		
+		ResponseEntity<Boolean> re = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+		return re;
+		
 	}
 	
 	
