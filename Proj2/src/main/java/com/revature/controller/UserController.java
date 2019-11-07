@@ -399,8 +399,8 @@ public class UserController {
 
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost")
-	public ResponseEntity<Boolean> addUserAcceptedPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> addUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 		
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -408,25 +408,25 @@ public class UserController {
 			return null;
 		}
 		
-		if(post == null || !postService.isPostValid(post)) {
+		if(postID == null || !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))) {
 			return null;
 		}
 		
 		User user = (User) sess.getAttribute("user");
 		
 		try {
-			userService.addAcceptedPost(user, post);
+			userService.addAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: " + post.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: " + postService.getPostbyId(Integer.valueOf(postID)).toString());
 			return null;
 		}
 
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-acceptedpost")
-	public ResponseEntity<Boolean> removeUserAcceptedPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> removeUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 		
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -434,18 +434,18 @@ public class UserController {
 			return null;
 		}
 		
-		if(post == null) {
+		if(postID == null) {
 			return null;
 		}
 		
 		User user = (User) sess.getAttribute("user");
 		
 		try {
-			userService.deleteAcceptedPost(user, post);
+			userService.deleteAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: removeUserAcceptedPost FAILED ON: " + post.toString());
+			LoggerUtil.error("CLASS: UserController FUNC: removeUserAcceptedPost FAILED ON: " + postService.getPostbyId(Integer.valueOf(postID)).toString());
 			return null;
 		}
 
