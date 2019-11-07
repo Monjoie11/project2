@@ -81,9 +81,9 @@ public class LoginController {
 			sess.setAttribute("user", u);
 			modelMap.addAttribute("user", u);
 			ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(u, HttpStatus.OK);
+			LoggerUtil.debug(user.toCustomString());
 			return responseEntity;
 		}
-
 		modelMap.addAttribute("errorMessage", "Username/Password did not match");
 		return null;
 
