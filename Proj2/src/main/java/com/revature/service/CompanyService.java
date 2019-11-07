@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.dao.CompanyDao;
+import com.revature.dao.PostDao;
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.pojo.Post.Status;
 
 @Service
 public class CompanyService {
@@ -18,6 +20,13 @@ public class CompanyService {
 	@Autowired
 	public void setCompanyDao(CompanyDao companyDao) {
 		this.companyDao = companyDao;
+	}
+	
+	private PostDao postDao;
+
+	@Autowired
+	public void setPostDao(PostDao postDao) {
+		this.postDao = postDao;
 	}
 
 	public Company getCompanyByEmail(String email) {
@@ -45,5 +54,10 @@ public class CompanyService {
 		List<Company> company = companyDao.getCompanyByAccessCode(accessCode);
 		return company.get(0);
 
+	}
+	
+	public void addRepliedToPost( Post post) {
+		post.setStatus(Status.ACCEPTED);
+		postDao.updatePost(post);
 	}
 }

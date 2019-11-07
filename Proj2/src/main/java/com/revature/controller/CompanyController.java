@@ -25,21 +25,13 @@ public class CompanyController {
 
 	private static CompanyService companyService;
 
-	private static UserService userService;
-	
 	private static PostService postService;
-
 
 	@Autowired
 	public void setCompanyService(CompanyService companyService) {
 		this.companyService = companyService;
 	}
 
-	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
 	@Autowired
 	public void setPostService(PostService postService) {
 		this.postService = postService;
@@ -95,8 +87,7 @@ public class CompanyController {
 		}
 
 		try {
-
-			userService.addRepliedToPost( postService.getPostbyId(Integer.valueOf(postID)));
+			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
 
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
@@ -108,4 +99,25 @@ public class CompanyController {
 
 	}
 
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/reject-company-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> rejectPostAsCompany(@PathVariable String postID) {
+		LoggerUtil.debug(("Company accepting postId: " + postID));
+		if (postID == null) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
+			return null;
+		}
+
+		try {
+			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
+
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		} catch (Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: "
+					+ postService.getPostbyId(Integer.valueOf(postID)).toString());
+			return null;
+		}
+
+	}
+	
+	
 }

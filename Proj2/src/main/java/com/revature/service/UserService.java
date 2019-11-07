@@ -114,11 +114,7 @@ public class UserService {
 		post.setStatus(Status.REPLIEDTO);
 		postDao.updatePost(post);
 	}
-	
-	public void addRepliedToPost( Post post) {
-		post.setStatus(Status.ACCEPTED);
-		postDao.updatePost(post);
-	}
+
 
 	public void deleteAcceptedPost(User user, Post post) {
 		user.getAcceptedPost().remove(post);
