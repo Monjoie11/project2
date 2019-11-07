@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,7 +71,7 @@ public class CompanyController {
 	
 	//-----
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/company-action/{postID}/{action}")
-	public ResponseEntity<Boolean> companyActionOnPost(@RequestBody String postID, String action, ModelMap modelMap, HttpSession sess) {
+	public ResponseEntity<Boolean> companyActionOnPost(@PathVariable String postID, String action, ModelMap modelMap, HttpSession sess) {
 		if(postID == null || action == null) {
 			ResponseEntity<Boolean> re = new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
 			return re;
