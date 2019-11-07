@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   }
   search() {
     this.result = this.svc.loginRequest(this.email, this.password);
-    if (this.response.length == 13) {
+    if (this.result.length == 13) {
       this.router.navigateByUrl('user-homepage');
       return true;
-    } else if (this.response.length == 10) {
+    } else if (this.result.length == 10) {
       this.router.navigateByUrl('company-homepage');
       return true;
     } else {

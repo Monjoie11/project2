@@ -13,7 +13,7 @@ export class LoginServiceService {
     let obs = this.http.post('login', { email: email, password: password})
     obs.subscribe((response) => {
       this.response = response;
-       return response;
+       return this.response;
     });
     return this.response;
   }
