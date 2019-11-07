@@ -37,6 +37,11 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	
+	@Autowired
+	public void setPostService(PostService postService) {
+		this.postService = postService;
+	}
 //fine
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/register-user")
 	public ResponseEntity<Boolean> registerUserPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
@@ -405,7 +410,7 @@ public class UserController {
 		User user = (User) sess.getAttribute("user");
 
 		try {
-			LoggerUtil.debug("check2");
+			LoggerUtil.debug("check2" + user.toCustomString());
 
 			userService.addAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
 			LoggerUtil.debug("check3");
