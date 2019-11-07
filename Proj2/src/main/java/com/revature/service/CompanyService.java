@@ -28,6 +28,10 @@ public class CompanyService {
 	public Company getCompanyByEmail(String email) {
 		return companyDao.getCompanyByEmail(email);
 	}
+	
+	public Company getCompanyByName(String companyName) {
+		return companyDao.getCompanyByName(companyName);
+	}
 
 	public List<Company> getAllCompanies() {
 		return companyDao.getAllCompanies();
