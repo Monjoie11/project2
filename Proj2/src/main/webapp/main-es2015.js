@@ -1412,10 +1412,12 @@ let LoginServiceService = class LoginServiceService {
     }
     loginRequest(email, password) {
         let obs = this.http.post('login', { email: email, password: password });
+        console.log("Obs: ");
+        console.log(obs);
         obs.subscribe((response) => {
             this.response = response;
         });
-        setTimeout(function () { console.log(this.response); }, 1000);
+        setTimeout(function () { console.log(this.response); }, 2000);
         return this.response;
     }
 };

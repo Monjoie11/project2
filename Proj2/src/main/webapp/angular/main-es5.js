@@ -1320,10 +1320,12 @@
                 LoginServiceService.prototype.loginRequest = function (email, password) {
                     var _this = this;
                     var obs = this.http.post('login', { email: email, password: password });
+                    console.log("Obs: ");
+                    console.log(obs);
                     obs.subscribe(function (response) {
                         _this.response = response;
                     });
-                    setTimeout(function () { console.log(this.response); }, 1000);
+                    setTimeout(function () { console.log(this.response); }, 2000);
                     return this.response;
                 };
                 return LoginServiceService;
