@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n    <app-profile-picture></app-profile-picture>\r\n    <app-tabbed-table2></app-tabbed-table2>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n    <app-profile-picture></app-profile-picture>\r\n    <app-tabbed-table2></app-tabbed-table2>\r\n<!--    <app-company-table></app-company-table> -->\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/company-register/register-company.component.html": 
@@ -72,7 +72,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n    <mat-card>\r\n        <mat-card-header>\r\n              <mat-card-title>Please Register below</mat-card-title>\r\n        </mat-card-header>\r\n        <form action=\"register-company\" method=\"POST\">\r\n        <mat-card-content fxLayout=\"column\">\r\n\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"full\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input matInput placeholder=\"Company Name\" name=\"companyName\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"email\" matInput placeholder=\"Company Email\" name=\"companyEmail\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"password\" matInput placeholder=\"Company Password\" name=\"companyPassword\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"text\" matInput placeholder=\"Website URL\" name=\"companyWebsiteUrl\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"companyAccessLevel\">\r\n                                <mat-option value=\"Open Shop\">Open Shop</mat-option>\r\n                                <mat-option value=\"Affiliated Shop\">Affiliated Shop</mat-option>\r\n                                <mat-option value=\"Closed Shop\">Closed Shop</mat-option>\r\n                            </mat-select>\r\n                            <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"third\" *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                        <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                            <input type=\"text\" matInput placeholder=\"Company Code\" name=\"companyCode\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td></td>\r\n                    <td></td>\r\n                    <td>\r\n                        <div class=\"fab-container\">\r\n                            <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                                <i class=\"material-icons\">add</i>\r\n                            </button>\r\n                            <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                                <i class=\"material-icons\">remove</i>\r\n                            </button>\r\n                        </div>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <mat-form-field class=\"full\">\r\n                <mat-label>Biography</mat-label>\r\n                <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                    cdkAutosizeMaxRows=\"5\"></textarea>\r\n            </mat-form-field>\r\n        </mat-card-content>\r\n        <mat-card-actions align=\"end\">\r\n                <button routerLink=\"/login\" mat-raised-button color=\"primary\">Login</button>\r\n                <button type=\"submit\" mat-raised-button color=\"primary\">Submit</button>\r\n                <button routerLink=\"/register\" mat-raised-button color=\"primary\">Register as User</button>\r\n        </mat-card-actions>\r\n    </form>\r\n    </mat-card>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n    <mat-card>\r\n        <mat-card-header>\r\n              <mat-card-title>Please Register below</mat-card-title>\r\n        </mat-card-header>\r\n        <form action=\"register-company\" method=\"POST\">\r\n        <mat-card-content fxLayout=\"column\">\r\n\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"full\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input matInput placeholder=\"Company Name\" name=\"companyName\" [(ngModel)]=\"companyName\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"email\" matInput placeholder=\"Company Email\" name=\"companyEmail\" [(ngModel)]=\"companyEmail\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"password\" matInput placeholder=\"Company Password\" name=\"companyPassword\" [(ngModel)]=\"companyPassword\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <table cellspacing=\"0\">\r\n                <tr>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <input type=\"text\" matInput placeholder=\"Website URL\" name=\"companyWebsiteUrl\" [(ngModel)]=\"companyWebsiteUrl\">\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"half\">\r\n                        <mat-form-field class=\"full\">\r\n                            <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"companyAccessLevel\" [(ngModel)]=\"companyAccessLevel\">\r\n                                <mat-option value=\"Open Shop\">Open Shop</mat-option>\r\n                                <mat-option value=\"Affiliated Shop\">Affiliated Shop</mat-option>\r\n                                <mat-option value=\"Closed Shop\">Closed Shop</mat-option>\r\n                            </mat-select>\r\n                            <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                        </mat-form-field>\r\n                    </td>\r\n                    <td class=\"third\" *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                        <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                            <input type=\"text\" matInput placeholder=\"Company Code\" name=\"companyCode\" [(ngModel)]=\"companyCode\"> \r\n                        </mat-form-field>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td></td>\r\n                    <td></td>\r\n                    <td>\r\n                        <div class=\"fab-container\">\r\n                            <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                                <i class=\"material-icons\">add</i>\r\n                            </button>\r\n                            <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                *ngIf=\"selectedValue == 'Affiliated Shop'\">\r\n                                <i class=\"material-icons\">remove</i>\r\n                            </button>\r\n                        </div>\r\n                    </td>\r\n                </tr>\r\n            </table>\r\n            <mat-form-field class=\"full\">\r\n                <mat-label>Biography</mat-label>\r\n                <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                    cdkAutosizeMaxRows=\"5\" name=\"companyBiography\" [(ngModel)]=\"companyBiography\"></textarea>\r\n            </mat-form-field>\r\n        </mat-card-content>\r\n        <mat-card-actions align=\"end\">\r\n                <button routerLink=\"/login\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n                <button (click)=\"register($event)\" type=\"button\" mat-raised-button color=\"primary\">Submit</button>\r\n                <button routerLink=\"/register\" type=\"button\" mat-raised-button color=\"primary\">Register as User</button>\r\n        </mat-card-actions>\r\n    </form>\r\n    </mat-card>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/company-star-rating/star-rating.component.html": 
@@ -94,7 +94,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight>\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns2\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/error/error.component.html": 
@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Login Page</span>\r\n</mat-toolbar>\r\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n    <mat-card>\r\n        <mat-card-header>\r\n              <mat-card-title>Please login below</mat-card-title>\r\n        </mat-card-header>\r\n        <!--         <form action=\"login\" method=\"POST\"> -->\r\n        <mat-card-content fxLayout=\"column\">\r\n              <mat-form-field>\r\n                    <input matInput placeholder=\"Email\" [(ngModel)]=\"email\">\r\n                  </mat-form-field>\r\n              <mat-form-field>\r\n                    <input type=\"password\" matInput placeholder=\"password\" [(ngModel)]=\"password\">\r\n                  </mat-form-field>\r\n        </mat-card-content>\r\n        <mat-card-actions align=\"end\">\r\n              <button (click)=\"search($event)\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n            <button routerLink=\"/register\" mat-raised-button color=\"primary\">Registration</button>\r\n        </mat-card-actions>\r\n        <!--         </form> -->\r\n    </mat-card>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Login Page</span>\r\n</mat-toolbar>\r\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n    <mat-card>\r\n        <mat-card-header>\r\n              <mat-card-title>Please login below</mat-card-title>\r\n        </mat-card-header>\r\n        <!--         <form action=\"login\" method=\"POST\"> -->\r\n        <mat-card-content fxLayout=\"column\">\r\n              <mat-form-field>\r\n                    <input matInput placeholder=\"Email\" [(ngModel)]=\"email\">\r\n                  </mat-form-field>\r\n              <mat-form-field>\r\n                    <input type=\"password\" matInput placeholder=\"password\" [(ngModel)]=\"password\">\r\n                  </mat-form-field>\r\n        </mat-card-content>\r\n        <mat-card-actions align=\"end\">\r\n              <button (click)=\"search($event)\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n            <button routerLink=\"/register\" type=\"button\" mat-raised-button color=\"primary\">Registration</button>\r\n        </mat-card-actions>\r\n        <!--         </form> -->\r\n    </mat-card>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/marketboard/marketboard.component.html": 
@@ -138,7 +138,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n        <app-tabbed-table2></app-tabbed-table2>\r\n</div>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n        <div class=\"example-button-row\">\r\n                <button mat-raised-button id=\"post-button\" routerLink=\"/post\">New Post</button>\r\n        </div>\r\n        <app-tabbed-table2></app-tabbed-table2>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html": 
@@ -150,6 +150,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar id=\"toolbar\" color=\"primary\">\r\n        <mat-toolbar-row>\r\n            <button mat-icon-button>\r\n                <mat-icon (click)=\"sidenav.toggle()\">menu</mat-icon>\r\n            </button>\r\n            <h1>Shiftz</h1>\r\n            <span class=\"menu-spacer\"></span>\r\n            <div>\r\n                <a mat-button [routerLink]=\"'/login'\"> Log Out </a>\r\n                <a mat-button [routerLink]=\"'/calendar'\"> See Your Calendar </a>\r\n                <a mat-button [routerLink]=\"'/marketboard'\"> View The Market Board </a>\r\n                <a mat-button [routerLink]=\"'/company-homepage'\"> Home </a>\r\n    \r\n            </div>\r\n        </mat-toolbar-row>\r\n    \r\n        <mat-toolbar-row>\r\n            <span style=\"font-size: 18px;\">Need a Shift? Get a Shift.</span>\r\n        </mat-toolbar-row>\r\n    </mat-toolbar>\r\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-addition-form/post-addition-form.component.html": 
+        /*!************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/post-addition-form/post-addition-form.component.html ***!
+          \************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"placeholder\"></div>\r\n<div class=\"form-div\">\r\n    <mat-card>\r\n        <mat-card-header>Select date and time for your shift</mat-card-header>\r\n        <mat-card-content fxLayout=\"column\">\r\n            <mat-form-field class=\"example-full-width\">\r\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\">\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker touchUi #picker></mat-datepicker>\r\n            </mat-form-field>\r\n               <input placeholder=\"Start time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default1\" readonly>\r\n            <ngx-material-timepicker #default1></ngx-material-timepicker>\r\n               <input placeholder=\"End time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default2\" readonly>\r\n            <ngx-material-timepicker #default2></ngx-material-timepicker>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Submit Post</button>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Cancel</button>\r\n        </mat-card-content>\r\n    </mat-card>\r\n</div>\r\n<!-- start time, end time, posted time -->");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-homepage/user-homepage.component.html": 
@@ -182,7 +193,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<form action=\"register\" method=\"POST\">\r\n    <div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n        <mat-card>\r\n            <mat-card-header>\r\n                  <mat-card-title>Please Register below</mat-card-title>\r\n            </mat-card-header>\r\n            <form action=\"register\" method=\"POST\">\r\n                <mat-card-content fxLayout=\"column\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Company (disabled)\" disabled value=\"Freelancer\">\r\n                    </mat-form-field>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"First Name\" name=\"userFirstName\" [(ngModel)]=\"userFirstName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"Last Name\" name=\"userLastName\" [(ngModel)]=\"userLastName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"email\" matInput placeholder=\"Email\" name=\"userEmail\" [(ngModel)]=\"userEmail\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"password\" matInput placeholder=\"Password\" name=\"userPassword\" [(ngModel)]=\"userPassword\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"tel\" matInput placeholder=\"Telephone\" name=\"userTelephone\" [(ngModel)]=\"userTelephone\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"userAccessLevel\" [(ngModel)]=\"userAccessLevel\">\r\n                                        <mat-option value=\"Freelancer\">Freelancer</mat-option>\r\n                                        <mat-option value=\"Enterprise\">Enterprise</mat-option>\r\n                                    </mat-select>\r\n                                    <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"third\" *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                                    <input type=\"text\" matInput placeholder=\"Company Code\" name=\"userCode\" [(ngModel)]=\"userCode\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <div class=\"fab-container\">\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">add</i>\r\n                                    </button>\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">remove</i>\r\n                                    </button>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <mat-label>Biography</mat-label>\r\n                        <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                            cdkAutosizeMaxRows=\"5\" name=\"userBiography\" [(ngModel)]=\"userBiography\"></textarea>\r\n                    </mat-form-field>\r\n                </mat-card-content>\r\n                <mat-card-actions align=\"end\">\r\n                    <button routerLink=\"/login\" mat-raised-button color=\"primary\">Login</button>\r\n                    <button (click) = \"search($event)\" mat-raised-button color=\"primary\">Submit</button>\r\n                    <button routerLink=\"/register-company\" mat-raised-button color=\"primary\">Register as\r\n                        Company</button>\r\n                </mat-card-actions>\r\n            </form>\r\n        </mat-card>\r\n    </div>\r\n</form>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<form action=\"register\" method=\"POST\">\r\n    <div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n        <mat-card>\r\n            <mat-card-header>\r\n                  <mat-card-title>Please Register below</mat-card-title>\r\n            </mat-card-header>\r\n            <form action=\"register\" method=\"POST\">\r\n                <mat-card-content fxLayout=\"column\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Company (disabled)\" disabled value=\"Freelancer\">\r\n                    </mat-form-field>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"First Name\" name=\"userFirstName\" [(ngModel)]=\"userFirstName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"Last Name\" name=\"userLastName\" [(ngModel)]=\"userLastName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"email\" matInput placeholder=\"Email\" name=\"userEmail\" [(ngModel)]=\"userEmail\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"password\" matInput placeholder=\"Password\" name=\"userPassword\" [(ngModel)]=\"userPassword\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"tel\" matInput placeholder=\"Telephone\" name=\"userTelephone\" [(ngModel)]=\"userTelephone\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"userAccessLevel\" [(ngModel)]=\"userAccessLevel\">\r\n                                        <mat-option value=\"Freelancer\">Freelancer</mat-option>\r\n                                        <mat-option value=\"Enterprise\">Enterprise</mat-option>\r\n                                    </mat-select>\r\n                                    <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"third\" *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                                    <input type=\"text\" matInput placeholder=\"Company Code\" name=\"userCode\" [(ngModel)]=\"userCode\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <div class=\"fab-container\">\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">add</i>\r\n                                    </button>\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">remove</i>\r\n                                    </button>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <mat-label>Biography</mat-label>\r\n                        <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                            cdkAutosizeMaxRows=\"5\" name=\"userBiography\" [(ngModel)]=\"userBiography\"></textarea>\r\n                    </mat-form-field>\r\n                </mat-card-content>\r\n                <mat-card-actions align=\"end\">\r\n                    <button routerLink=\"/login\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n                    <button (click) = \"register($event)\" type=\"button\" mat-raised-button color=\"primary\">Submit</button>\r\n                    <button routerLink=\"/register-company\" type=\"button\" mat-raised-button color=\"primary\">Register as\r\n                        Company</button>\r\n                </mat-card-actions>\r\n            </form>\r\n        </mat-card>\r\n    </div>\r\n</form>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-tabbed-table/tabbed-table.component.html": 
@@ -516,6 +527,7 @@
             /* harmony import */ var _user_homepage_user_homepage_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user-homepage/user-homepage.component */ "./src/app/user-homepage/user-homepage.component.ts");
             /* harmony import */ var _marketboard_marketboard_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./marketboard/marketboard.component */ "./src/app/marketboard/marketboard.component.ts");
             /* harmony import */ var _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./company-calendar/calendar.component */ "./src/app/company-calendar/calendar.component.ts");
+            /* harmony import */ var _post_addition_form_post_addition_form_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./post-addition-form/post-addition-form.component */ "./src/app/post-addition-form/post-addition-form.component.ts");
             var routes = [
                 {
                     path: '',
@@ -549,6 +561,9 @@
                 {
                     path: 'calendar',
                     component: _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_10__["CalendarComponent"]
+                },
+                { path: 'post',
+                    component: _post_addition_form_post_addition_form_component__WEBPACK_IMPORTED_MODULE_11__["PostAdditionFormComponent"]
                 },
                 {
                     path: '**', component: _error_error_component__WEBPACK_IMPORTED_MODULE_7__["ErrorComponent"]
@@ -645,6 +660,13 @@
             /* harmony import */ var _fullcalendar_angular__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @fullcalendar/angular */ "./node_modules/@fullcalendar/angular/fesm2015/fullcalendar-angular.js");
             /* harmony import */ var _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./company-calendar/calendar.component */ "./src/app/company-calendar/calendar.component.ts");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/paginator */ "./node_modules/@angular/material/esm2015/paginator.js");
+            /* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm2015/sort.js");
+            /* harmony import */ var _post_addition_form_post_addition_form_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./post-addition-form/post-addition-form.component */ "./src/app/post-addition-form/post-addition-form.component.ts");
+            /* harmony import */ var ngx_material_timepicker__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ngx-material-timepicker */ "./node_modules/ngx-material-timepicker/fesm2015/ngx-material-timepicker.js");
+            /* harmony import */ var _login_service_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./login-service.service */ "./src/app/login-service.service.ts");
+            /* harmony import */ var _user_register_service_service__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./user-register-service.service */ "./src/app/user-register-service.service.ts");
+            /* harmony import */ var _company_register_service_service__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./company-register-service.service */ "./src/app/company-register-service.service.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -668,7 +690,8 @@
                         _bio_bio_component__WEBPACK_IMPORTED_MODULE_25__["BioComponent"],
                         _company_star_rating_star_rating_component__WEBPACK_IMPORTED_MODULE_27__["StarRatingComponent"],
                         _marketboard_marketboard_component__WEBPACK_IMPORTED_MODULE_28__["MarketboardComponent"],
-                        _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_30__["CalendarComponent"]
+                        _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_30__["CalendarComponent"],
+                        _post_addition_form_post_addition_form_component__WEBPACK_IMPORTED_MODULE_34__["PostAdditionFormComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -687,9 +710,14 @@
                         _angular_material_tabs__WEBPACK_IMPORTED_MODULE_18__["MatTabsModule"],
                         ng_starrating__WEBPACK_IMPORTED_MODULE_26__["RatingModule"],
                         _fullcalendar_angular__WEBPACK_IMPORTED_MODULE_29__["FullCalendarModule"],
-                        _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClientModule"]
+                        _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClientModule"],
+                        _angular_material_paginator__WEBPACK_IMPORTED_MODULE_32__["MatPaginatorModule"],
+                        _angular_material_sort__WEBPACK_IMPORTED_MODULE_33__["MatSortModule"],
+                        _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatDatepickerModule"],
+                        _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatNativeDateModule"],
+                        ngx_material_timepicker__WEBPACK_IMPORTED_MODULE_35__["NgxMaterialTimepickerModule"]
                     ],
-                    providers: [],
+                    providers: [_login_service_service__WEBPACK_IMPORTED_MODULE_36__["LoginServiceService"], _company_register_service_service__WEBPACK_IMPORTED_MODULE_38__["CompanyRegisterServiceService"], _user_register_service_service__WEBPACK_IMPORTED_MODULE_37__["UserRegisterServiceService"]],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
                 })
             ], AppModule);
@@ -818,6 +846,46 @@
             ], CompanyHomepageComponent);
             /***/ 
         }),
+        /***/ "./src/app/company-register-service.service.ts": 
+        /*!*****************************************************!*\
+          !*** ./src/app/company-register-service.service.ts ***!
+          \*****************************************************/
+        /*! exports provided: CompanyRegisterServiceService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompanyRegisterServiceService", function () { return CompanyRegisterServiceService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            var CompanyRegisterServiceService = /** @class */ (function () {
+                function CompanyRegisterServiceService(router, http) {
+                    this.router = router;
+                    this.http = http;
+                }
+                CompanyRegisterServiceService.prototype.registerCompany = function (companyName, companyEmail, companyPassword, companyWebsiteUrl, companyAccessLevel, companyCode, companyBiography) {
+                    var _this = this;
+                    var obs = this.http.post('register/', { companyName: companyName, companyEmail: companyEmail, companyPassword: companyPassword, companyWebsiteUrl: companyWebsiteUrl, companyAccessLevel: companyAccessLevel, companyCode: companyCode, companyBiography: companyBiography });
+                    obs.subscribe(function (response) {
+                        _this.response = response;
+                        return response;
+                    });
+                    return this.response;
+                };
+                return CompanyRegisterServiceService;
+            }());
+            CompanyRegisterServiceService.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+            ]; };
+            CompanyRegisterServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], CompanyRegisterServiceService);
+            /***/ 
+        }),
         /***/ "./src/app/company-register/register-company.component.css": 
         /*!*****************************************************************!*\
           !*** ./src/app/company-register/register-company.component.css ***!
@@ -842,29 +910,29 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _company_register_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../company-register-service.service */ "./src/app/company-register-service.service.ts");
             var RegisterCompanyComponent = /** @class */ (function () {
-                function RegisterCompanyComponent(router, http) {
+                function RegisterCompanyComponent(svc, router, http) {
                     this.router = router;
                     this.http = http;
                     this.containers = [0];
                     this.counter = 1;
+                    this.svc = svc;
                 }
                 RegisterCompanyComponent.prototype.ngOnInit = function () {
                 };
-                RegisterCompanyComponent.prototype.search = function () {
-                    var _this = this;
-                    var obs = this.http.post('register/', { companyName: this.companyName, email: this.companyEmail, password: this.companyPassword, telephone: this.companyWebsiteUrl, accessLevel: this.companyAccessLevel, userCode: this.companyCode, biography: this.companyBiography });
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        if (_this.response == true) {
-                            alert("registration successful");
-                            _this.router.navigateByUrl('login');
-                        }
-                        else {
-                            alert("registration failed");
-                            _this.router.navigateByUrl('login');
-                        }
-                    });
+                RegisterCompanyComponent.prototype.register = function () {
+                    this.result = this.svc.registerCompany(this.companyName, this.companyEmail, this.companyPassword, this.companyWebsiteUrl, this.companyAccessLevel, this.companyCode, this.companyBiography);
+                    if (this.result == true) {
+                        alert("registration successful");
+                        this.router.navigateByUrl('login');
+                        return true;
+                    }
+                    else {
+                        alert("registration failed");
+                        this.router.navigateByUrl('login');
+                        return false;
+                    }
                 };
                 RegisterCompanyComponent.prototype.add = function () {
                     if (this.containers.length < 5) {
@@ -886,6 +954,7 @@
                 return RegisterCompanyComponent;
             }());
             RegisterCompanyComponent.ctorParameters = function () { return [
+                { type: _company_register_service_service__WEBPACK_IMPORTED_MODULE_4__["CompanyRegisterServiceService"] },
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
                 { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
             ]; };
@@ -967,40 +1036,131 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-            var ELEMENT_DATA = [
-                { postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 2, postingUser: 'Hannah', acceptingUser: 'Jeff', postedTime: '9:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 3, postingUser: 'Java', acceptingUser: 'Shalom', postedTime: '8:30', startTime: '10:00', endTime: '1:00' },
-                { postId: 4, postingUser: 'Jesus', acceptingUser: 'Jared', postedTime: '10:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 5, postingUser: 'Rulez!!', acceptingUser: 'Michael', postedTime: '11:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 6, postingUser: 'Carbon', acceptingUser: 'Andrew', postedTime: '11:30', startTime: '10:00', endTime: '1:00' },
-                { postId: 7, postingUser: 'Nitrogen', acceptingUser: 'Jacoburu', postedTime: '12:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 8, postingUser: 'Oxygen', acceptingUser: 'Tony', postedTime: '1:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 9, postingUser: 'Fluorine', acceptingUser: 'Ariel', postedTime: '5:00', startTime: '10:00', endTime: '1:00' },
-                { postId: 10, postingUser: 'Neon', acceptingUser: 'Harambe', postedTime: '4:30', startTime: '10:00', endTime: '1:00' },
-            ];
+            //var ELEMENT_DATA: Element[] = [
+            //{postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
+            //];
             var TabbedTableComponent2 = /** @class */ (function () {
                 function TabbedTableComponent2(router, http, changeDetectorRefs) {
+                    // this.dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
                     this.router = router;
                     this.http = http;
                     this.changeDetectorRefs = changeDetectorRefs;
                     this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-                    this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
-                    this.dataSource = ELEMENT_DATA;
+                    this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+                    this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+                    this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+                    //dataSource = ELEMENT_DATA;
+                    this.dataSource = [];
                 }
                 TabbedTableComponent2.prototype.ngOnInit = function () {
                     var _this = this;
-                    var obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
+                    var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
                     obs.subscribe(function (response) {
                         _this.response = response;
                         var result = JSON.stringify(_this.response);
                         var result2 = JSON.parse(result);
-                        ELEMENT_DATA[0]['postId'] = result2['height'];
+                        var rowCounter = 0;
+                        for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
+                            var key = _a[_i];
+                            var model = { postId: result2['results'][rowCounter]['name'] };
+                            _this.dataSource.push(model);
+                            rowCounter++;
+                            if (rowCounter == 20) { //comment this out later
+                                break;
+                            }
+                        }
+                        _this.dataSource = _this.dataSource.slice();
                     });
-                    this.refresh();
+                    //this.refresh();
                 };
-                TabbedTableComponent2.prototype.refresh = function () {
+                /*   refresh() {
                     this.changeDetectorRefs.detectChanges();
+                  } */
+                TabbedTableComponent2.prototype.yourFn = function ($event) {
+                    var _this = this;
+                    this.dataSource = [];
+                    if ($event.index === 0) {
+                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+                        obs.subscribe(function (response) {
+                            _this.response = response;
+                            var result = JSON.stringify(_this.response);
+                            var result2 = JSON.parse(result);
+                            var rowCounter = 0;
+                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
+                                var key = _a[_i];
+                                var model = { postId: result2['results'][rowCounter]['name'] };
+                                _this.dataSource.push(model);
+                                rowCounter++;
+                                if (rowCounter == 20) { //comment this out later
+                                    break;
+                                }
+                            }
+                            _this.dataSource = _this.dataSource.slice();
+                        });
+                    }
+                    if ($event.index === 1) {
+                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+                        obs.subscribe(function (response) {
+                            _this.response = response;
+                            var result = JSON.stringify(_this.response);
+                            var result2 = JSON.parse(result);
+                            var rowCounter = 0;
+                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
+                                var key = _a[_i];
+                                if (result2['results'][rowCounter]['name'].startsWith("B")) {
+                                    var model = { postId: result2['results'][rowCounter]['name'] };
+                                    _this.dataSource.push(model);
+                                }
+                                rowCounter++;
+                                if (rowCounter == 20) { //comment this out later
+                                    break;
+                                }
+                            }
+                            _this.dataSource = _this.dataSource.slice();
+                        });
+                    }
+                    if ($event.index === 2) {
+                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+                        obs.subscribe(function (response) {
+                            _this.response = response;
+                            var result = JSON.stringify(_this.response);
+                            var result2 = JSON.parse(result);
+                            var rowCounter = 0;
+                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
+                                var key = _a[_i];
+                                if (result2['results'][rowCounter]['name'].startsWith("C")) {
+                                    var model = { postId: result2['results'][rowCounter]['name'] };
+                                    _this.dataSource.push(model);
+                                }
+                                rowCounter++;
+                                if (rowCounter == 20) { //comment this out later
+                                    break;
+                                }
+                            }
+                            _this.dataSource = _this.dataSource.slice();
+                        });
+                    }
+                    if ($event.index === 3) {
+                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+                        obs.subscribe(function (response) {
+                            _this.response = response;
+                            var result = JSON.stringify(_this.response);
+                            var result2 = JSON.parse(result);
+                            var rowCounter = 0;
+                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
+                                var key = _a[_i];
+                                if (result2['results'][rowCounter]['name'].startsWith("V")) {
+                                    var model = { postId: result2['results'][rowCounter]['name'] };
+                                    _this.dataSource.push(model);
+                                }
+                                rowCounter++;
+                                if (rowCounter == 20) { //comment this out later
+                                    break;
+                                }
+                            }
+                            _this.dataSource = _this.dataSource.slice();
+                        });
+                    }
                 };
                 return TabbedTableComponent2;
             }());
@@ -1105,6 +1265,46 @@
             ], ProfilePictureComponent);
             /***/ 
         }),
+        /***/ "./src/app/login-service.service.ts": 
+        /*!******************************************!*\
+          !*** ./src/app/login-service.service.ts ***!
+          \******************************************/
+        /*! exports provided: LoginServiceService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginServiceService", function () { return LoginServiceService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            var LoginServiceService = /** @class */ (function () {
+                function LoginServiceService(router, http) {
+                    this.router = router;
+                    this.http = http;
+                }
+                LoginServiceService.prototype.loginRequest = function (email, password) {
+                    var _this = this;
+                    var obs = this.http.post('login/', { email: email, password: password });
+                    obs.subscribe(function (response) {
+                        _this.response = response;
+                        return response;
+                    });
+                    return this.response;
+                };
+                return LoginServiceService;
+            }());
+            LoginServiceService.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+            ]; };
+            LoginServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], LoginServiceService);
+            /***/ 
+        }),
         /***/ "./src/app/login/login.component.css": 
         /*!*******************************************!*\
           !*** ./src/app/login/login.component.css ***!
@@ -1129,34 +1329,34 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _login_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../login-service.service */ "./src/app/login-service.service.ts");
             var LoginComponent = /** @class */ (function () {
-                function LoginComponent(router, http) {
+                function LoginComponent(svc, router, http) {
                     this.router = router;
                     this.http = http;
+                    this.svc = svc;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
                 };
                 LoginComponent.prototype.search = function () {
-                    var _this = this;
-                    var obs = this.http.post('login/', { email: this.email, password: this.password });
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        console.log(_this.response.length);
-                        if (_this.response.length == 13) {
-                            _this.router.navigateByUrl('user-homepage');
-                        }
-                        else if (_this.response.length == 10) {
-                            _this.router.navigateByUrl('company-homepage');
-                        }
-                        else {
-                            alert("Incorrect login credentials.");
-                        }
-                        return obs;
-                    });
+                    this.result = this.svc.loginRequest(this.email, this.password);
+                    if (this.response.length == 13) {
+                        this.router.navigateByUrl('user-homepage');
+                        return true;
+                    }
+                    else if (this.response.length == 10) {
+                        this.router.navigateByUrl('company-homepage');
+                        return true;
+                    }
+                    else {
+                        alert("Incorrect login credentials.");
+                        return false;
+                    }
                 };
                 return LoginComponent;
             }());
             LoginComponent.ctorParameters = function () { return [
+                { type: _login_service_service__WEBPACK_IMPORTED_MODULE_4__["LoginServiceService"] },
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
                 { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
             ]; };
@@ -1177,7 +1377,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("#page-container{\r\n    margin-left: 2%;\r\n    margin-right: 2%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFya2V0Ym9hcmQvbWFya2V0Ym9hcmQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9tYXJrZXRib2FyZC9tYXJrZXRib2FyZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI3BhZ2UtY29udGFpbmVye1xyXG4gICAgbWFyZ2luLWxlZnQ6IDIlO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAyJTtcclxufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("#page-container{\r\n    margin-left: 2%;\r\n    margin-right: 2%;\r\n}\r\n#post-button {\r\n    min-width: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFya2V0Ym9hcmQvbWFya2V0Ym9hcmQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFDQTtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9tYXJrZXRib2FyZC9tYXJrZXRib2FyZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI3BhZ2UtY29udGFpbmVye1xyXG4gICAgbWFyZ2luLWxlZnQ6IDIlO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAyJTtcclxufVxyXG4jcG9zdC1idXR0b24ge1xyXG4gICAgbWluLXdpZHRoOiA1JTtcclxufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/marketboard/marketboard.component.ts": 
@@ -1243,6 +1443,48 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")).default]
                 })
             ], NavbarComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/post-addition-form/post-addition-form.component.css": 
+        /*!*********************************************************************!*\
+          !*** ./src/app/post-addition-form/post-addition-form.component.css ***!
+          \*********************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("\r\nmat-card{\r\n    min-width: 30%;\r\n    max-width: 10px;\r\n    margin-left: 35%;\r\n}\r\n#placeholder{\r\n    height: 20%;\r\n}\r\n#submit-post{\r\n    margin-top: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC1hZGRpdGlvbi1mb3JtL3Bvc3QtYWRkaXRpb24tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9wb3N0LWFkZGl0aW9uLWZvcm0vcG9zdC1hZGRpdGlvbi1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubWF0LWNhcmR7XHJcbiAgICBtaW4td2lkdGg6IDMwJTtcclxuICAgIG1heC13aWR0aDogMTBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbn1cclxuI3BsYWNlaG9sZGVye1xyXG4gICAgaGVpZ2h0OiAyMCU7XHJcbn1cclxuI3N1Ym1pdC1wb3N0e1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn0iXX0= */");
+            /***/ 
+        }),
+        /***/ "./src/app/post-addition-form/post-addition-form.component.ts": 
+        /*!********************************************************************!*\
+          !*** ./src/app/post-addition-form/post-addition-form.component.ts ***!
+          \********************************************************************/
+        /*! exports provided: PostAdditionFormComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostAdditionFormComponent", function () { return PostAdditionFormComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var PostAdditionFormComponent = /** @class */ (function () {
+                function PostAdditionFormComponent() {
+                    this.events = [];
+                }
+                PostAdditionFormComponent.prototype.addEvent = function (type, event) {
+                    this.events.push(type + ": " + event.value);
+                };
+                PostAdditionFormComponent.prototype.ngOnInit = function () {
+                };
+                return PostAdditionFormComponent;
+            }());
+            PostAdditionFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-post-addition-form',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./post-addition-form.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-addition-form/post-addition-form.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./post-addition-form.component.css */ "./src/app/post-addition-form/post-addition-form.component.css")).default]
+                })
+            ], PostAdditionFormComponent);
             /***/ 
         }),
         /***/ "./src/app/user-homepage/user-homepage.component.css": 
@@ -1335,6 +1577,46 @@
             }*/
             /***/ 
         }),
+        /***/ "./src/app/user-register-service.service.ts": 
+        /*!**************************************************!*\
+          !*** ./src/app/user-register-service.service.ts ***!
+          \**************************************************/
+        /*! exports provided: UserRegisterServiceService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRegisterServiceService", function () { return UserRegisterServiceService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            var UserRegisterServiceService = /** @class */ (function () {
+                function UserRegisterServiceService(router, http) {
+                    this.router = router;
+                    this.http = http;
+                }
+                UserRegisterServiceService.prototype.registerUser = function (userFirstName, userLastName, userEmail, userPassword, userTelephone, userAccessLevel, userCode, userBiography) {
+                    var _this = this;
+                    var obs = this.http.post('register/', { userFirstName: userFirstName, userLastName: userLastName, userEmail: userEmail, userPassword: userPassword, userTelephone: userTelephone, userAccessLevel: userAccessLevel, userCode: userCode, userBiography: userBiography });
+                    obs.subscribe(function (response) {
+                        _this.response = response;
+                        return response;
+                    });
+                    return this.response;
+                };
+                return UserRegisterServiceService;
+            }());
+            UserRegisterServiceService.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+            ]; };
+            UserRegisterServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root'
+                })
+            ], UserRegisterServiceService);
+            /***/ 
+        }),
         /***/ "./src/app/user-register/register.component.css": 
         /*!******************************************************!*\
           !*** ./src/app/user-register/register.component.css ***!
@@ -1359,29 +1641,29 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var _user_register_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user-register-service.service */ "./src/app/user-register-service.service.ts");
             var RegisterComponent = /** @class */ (function () {
-                function RegisterComponent(router, http) {
+                function RegisterComponent(svc, router, http) {
                     this.router = router;
                     this.http = http;
                     this.containers = [0];
                     this.counter = 1;
+                    this.svc = svc;
                 }
                 RegisterComponent.prototype.ngOnInit = function () {
                 };
-                RegisterComponent.prototype.search = function () {
-                    var _this = this;
-                    var obs = this.http.post('register/', { firstName: this.userFirstName, lastName: this.userLastName, email: this.userEmail, password: this.userPassword, telephone: this.userTelephone, accessLevel: this.userAccessLevel, userCode: this.userCode, biography: this.userBiography });
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        if (_this.response == true) {
-                            alert("registration successful");
-                            _this.router.navigateByUrl('login');
-                        }
-                        else {
-                            alert("registration failed");
-                            _this.router.navigateByUrl('login');
-                        }
-                    });
+                RegisterComponent.prototype.register = function () {
+                    this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography);
+                    if (this.result == true) {
+                        alert("registration successful");
+                        this.router.navigateByUrl('login');
+                        return true;
+                    }
+                    else {
+                        alert("registration failed");
+                        this.router.navigateByUrl('login');
+                        return false;
+                    }
                 };
                 RegisterComponent.prototype.add = function () {
                     if (this.containers.length < 5) {
@@ -1403,6 +1685,7 @@
                 return RegisterComponent;
             }());
             RegisterComponent.ctorParameters = function () { return [
+                { type: _user_register_service_service__WEBPACK_IMPORTED_MODULE_4__["UserRegisterServiceService"] },
                 { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
                 { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
             ]; };
