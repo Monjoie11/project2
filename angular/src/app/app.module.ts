@@ -43,6 +43,9 @@ import {
   MatNativeDateModule
 } from '@angular/material';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {LoginServiceService} from './login-service.service'
+import { UserRegisterServiceService } from './user-register-service.service'
+import { CompanyRegisterServiceService } from './company-register-service.service'
 
 @NgModule({
   declarations: [
@@ -88,7 +91,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatNativeDateModule,
     NgxMaterialTimepickerModule
   ],
-  providers: [],
+  providers: [LoginServiceService, CompanyRegisterServiceService, UserRegisterServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

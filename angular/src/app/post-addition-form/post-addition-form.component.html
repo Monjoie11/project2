@@ -8,14 +8,8 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker></mat-datepicker>
             </mat-form-field>
-            <!--               <mat-form-field> -->
-            <!--                 <input matInput placeholder="Start Time"> -->
                <input placeholder="Start time" aria-label="12hr format" [ngxTimepicker]="default1" readonly>
             <ngx-material-timepicker #default1></ngx-material-timepicker>
-            <!--             </mat-form-field> -->
-            <!--               <mat-form-field>
-                    <input matInput placeholder="End Time">
-            </mat-form-field> -->
                <input placeholder="End time" aria-label="12hr format" [ngxTimepicker]="default2" readonly>
             <ngx-material-timepicker #default2></ngx-material-timepicker>
             <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Submit Post</button>

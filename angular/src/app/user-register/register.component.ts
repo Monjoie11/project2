@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { UserRegisterServiceService } from '../user-register-service.service'
 
 @Component({
   selector: 'app-register',
@@ -17,27 +18,27 @@ export class RegisterComponent implements OnInit {
   userAccessLevel: string;
   userCode: string;
   userBiography: string;
-  response: any;
+  result: any;
 
   public containers = [0];
   public counter: number = 1;
-  constructor(private router: Router, private http: HttpClient) { }
+  svc: UserRegisterServiceService;
+  constructor(svc: UserRegisterServiceService, private router: Router, private http: HttpClient) { 
+    this.svc = svc;
+  }
 
   ngOnInit() {
   }
 
-  search() {
-    let obs = this.http.post('register/', { firstName: this.userFirstName, lastName: this.userLastName, email: this.userEmail, password: this.userPassword, telephone: this.userTelephone, accessLevel: this.userAccessLevel, userCode: this.userCode, biography: this.userBiography })
-    obs.subscribe((response) => {
-      this.response = response;
-      if (this.response == true) {
-        alert("registration successful");
-        this.router.navigateByUrl('login');
-      } else {
-        alert("registration failed");
-        this.router.navigateByUrl('login');
-      }
-    });
+  register() {
+    this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography)
+    if (this.result == true) {
+      alert("registration successful");
+      this.router.navigateByUrl('login');
+    } else {
+      alert("registration failed");
+      this.router.navigateByUrl('login');
+    }
   }
 
   add() {

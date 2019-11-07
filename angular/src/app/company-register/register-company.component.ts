@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { CompanyRegisterServiceService } from '../company-register-service.service'
 
 @Component({
   selector: 'app-register-company',
@@ -15,27 +16,29 @@ export class RegisterCompanyComponent implements OnInit {
   companyAccessLevel: string;
   companyCode: string;
   companyBiography: string;
-  response: any;
+  result: any;
 
   public containers = [0];
   public counter : number = 1;
-  constructor(private router: Router, private http: HttpClient)  { }
+  svc: CompanyRegisterServiceService;
+  constructor(svc: CompanyRegisterServiceService, private router: Router, private http: HttpClient)  { 
+    this.svc = svc;
+  }
 
   ngOnInit() {
   }
 
-  search() {
-    let obs = this.http.post('register/', {companyName: this.companyName, email: this.companyEmail, password: this.companyPassword, telephone: this.companyWebsiteUrl, accessLevel: this.companyAccessLevel, userCode: this.companyCode, biography: this.companyBiography})
-    obs.subscribe((response) => {
-      this.response = response;
-      if (this.response == true) {
-        alert("registration successful");
-        this.router.navigateByUrl('login');
-      } else {
-        alert("registration failed");
-        this.router.navigateByUrl('login');
-      }
-    });
+  register() {
+    this.result = this.svc.registerCompany(this.companyName, this.companyEmail, this.companyPassword, this.companyWebsiteUrl, this.companyAccessLevel, this.companyCode, this.companyBiography);
+    if (this.result == true) {
+      alert("registration successful");
+      this.router.navigateByUrl('login');
+      return true;
+    } else {
+      alert("registration failed");
+      this.router.navigateByUrl('login');
+      return false;
+    }
   }
 
   add() {
