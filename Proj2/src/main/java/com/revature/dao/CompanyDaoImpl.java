@@ -74,5 +74,16 @@ public class CompanyDaoImpl implements CompanyDao {
 		return company;
 		
 	}
+
+	@Override
+	public List<Company> getCompanyByName(String companyName) {
+		
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("companyName", companyName));
+		List<Company> company = crit.list();
+		sess.close();
+		return company;
+		
+	}
 	
 }
