@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
-  response: any;
   result: any;
+  response: any;
+  length: any;
   svc: LoginServiceService;
   constructor(svc: LoginServiceService, private router: Router, private http: HttpClient) {
     this.svc = svc;
@@ -21,13 +22,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  search() {
-    this.result = this.svc.loginRequest(this.email, this.password);
-    alert(this.result);
-    if (this.result.length == 13) {
+  async search() {
+    let obs = this.http.post('login', {email: this.email, password: this.password}).toPromise();
+    await obs.then((response) => {
+      this.response = response;
+    });
+    length = Object.keys(this.response).length;
+    if (length == 10) {
       this.router.navigateByUrl('user-homepage');
       return true;
-    } else if (this.result.length == 10) {
+    } else if (length == 7) {
       this.router.navigateByUrl('company-homepage');
       return true;
     } else {
