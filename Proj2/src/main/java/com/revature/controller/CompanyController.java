@@ -113,7 +113,7 @@ public class CompanyController {
 		}
 
 		try {
-			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
+			companyService.rejectPost(postService.getPostbyId(Integer.valueOf(postID)));
 
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;

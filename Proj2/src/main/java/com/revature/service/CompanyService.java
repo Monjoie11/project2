@@ -30,12 +30,13 @@ public class CompanyService {
 	@Autowired
 	public void setPostService(PostService postService) {
 		this.postService = postService;
+	}
 	private PostDao postDao;
 
 	@Autowired
 	public void setPostDao(PostDao postDao) {
 		this.postDao = postDao;
-
+	}
 
 	public Company getCompanyByEmail(String email) {
 		return companyDao.getCompanyByEmail(email);
@@ -138,8 +139,13 @@ public class CompanyService {
 		companyDao.updateCompany(company);
 	}
 	
+	public void rejectPost( Post post) {
+		post.setStatus(Status.REJECTED);
+		postDao.updatePost(post);
+	}
 	public void addRepliedToPost( Post post) {
 		post.setStatus(Status.ACCEPTED);
 		postDao.updatePost(post);
 	}
+	
 }
