@@ -96,7 +96,18 @@ public class UserService {
 	}
 	
 	public void deletePost(User user, Post post) {
-		user.getPostedPost().remove(post);
+//		user.getPostedPost().remove(post);
+//		userDao.updateUser(user);
+		
+	}
+	
+	public void addAcceptedPost(User user, Post post) {
+		user.getPostedPost().add(post);
+		userDao.updateUser(user);
+	}
+	
+	public void deleteAcceptedPost(User user, Post post) {
+		user.getAcceptedPost().remove(post);
 		userDao.updateUser(user);
 	}
 	

@@ -38,6 +38,7 @@ public class PostDaoImpl implements PostDao {
 		} finally {
 			sess.close();
 		}
+		
 	}
 
 	@Override
@@ -123,7 +124,7 @@ public class PostDaoImpl implements PostDao {
 		List<Post> posts = null;
 		try {
 			tx = sess.beginTransaction();
-			String hql = "FROM POSTS where posting_email = :email";
+			String hql = "FROM Post where postingUser.email = :email";
 			Query query = sess.createQuery(hql);
 			query.setParameter("email", email);
 			posts = query.list();

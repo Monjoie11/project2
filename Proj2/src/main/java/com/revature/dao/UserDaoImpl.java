@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
 
-		LoggerUtil.debug(user.toString());
+		LoggerUtil.debug(user.toCustomString());
 		sess.update(user);
 		tx.commit();
 

@@ -88,5 +88,11 @@ public class LoginController {
 		return null;
 
 	}
+	
+	@GetMapping("/logout")
+	public Boolean logout(@PathVariable String email) {
+
+		return false;
+	}
 
 }

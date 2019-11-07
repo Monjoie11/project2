@@ -93,4 +93,13 @@ public class PostService {
 		
 	}
 
+
+	public void createPost(Post post) {
+		// TODO Auto-generated method stub
+		postDao.createPost(post) ;
+		LoggerUtil.debug("Post created");
+	}
+	
+	
+
 }

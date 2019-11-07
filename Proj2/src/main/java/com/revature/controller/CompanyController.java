@@ -49,6 +49,20 @@ public class CompanyController {
 		return companyService.resetAccessCode(company);
 
 	}
+	
+	@GetMapping(produces = "application/json", value = "/company-access")
+	public boolean acceptPost(@RequestBody Post post) {
+		
+		if (post == null) {
+			return false;
+		}
+		
+		
+		
+		
+		return true;
+
+	}
 
 	//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/login")
 
