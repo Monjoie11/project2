@@ -3,6 +3,7 @@
  */
 package com.revature.dao;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -82,12 +83,21 @@ public class UserDaoTest {
 	
 	@Test
 	public void testGetUserByEmail() {
-		fail("Not yet implemented");
+		String email = "testinsertuser@junit.com";
+		String password = "passwordChanged";
+		User testUser = new User();
+		testUser.setEmail(email);
+		testUser.setPassword(password);
+		User user = userDao.getUserByEmail(email);
+		//assertEquals(testUser, user);
+		assertNotNull(user);
+		
 	}
 	
 	@Test
 	public void testGetAllUsers() {
-		fail("Not yet implemented");
+		List<User> listOfUsers = userDao.getAllUsers();
+		assertThat(listOfUsers.size(), is(10));
 	}
 	
 	
