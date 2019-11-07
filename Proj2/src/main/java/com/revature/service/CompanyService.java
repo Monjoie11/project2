@@ -24,13 +24,19 @@ public class CompanyService {
 	public void setCompanyDao(CompanyDao companyDao) {
 		this.companyDao = companyDao;
 	}
+	
+	@Autowired
+	public void setPostService(PostService postService) {
+		this.postService = postService;
+	}
 
 	public Company getCompanyByEmail(String email) {
 		return companyDao.getCompanyByEmail(email);
 	}
 	
-	public Company getCompanyByName(String companyName) {
-		return companyDao.getCompanyByName(companyName).get(0);
+	public List<Company> getCompanyByName(String companyName) {
+		// assuming uniqueness in company name
+		return companyDao.getCompanyByName(companyName);
 	}
 
 	public List<Company> getAllCompanies() {

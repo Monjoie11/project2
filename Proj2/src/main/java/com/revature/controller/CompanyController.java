@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
+import com.revature.pojo.User;
 import com.revature.service.CompanyService;
 import com.revature.util.LoggerUtil;
 
@@ -104,7 +108,77 @@ public class CompanyController {
 	
 	//-----
 	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-company-by-email/{email}")
+	public ResponseEntity<Company> getCompanyByEmail(@PathVariable("email") String email, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(email == null) {
+			return null;
+		}
+		
+
+		
+		try {
+			Company company = companyService.getCompanyByEmail(email);
+			ResponseEntity<Company> responseEntity = new ResponseEntity<Company>(company, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: CompanyController FUNC: getCompanyByEmail FAILED ON: " + email);
+			return null;
+		}
+
+	}
 	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-company-by-name/{companyName}")
+	public ResponseEntity<List<Company>> getCompanyByName(@PathVariable("companyName") String companyName, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(companyName == null) {
+			return null;
+		}
+		
+
+		
+		try {
+			List<Company> listOfCompanies = companyService.getCompanyByName(companyName);
+			ResponseEntity<List<Company>> responseEntity = new ResponseEntity<List<Company>>(listOfCompanies, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: CompanyController FUNC: getCompanyByName FAILED ON: " + companyName);
+			return null;
+		}
+
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-all-companies")
+	public ResponseEntity<List<Company>> getAllCompanies(BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		try {
+			List<Company> listOfCompanies = companyService.getAllCompanies();
+			ResponseEntity<List<Company>> responseEntity = new ResponseEntity<List<Company>>(listOfCompanies, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: CompanyController FUNC: getAllCompanies FAILED ON: ?");
+			return null;
+		}
+
+	}
 	
 	
 
