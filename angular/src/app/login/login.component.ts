@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
   search() {
     this.result = this.svc.loginRequest(this.email, this.password);
+    alert(this.result);
     if (this.result.length == 13) {
       this.router.navigateByUrl('user-homepage');
       return true;
