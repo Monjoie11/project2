@@ -101,4 +101,14 @@ public class UserService {
 		
 	}
 	
+	public void addAcceptedPost(User user, Post post) {
+		user.getPostedPost().add(post);
+		userDao.updateUser(user);
+	}
+	
+	public void deleteAcceptedPost(User user, Post post) {
+		user.getAcceptedPost().remove(post);
+		userDao.updateUser(user);
+	}
+	
 }
