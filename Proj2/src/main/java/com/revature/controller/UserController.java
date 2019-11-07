@@ -22,6 +22,7 @@ import com.revature.pojo.Post;
 import com.revature.pojo.User;
 import com.revature.pojo.User.AccessLevel;
 import com.revature.pojo.User.WorkType;
+import com.revature.service.PostService;
 import com.revature.service.UserService;
 import com.revature.util.LoggerUtil;
 
@@ -30,6 +31,7 @@ import com.revature.util.LoggerUtil;
 public class UserController {
 
 	private static UserService userService;
+	private static PostService postService;
 	
 	@Autowired
 	public void setUserService(UserService userService) {
@@ -353,14 +355,15 @@ public class UserController {
 			return null;
 		}
 		
-		if(post == null) {
+		if(post == null || !postService.isPostValid(post)) {
 			return null;
 		}
 		
 		User user = (User) sess.getAttribute("user");
 		
 		try {
-			userService.addPost(user, post);
+			//userService.addPost(user, post);
+			postService.createPostIfValid(post);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
@@ -391,6 +394,58 @@ public class UserController {
 			return responseEntity;
 		} catch(Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: removeUserPost FAILED ON: " + post.toString());
+			return null;
+		}
+
+	}
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost")
+	public ResponseEntity<Boolean> addUserAcceptedPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(post == null || !postService.isPostValid(post)) {
+			return null;
+		}
+		
+		User user = (User) sess.getAttribute("user");
+		
+		try {
+			userService.addAcceptedPost(user, post);
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: " + post.toString());
+			return null;
+		}
+
+	}
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-acceptedpost")
+	public ResponseEntity<Boolean> removeUserAcceptedPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+		
+		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+			return null;
+		}
+		
+		if(post == null) {
+			return null;
+		}
+		
+		User user = (User) sess.getAttribute("user");
+		
+		try {
+			userService.deleteAcceptedPost(user, post);
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		} catch(Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: removeUserAcceptedPost FAILED ON: " + post.toString());
 			return null;
 		}
 
