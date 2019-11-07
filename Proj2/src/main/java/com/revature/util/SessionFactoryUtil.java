@@ -12,9 +12,9 @@ public class SessionFactoryUtil {
 	static {
 		Configuration configuration = new Configuration().configure();
 		configuration.setProperty("hibernate.connection.url",
-				"jdbc:postgresql://" + System.getenv("SHIFT_SHARE_URL") + ":5432/postgres?");
-		configuration.setProperty("hibernate.connection.username", System.getenv("SHIFT_SHARE_USER"));
-		configuration.setProperty("hibernate.connection.password", System.getenv("SHIFT_SHARE_PASS"));
+				"jdbc:postgresql://" + "shiftshare.chpjdv8jgvym.us-east-1.rds.amazonaws.com" + ":5432/postgres?");
+		configuration.setProperty("hibernate.connection.username", "postgres");
+		configuration.setProperty("hibernate.connection.password", "theateam!");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		sf = (SessionFactory) configuration.buildSessionFactory(serviceRegistry);
