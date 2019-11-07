@@ -31,8 +31,8 @@ public class Post {
 	@Column(name = "STATUS")
 	private Status status;
 
-	@Column(name = "POSTED_TIME")
-	private String timeCreated;
+	@Column(name = "SHIFT_DATE")
+	private String shiftDate;
 
 	@Column(name = "START_TIME")
 	private String startTime;
@@ -77,11 +77,11 @@ public class Post {
 	}
 
 	public String getTimeCreated() {
-		return timeCreated;
+		return shiftDate;
 	}
 
 	public void setTimeCreated(String timeCreated) {
-		this.timeCreated = timeCreated;
+		this.shiftDate = timeCreated;
 	}
 
 	public String getStartTime() {
@@ -130,7 +130,7 @@ public class Post {
 		this.postId = postId;
 		this.content = content;
 		this.status = status;
-		this.timeCreated = timeCreated;
+		this.shiftDate = timeCreated;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.postingUser = postingUser;
@@ -161,7 +161,7 @@ public class Post {
 		result = prime * result + ((referencedCompany == null) ? 0 : referencedCompany.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((timeCreated == null) ? 0 : timeCreated.hashCode());
+		result = prime * result + ((shiftDate == null) ? 0 : shiftDate.hashCode());
 		return result;
 	}
 
@@ -208,10 +208,10 @@ public class Post {
 			return false;
 		if (status != other.status)
 			return false;
-		if (timeCreated == null) {
-			if (other.timeCreated != null)
+		if (shiftDate == null) {
+			if (other.shiftDate != null)
 				return false;
-		} else if (!timeCreated.equals(other.timeCreated))
+		} else if (!shiftDate.equals(other.shiftDate))
 			return false;
 		return true;
 	}
@@ -219,13 +219,13 @@ public class Post {
 	
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + timeCreated
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + shiftDate
 				+ ", startTime=" + startTime + ", endTime=" + endTime + ", postingUser=" + postingUser
 				+ ", acceptingUser=" + acceptingUser + ", referencedCompany=" + referencedCompany + "]";
 	}
 
 	public String toCustomString() {
-		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + timeCreated
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + shiftDate
 				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 

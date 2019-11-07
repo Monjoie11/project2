@@ -32,16 +32,23 @@ public class UserController {
 
 	private static UserService userService;
 	private static PostService postService;
-	
+
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+
+	@Autowired
+	public void setPostService(PostService postService) {
+		this.postService = postService;
+	}
+
 //fine
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/register-user")
-	public ResponseEntity<Boolean> registerUserPost(@RequestBody User user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+	public ResponseEntity<Boolean> registerUserPost(@RequestBody User user, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
 		Object o = sess.getAttribute("user");
-		if(o!= null) {
+		if (o != null) {
 			LoggerUtil.debug("Already Logged in");
 			return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
 		}
@@ -50,18 +57,18 @@ public class UserController {
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
+
 		User existingUser = userService.getUserByEmail(user.getEmail());
-		if(existingUser == null) {
+		if (existingUser == null) {
 			LoggerUtil.debug(user.toString());
 			userService.registerUser(user);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		}
-		
+
 		ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
 		return responseEntity;
-		
+
 	}
 
 //	@PutMapping( produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-email/{email}")
@@ -110,27 +117,28 @@ public class UserController {
 //		}
 //
 //	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-lastname/{lastName}")
-	public ResponseEntity<Boolean> updateUserLastName(@PathVariable("lastName") String lastName, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserLastName(@PathVariable("lastName") String lastName,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(lastName == null) {
+
+		if (lastName == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateLastName(user, lastName);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: updateLastName FAILED ON: " + lastName);
 			return null;
 		}
@@ -138,359 +146,365 @@ public class UserController {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-phonenumber/{phoneNumber}")
-	public ResponseEntity<Boolean> updateUserPhoneNumber(@PathVariable("phoneNumber") String phoneNumber, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserPhoneNumber(@PathVariable("phoneNumber") String phoneNumber,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(phoneNumber == null) {
+
+		if (phoneNumber == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updatePhoneNumber(user, phoneNumber);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: updateUserPhoneNumber FAILED ON: " + phoneNumber);
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-rating/{rating}")
-	public ResponseEntity<Boolean> updateUserRating(@PathVariable("rating") double rating, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserRating(@PathVariable("rating") double rating, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(rating < 0) {
+
+		if (rating < 0) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateRating(user, rating);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: updateUserRating FAILED ON: " + rating);
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-accesslevel/{accessLevel}")
-	public ResponseEntity<Boolean> updateUserAccessLevel(@PathVariable("accessLevel") String s, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserAccessLevel(@PathVariable("accessLevel") String s,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(s == null) {
+
+		if (s == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateAccessLevel(user, AccessLevel.valueOf(s));
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("invalid enum type for access level in userController: " + s);
 			return null;
 		}
-		
+
 	}
 
-	@PutMapping( produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-expertise/{workType}")
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-expertise/{workType}")
 	public ResponseEntity<Boolean> updateUserExpertise(@PathVariable("workType") String s, HttpSession sess) {
-		
+
 		LoggerUtil.debug("workType: " + s);
-		if(s == null) {
+		if (s == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateWorkType(user, WorkType.valueOf(s));
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("invalid enum type for workType in userController: " + s);
 			return null;
 		}
-		
+
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-bio/{biography}")
-	public ResponseEntity<Boolean> updateUserBiography(@PathVariable("biography") String biography, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserBiography(@PathVariable("biography") String biography,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(biography == null) {
+
+		if (biography == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateBiography(user, biography);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: updateUserBiography FAILED ON: " + biography);
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update-user-resume/{resume}")
-	public ResponseEntity<Boolean> updateUserResume(@PathVariable("resume") String resume, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> updateUserResume(@PathVariable("resume") String resume, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(resume == null) {
+
+		if (resume == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.updateResume(user, resume);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: updateUserResume FAILED ON: " + resume);
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-companyaffiliation")
-	public ResponseEntity<Boolean> addUserCompanyAffilation(@RequestBody Company company, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> addUserCompanyAffilation(@RequestBody Company company, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(company == null) {
+
+		if (company == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.addCompanyAffilation(user, company);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: addUserCompanyAffilation FAILED ON: " + company.toString());
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-companyaffiliation")
-	public ResponseEntity<Boolean> removeUserCompanyAffilation(@RequestBody Company company, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> removeUserCompanyAffilation(@RequestBody Company company,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(company == null) {
+
+		if (company == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.removeCompanyAffilation(user, company);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: removeUserCompanyAffilation FAILED ON: " + company.toString());
+		} catch (Exception e) {
+			LoggerUtil
+					.error("CLASS: UserController FUNC: removeUserCompanyAffilation FAILED ON: " + company.toString());
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-post")
-	public ResponseEntity<Boolean> addUserPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> addUserPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap,
+			HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(post == null || !postService.isPostValid(post)) {
+
+		if (post == null || !postService.isPostValid(post)) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
-			//userService.addPost(user, post);
+			// userService.addPost(user, post);
 			postService.createPostIfValid(post);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: addUserPost FAILED ON: " + post.toString());
 			return null;
 		}
 
 	}
 
-	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-post")
-	public ResponseEntity<Boolean> removeUserPost(@RequestBody Post post, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> removeUserPost(@RequestBody Post post, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(post == null) {
+
+		if (post == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.deletePost(user, post);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: removeUserPost FAILED ON: " + post.toString());
 			return null;
 		}
 
 	}
-	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost/{postID}")
-	public ResponseEntity<Boolean> addUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
-		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> replyToPost(@PathVariable String postID, HttpSession sess) {
+		LoggerUtil.debug(("User accepting postId: " + postID));
+		if (postID == null) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
 			return null;
 		}
-		
-		if(postID == null || !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))) {
-			return null;
-		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
-			userService.addAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
+
+			userService.updatePostToRepliedTo(user, postService.getPostbyId(Integer.valueOf(postID)));
+
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: " + postService.getPostbyId(Integer.valueOf(postID)).toString());
+		} catch (Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: "
+					+ postService.getPostbyId(Integer.valueOf(postID)).toString());
 			return null;
 		}
 
 	}
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/remove-user-acceptedpost/{postID}")
-	public ResponseEntity<Boolean> removeUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<Boolean> removeUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(postID == null) {
+
+		if (postID == null) {
 			return null;
 		}
-		
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
 			userService.deleteAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
-			LoggerUtil.error("CLASS: UserController FUNC: removeUserAcceptedPost FAILED ON: " + postService.getPostbyId(Integer.valueOf(postID)).toString());
+		} catch (Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: removeUserAcceptedPost FAILED ON: "
+					+ postService.getPostbyId(Integer.valueOf(postID)).toString());
 			return null;
 		}
 
 	}
-	
+
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-user-by-email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email, BindingResult bindingResult,
+			ModelMap modelMap, HttpSession sess) {
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
-		if(email == null) {
+
+		if (email == null) {
 			return null;
 		}
-		
 
-		
 		try {
 			User user = userService.getUserByEmail(email);
 			ResponseEntity<User> responseEntity = new ResponseEntity<User>(user, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: getUserByEmail FAILED ON: " + email);
 			return null;
 		}
 
 	}
-	
+
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/get-all-user")
 	public ResponseEntity<List<User>> getAllUser(BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
+
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
 			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
 			return null;
 		}
-		
+
 		try {
 			List<User> listOfUsers = userService.getAllUsers();
 			ResponseEntity<List<User>> responseEntity = new ResponseEntity<List<User>>(listOfUsers, HttpStatus.OK);
 			return responseEntity;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			LoggerUtil.error("CLASS: UserController FUNC: getAllUser FAILED ON: ?");
 			return null;
 		}
 
 	}
-	
-	
+
 }

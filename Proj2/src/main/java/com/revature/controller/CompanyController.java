@@ -13,13 +13,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.Company;
 import com.revature.pojo.Post;
 import com.revature.pojo.User;
+
 import com.revature.service.CompanyService;
+import com.revature.service.PostService;
+import com.revature.service.UserService;
 import com.revature.util.LoggerUtil;
 
 @RestController
@@ -27,9 +31,16 @@ public class CompanyController {
 
 	private static CompanyService companyService;
 
+	private static PostService postService;
+
 	@Autowired
 	public void setCompanyService(CompanyService companyService) {
 		this.companyService = companyService;
+	}
+
+	@Autowired
+	public void setPostService(PostService postService) {
+		this.postService = postService;
 	}
 
 	@PostMapping(consumes = "application/json", produces = "application/json", value = "/register-company")
@@ -53,37 +64,64 @@ public class CompanyController {
 		return companyService.resetAccessCode(company);
 
 	}
-	
-	@GetMapping(produces = "application/json", value = "/company-access")
-	public boolean acceptPost(@RequestBody Post post) {
-		
-		if (post == null) {
-			return false;
-		}
-		
-		
-		
-		
-		return true;
 
-	}
-
-	//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/login")
+	// @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+	// MediaType.APPLICATION_JSON_VALUE, value = "/login")
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/validate-company-access")
-	public ResponseEntity<Company> validateCompanyAccessCode(@RequestBody Company c, ModelMap modelMap, HttpSession sess) {
+	public ResponseEntity<Company> validateCompanyAccessCode(@RequestBody Company c, ModelMap modelMap,
+			HttpSession sess) {
 		if (c == null) {
 			return null;
 		}
 		LoggerUtil.trace(c.toString());
 
-		LoggerUtil.trace("RECEIVED CODE: "  + c.getAccessCode());
+		LoggerUtil.trace("RECEIVED CODE: " + c.getAccessCode());
 		Company company = companyService.getCompanyByAccessCode(c.getAccessCode());
 		LoggerUtil.debug(company.toCustomString());
 
-	
 		ResponseEntity<Company> re = new ResponseEntity<Company>(company, HttpStatus.OK);
 		return re;
+
+	}
+
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-company-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> acceptPostAsCompany(@PathVariable String postID) {
+		LoggerUtil.debug(("Company accepting postId: " + postID));
+		if (postID == null) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
+			return null;
+		}
+
+		try {
+			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
+
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		} catch (Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: "
+					+ postService.getPostbyId(Integer.valueOf(postID)).toString());
+			return null;
+		}
+
+	}
+
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/reject-company-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> rejectPostAsCompany(@PathVariable String postID) {
+		LoggerUtil.debug(("Company accepting postId: " + postID));
+		if (postID == null) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
+			return null;
+		}
+
+		try {
+			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
+
+			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+			return responseEntity;
+		} catch (Exception e) {
+			LoggerUtil.error("CLASS: UserController FUNC: addUserAcceptedPost FAILED ON: "
+					+ postService.getPostbyId(Integer.valueOf(postID)).toString());
+			return null;
+		}
 
 	}
 	
@@ -181,5 +219,4 @@ public class CompanyController {
 	}
 	
 	
-
 }

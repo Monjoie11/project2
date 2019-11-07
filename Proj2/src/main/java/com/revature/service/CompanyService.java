@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.dao.CompanyDao;
+import com.revature.dao.PostDao;
 import com.revature.pojo.Company;
 import com.revature.pojo.Company.AccessLevel;
 import com.revature.pojo.Post;
 import com.revature.pojo.User;
 import com.revature.pojo.Post.Status;
 import com.revature.pojo.User.WorkType;
+
 
 @Service
 public class CompanyService {
@@ -28,7 +30,12 @@ public class CompanyService {
 	@Autowired
 	public void setPostService(PostService postService) {
 		this.postService = postService;
-	}
+	private PostDao postDao;
+
+	@Autowired
+	public void setPostDao(PostDao postDao) {
+		this.postDao = postDao;
+
 
 	public Company getCompanyByEmail(String email) {
 		return companyDao.getCompanyByEmail(email);
@@ -131,4 +138,8 @@ public class CompanyService {
 		companyDao.updateCompany(company);
 	}
 	
+	public void addRepliedToPost( Post post) {
+		post.setStatus(Status.ACCEPTED);
+		postDao.updatePost(post);
+	}
 }
