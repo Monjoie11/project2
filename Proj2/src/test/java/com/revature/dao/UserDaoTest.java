@@ -52,7 +52,7 @@ public class UserDaoTest {
 	}
 	
 	@Test
-	public void testDB() {
+	public void testUpdateRating() {
 		
 	}
 	

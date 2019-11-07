@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,6 +21,7 @@ public class Post {
 	
 	@Id
 	@Column(name = "POST_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int postId;
 
 	@Column(name = "POST_CONTENT")
@@ -39,17 +42,14 @@ public class Post {
 
 	@ManyToOne
 	@JoinColumn(name = "POSTING_EMAIL")
-	@JsonIgnore
 	private User postingUser;
 
 	@ManyToOne
 	@JoinColumn(name = "ACCEPTING_EMAIL")
-	@JsonIgnore
 	private User acceptingUser;
 
 	@ManyToOne
 	@JoinColumn(name = "REFERENCED_COMPANY")
-	@JsonIgnore
 	private Company referencedCompany;
 
 	public int getPostId() {
@@ -230,7 +230,7 @@ public class Post {
 	}
 
 	public static enum Status {
-		PENDING, ACCEPTED, COMPLETED, REJECTED, REPLIEDTO
+		PENDING, REPLIEDTO, ACCEPTED, COMPLETED, REJECTED
 	}
 
 }

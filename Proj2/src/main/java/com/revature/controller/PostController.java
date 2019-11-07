@@ -28,16 +28,18 @@ public class PostController {
 		this.postService = postService;
 	}
 
-	@PostMapping("/post/create")
+	@PostMapping("/post/create")//Issue persisting user's email to the database
 	public Boolean createPost(@RequestBody Post post, HttpSession sess) {
 		if (post == null) {
 			return false;
 		}
 		LoggerUtil.debug("Creating a post");
 		User user = ((User) sess.getAttribute("user"));
+		String email = user.getEmail();
+		
 		post.setPostingUser(user);
-		// postService.createPostIfValid(post);
-
+		//post.setReferencedCompany(null);		//REQUEST SHOULD HAVE REFERENCEDCOMPANY FIELD FILLED (DROPDOWN)
+		postService.createPost(post);
 		return true;
 	}
 
@@ -72,8 +74,24 @@ public class PostController {
 		return companyPosts;
 	}
 
-	@GetMapping("/user/posts")
+	@GetMapping("/user/created-posts")
 	public List<Post> getAllUserPosts(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			LoggerUtil.debug("Invalid user!");
+
+			return null;
+		}
+
+		String email = user.getEmail();
+		LoggerUtil.debug("Detected email: " + email);
+		List<Post> userPosts = postService.getAllPostsByUserEmail(email);
+
+		return userPosts;
+	}
+	
+	@GetMapping("/user/accepted-posts")
+	public List<Post> getAllUserAcceptedPosts(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			LoggerUtil.debug("Invalid user!");

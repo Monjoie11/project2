@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.pojo.Company;
+import com.revature.pojo.Post;
 import com.revature.service.CompanyService;
 import com.revature.util.LoggerUtil;
 
@@ -46,6 +46,20 @@ public class CompanyController {
 		}
 
 		return companyService.resetAccessCode(company);
+
+	}
+	
+	@GetMapping(produces = "application/json", value = "/company-access")
+	public boolean acceptPost(@RequestBody Post post) {
+		
+		if (post == null) {
+			return false;
+		}
+		
+		
+		
+		
+		return true;
 
 	}
 
