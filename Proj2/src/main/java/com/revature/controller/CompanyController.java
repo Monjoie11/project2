@@ -49,7 +49,6 @@ public class CompanyController {
 		if (company == null) {
 			return false;
 		}
-
 		companyService.registerCompany(company);
 
 		return true;
