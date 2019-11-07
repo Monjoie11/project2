@@ -35,9 +35,11 @@ export class RegisterComponent implements OnInit {
     if (this.result == true) {
       alert("registration successful");
       this.router.navigateByUrl('login');
+      return true;
     } else {
       alert("registration failed");
       this.router.navigateByUrl('login');
+      return false;
     }
   }
 
