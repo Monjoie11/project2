@@ -30,7 +30,7 @@ public class CompanyService {
 	}
 	
 	public Company getCompanyByName(String companyName) {
-		return companyDao.getCompanyByName(companyName);
+		return companyDao.getCompanyByName(companyName).get(0);
 	}
 
 	public List<Company> getAllCompanies() {
