@@ -394,23 +394,22 @@ public class UserController {
 
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost/{postID}")
-	public ResponseEntity<Boolean> addUserAcceptedPost(@PathVariable String postID, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
-		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			LoggerUtil.error(bindingResult.getAllErrors().get(0).getDefaultMessage());
+	@PutMapping( produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-user-acceptedpost/{postID}")
+	public ResponseEntity<Boolean> addUserAcceptedPost(@PathVariable String postID, HttpSession sess) {
+		LoggerUtil.debug(("postId: " + postID));
+		if(postID == null ) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
 			return null;
 		}
-		
-		if(postID == null || !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))) {
-			return null;
-		}
-		
+		LoggerUtil.debug("check1");
+
 		User user = (User) sess.getAttribute("user");
-		
+
 		try {
+			LoggerUtil.debug("check2");
+
 			userService.addAcceptedPost(user, postService.getPostbyId(Integer.valueOf(postID)));
+			LoggerUtil.debug("check3");
+
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;
 		} catch(Exception e) {
