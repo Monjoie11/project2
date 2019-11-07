@@ -109,9 +109,14 @@ public class UserService {
 
 	}
 
-	public void addAcceptedPost(User user, Post post) {
+	public void updatePostToRepliedTo(User user, Post post) {
 		post.setAcceptingUser(user);
 		post.setStatus(Status.REPLIEDTO);
+		postDao.updatePost(post);
+	}
+	
+	public void addRepliedToPost( Post post) {
+		post.setStatus(Status.ACCEPTED);
 		postDao.updatePost(post);
 	}
 
