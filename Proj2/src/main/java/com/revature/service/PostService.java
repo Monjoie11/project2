@@ -65,31 +65,37 @@ public class PostService {
 		return checkInOrder;
 	}
 	
-	public Boolean isPostValid( Post post) {	//check if this post can be added to the user's list of posts
-		boolean check = true;
-		String email = post.getPostingUser().getEmail();
-		List<Post> posts = postDao.getPostsByUserEmail(email);
-		for(Post p : posts) {
-			if(doPostsIntersect(post, p)) {
-				LoggerUtil.debug("post : " + post.getPostId() + " overlapped with incoming post: " + post.getPostId());
-				check = false;
-			}
-		}
-		return check;
+//	public Boolean isPostValid( Post post) {	//check if this post can be added to the user's list of posts
+//		boolean check = true;
+//		String email = post.getPostingUser().getEmail();
+//		List<Post> posts = postDao.getPostsByUserEmail(email);
+//		for(Post p : posts) {
+//			if(doPostsIntersect(post, p)) {
+//				LoggerUtil.debug("post : " + post.getPostId() + " overlapped with incoming post: " + post.getPostId());
+//				check = false;
+//			}
+//		}
+//		return check;
+//	}
+	
+//	public Boolean createPostIfValid(Post post) {
+//		if(!isPostValid(post)) {
+//			return false;
+//		}
+//		postDao.createPost(post);
+//		return true;
+//	}
+
+
+	public List<Post> getPostsByPostingUser(String email) {
+		// TODO Auto-generated method stub
+		return postDao.getPostsByPostingUserEmail(email);
+		
 	}
 	
-	public Boolean createPostIfValid(Post post) {
-		if(!isPostValid(post)) {
-			return false;
-		}
-		postDao.createPost(post);
-		return true;
-	}
-
-
-	public List<Post> getAllPostsByUserEmail(String email) {
+	public List<Post> getPostsByAcceptingUser(String email) {
 		// TODO Auto-generated method stub
-		return postDao.getPostsByUserEmail(email);
+		return postDao.getPostsByAcceptingUserEmail(email);
 		
 	}
 

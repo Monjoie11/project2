@@ -118,13 +118,35 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public List<Post> getPostsByUserEmail(String email) {
+	public List<Post> getPostsByPostingUserEmail(String email) {
 		Session sess = sf.openSession();
 		Transaction tx = null;
 		List<Post> posts = null;
 		try {
 			tx = sess.beginTransaction();
 			String hql = "FROM Post where postingUser.email = :email";
+			Query query = sess.createQuery(hql);
+			query.setParameter("email", email);
+			posts = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		return posts;
+	}
+	
+	@Override
+	public List<Post> getPostsByAcceptingUserEmail(String email) {
+		Session sess = sf.openSession();
+		Transaction tx = null;
+		List<Post> posts = null;
+		try {
+			tx = sess.beginTransaction();
+			String hql = "FROM Post where acceptingUser.email = :email";
 			Query query = sess.createQuery(hql);
 			query.setParameter("email", email);
 			posts = query.list();

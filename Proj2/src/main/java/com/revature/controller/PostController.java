@@ -95,7 +95,7 @@ public class PostController {
 
 		String email = user.getEmail();
 		LoggerUtil.debug("Detected email: " + email);
-		List<Post> userPosts = postService.getAllPostsByUserEmail(email);
+		List<Post> userPosts = postService.getPostsByPostingUser(email);
 
 		return userPosts;
 	}
@@ -111,7 +111,7 @@ public class PostController {
 
 		String email = user.getEmail();
 		LoggerUtil.debug("Detected email: " + email);
-		List<Post> userPosts = postService.getAllPostsByUserEmail(email);
+		List<Post> userPosts = postService.getPostsByAcceptingUser(email);
 
 		return userPosts;
 	}
