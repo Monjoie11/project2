@@ -29,7 +29,12 @@ export class TabbedTableComponent2 implements OnInit {
 
       for (var key of Object.keys(result2)) {
        //let model = {postId: result2['results'][rowCounter]['name']}
-       let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+       let model;
+       if(result2['acceptingUser'] == null){
+        model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+       } else {
+        model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+       }
        this.dataSource.push(model); 
        rowCounter++;
       }
@@ -70,83 +75,95 @@ export class TabbedTableComponent2 implements OnInit {
   yourFn($event){
     this.dataSource = [];
     if($event.index === 0){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/company/posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
+        for (var key of Object.keys(result2)) {
+         //let model = {postId: result2['results'][rowCounter]['name']}
+         let model;
+         if(result2['acceptingUser'] == null){
+          model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+         } else {
+          model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
          }
+         this.dataSource.push(model); 
+         rowCounter++;
         }
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 1){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/company/posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("B")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+         //let model = {postId: result2['results'][rowCounter]['name']}
+         let model;
+         if(result2['status'] === 'REPLIEDTO'){
+          if(result2['acceptingUser'] == null){
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          } else {
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          }
+        }
+         this.dataSource.push(model); 
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 2){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/company/posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("C")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+         //let model = {postId: result2['results'][rowCounter]['name']}
+         let model;
+         if(result2['status'] === 'ACCEPTED'){
+          if(result2['acceptingUser'] == null){
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          } else {
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          }
+        }
+         this.dataSource.push(model); 
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 3){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/company/posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("V")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+         //let model = {postId: result2['results'][rowCounter]['name']}
+         let model;
+         if(result2['status'] === 'REJECTED'){
+          if(result2['acceptingUser'] == null){
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          } else {
+            model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
+          }
+        }
+         this.dataSource.push(model); 
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });
