@@ -8,10 +8,10 @@ import { Router, Data } from "@angular/router";
   styleUrls: ['./tabbed-table.component.css']
 })
 export class TabbedTableComponent2 implements OnInit {
-  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'accept-button', 'deny-button'];
-  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'accept-button', 'deny-button'];
+  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'companyRating'];
   dataSource: any[] = [];
   response: any;
   constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) {
@@ -20,20 +20,18 @@ export class TabbedTableComponent2 implements OnInit {
    }
 
   ngOnInit() {
-    let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+    let obs = this.http.get('/company/posts');
     obs.subscribe((response) => {
       this.response = response;
       var result = JSON.stringify(this.response);
       var result2 = JSON.parse(result);
       var rowCounter: number = 0;
 
-      for (var key of Object.keys(result2['results'])) {
-       let model = {postId: result2['results'][rowCounter]['name']}
+      for (var key of Object.keys(result2)) {
+       //let model = {postId: result2['results'][rowCounter]['name']}
+       let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']};
        this.dataSource.push(model); 
        rowCounter++;
-       if(rowCounter == 20){ //comment this out later
-         break;
-       }
       }
       this.dataSource = [...this.dataSource];
     });

@@ -10,6 +10,7 @@ export interface Element {
   postedTime: string;
   startTime: string;
   endTime: string;
+  shiftDate: string;
 }
 
 @Component({
@@ -18,10 +19,10 @@ export interface Element {
   styleUrls: ['./tabbed-table.component.css']
 })
 export class TabbedTableComponent implements OnInit {
-  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'userRating'];
+  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'userRating'];
   dataSource: any[] = [];
   response: any;
   constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) {
@@ -30,105 +31,92 @@ export class TabbedTableComponent implements OnInit {
    }
 
   ngOnInit() {
-    let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+    let obs = this.http.get('/user/created-posts');
     obs.subscribe((response) => {
       this.response = response;
       var result = JSON.stringify(this.response);
       var result2 = JSON.parse(result);
       var rowCounter: number = 0;
 
-      for (var key of Object.keys(result2['results'])) {
-       let model = {postId: result2['results'][rowCounter]['name']}
+      for (var key of Object.keys(result2)) {
+       let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']}
        this.dataSource.push(model); 
        rowCounter++;
-       if(rowCounter == 20){ //comment this out later
-         break;
-       }
       }
+
       this.dataSource = [...this.dataSource];
     });
   }
 
   yourFn($event){
-    this.dataSource = [];
+    //this.dataSource = [];
     if($event.index === 0){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/user/created-posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
+        for (var key of Object.keys(result2)) {
+         let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']}
+         this.dataSource.push(model); 
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
+  
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 1){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/user/accepted-posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("B")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+          if(result2['status'] === 'REPLIEDTO'){
+            let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']}
+            this.dataSource.push(model); 
+          }
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 2){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/user/accepted-posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("C")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+          if(result2['status'] === 'ACCEPTED'){
+            let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']}
+            this.dataSource.push(model); 
+          }
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });
     } 
     if($event.index === 3){
-      let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+      let obs = this.http.get('/user/accepted-posts');
       obs.subscribe((response) => {
         this.response = response;
         var result = JSON.stringify(this.response);
         var result2 = JSON.parse(result);
         var rowCounter: number = 0;
   
-        for (var key of Object.keys(result2['results'])) {
-         if(result2['results'][rowCounter]['name'].startsWith("V")){
-          let model = {postId: result2['results'][rowCounter]['name']}
-          this.dataSource.push(model); 
-         }
+        for (var key of Object.keys(result2)) {
+          if(result2['status'] === 'COMPLETED'){
+            let model = {postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime']}
+            this.dataSource.push(model); 
+          }
          rowCounter++;
-         if(rowCounter == 20){ //comment this out later
-           break;
-         }
         }
         this.dataSource = [...this.dataSource];
       });

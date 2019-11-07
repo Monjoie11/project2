@@ -15,7 +15,7 @@ export class CompanyRegisterServiceService {
   companyBiography: string;
   response: any;
   registerCompany(companyName, companyEmail, companyPassword, companyWebsiteUrl, companyAccessLevel, companyCode, companyBiography) {
-    let obs = this.http.post('register/', {companyName: companyName, companyEmail: companyEmail, companyPassword: companyPassword, companyWebsiteUrl: companyWebsiteUrl, companyAccessLevel: companyAccessLevel, companyCode: companyCode, companyBiography: companyBiography})
+    let obs = this.http.post('register-company', {companyName: companyName, companyEmail: companyEmail, password: companyPassword, companyLink: companyWebsiteUrl, accessLevel: companyAccessLevel, accessCode: companyCode, companyBiography: companyBiography})
     obs.subscribe((response) => {
       this.response = response;
       return response;
