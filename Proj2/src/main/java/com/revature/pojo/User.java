@@ -198,6 +198,10 @@ public class User {
 		this.acceptedPost = acceptedPost;
 	}
 
+	public Set<Post> getAcceptedPost() {
+		return acceptedPost;
+	}
+
 	public User() {
 		super();
 	}
