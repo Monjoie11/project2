@@ -85,7 +85,7 @@ public class CompanyController {
 
 	}
 
-	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/add-company-acceptedpost/{postID}")
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/accept-company-acceptedpost/{postID}")
 	public ResponseEntity<Boolean> acceptPostAsCompany(@PathVariable String postID) {
 		LoggerUtil.debug(("Company accepting postId: " + postID));
 		if (postID == null) { // !postService.isPostValid(postService.getPostbyId(Integer.valueOf(postID)))
@@ -113,7 +113,7 @@ public class CompanyController {
 		}
 
 		try {
-			companyService.addRepliedToPost(postService.getPostbyId(Integer.valueOf(postID)));
+			companyService.rejectPost(postService.getPostbyId(Integer.valueOf(postID)));
 
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 			return responseEntity;

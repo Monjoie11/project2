@@ -76,12 +76,14 @@ public class Post {
 		this.status = status;
 	}
 
-	public String getTimeCreated() {
+
+
+	public String getShiftDate() {
 		return shiftDate;
 	}
 
-	public void setTimeCreated(String timeCreated) {
-		this.shiftDate = timeCreated;
+	public void setShiftDate(String shiftDate) {
+		this.shiftDate = shiftDate;
 	}
 
 	public String getStartTime() {
@@ -124,31 +126,13 @@ public class Post {
 		this.referencedCompany = referencedCompany;
 	}
 
-	public Post(int postId, String content, Status status, String timeCreated, String startTime, String endTime,
-			User postingUser, User acceptingUser, Company referencedCompany) {
-		super();
-		this.postId = postId;
-		this.content = content;
-		this.status = status;
-		this.shiftDate = timeCreated;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.postingUser = postingUser;
-		this.acceptingUser = acceptingUser;
-		this.referencedCompany = referencedCompany;
-	}
-	
-	
 	public Post(int postId) {
 		super();
 		this.postId = postId;
 	}
 
 	
-	public Post() {
-		super();
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -159,9 +143,9 @@ public class Post {
 		result = prime * result + postId;
 		result = prime * result + ((postingUser == null) ? 0 : postingUser.hashCode());
 		result = prime * result + ((referencedCompany == null) ? 0 : referencedCompany.hashCode());
+		result = prime * result + ((shiftDate == null) ? 0 : shiftDate.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((shiftDate == null) ? 0 : shiftDate.hashCode());
 		return result;
 	}
 
@@ -201,6 +185,11 @@ public class Post {
 				return false;
 		} else if (!referencedCompany.equals(other.referencedCompany))
 			return false;
+		if (shiftDate == null) {
+			if (other.shiftDate != null)
+				return false;
+		} else if (!shiftDate.equals(other.shiftDate))
+			return false;
 		if (startTime == null) {
 			if (other.startTime != null)
 				return false;
@@ -208,24 +197,29 @@ public class Post {
 			return false;
 		if (status != other.status)
 			return false;
-		if (shiftDate == null) {
-			if (other.shiftDate != null)
-				return false;
-		} else if (!shiftDate.equals(other.shiftDate))
-			return false;
 		return true;
 	}
 
-	
-	@Override
-	public String toString() {
-		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + shiftDate
-				+ ", startTime=" + startTime + ", endTime=" + endTime + ", postingUser=" + postingUser
-				+ ", acceptingUser=" + acceptingUser + ", referencedCompany=" + referencedCompany + "]";
+	public Post() {
+		super();
+	}
+
+	public Post(int postId, String content, Status status, String shiftDate, String startTime, String endTime,
+			User postingUser, User acceptingUser, Company referencedCompany) {
+		super();
+		this.postId = postId;
+		this.content = content;
+		this.status = status;
+		this.shiftDate = shiftDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.postingUser = postingUser;
+		this.acceptingUser = acceptingUser;
+		this.referencedCompany = referencedCompany;
 	}
 
 	public String toCustomString() {
-		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", timeCreated=" + shiftDate
+		return "Post [postId=" + postId + ", content=" + content + ", status=" + status + ", shiftDate=" + shiftDate
 				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 
