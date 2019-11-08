@@ -26,7 +26,7 @@ export class PostAdditionFormComponent implements OnInit {
 
   async postEvent(){
     //this.result = this.svc.addPost(this.shiftDate, this.startTime, this.endTime, this.companyName);
-    let obs = this.http.post('addPost/', {shiftDate: this.shiftDate, startTime: this.startTime, EndTime: this.endTime, companyName: this.companyName}).toPromise()
+    let obs = this.http.post('addPost', {shiftDate: this.shiftDate, startTime: this.startTime, EndTime: this.endTime, companyName: this.companyName}).toPromise()
     await obs.then((response) => {
       this.result = response;
     });
@@ -35,6 +35,7 @@ export class PostAdditionFormComponent implements OnInit {
     } else {
       alert("Post failed")
     }
+    this.router.navigateByUrl('marketboard');
 
   }
 
