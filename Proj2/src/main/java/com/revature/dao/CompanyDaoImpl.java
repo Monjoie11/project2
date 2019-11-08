@@ -96,9 +96,10 @@ public class CompanyDaoImpl implements CompanyDao {
 		
 		try {
 			Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("companyEmail", email));
-			List<Company> company = crit.list();
+			List<Company> listOfCompanies = crit.list();
 			tx.commit();
-		return company.get(0);
+			if(listOfCompanies.size() <= 0 || listOfCompanies == null) { return null; }
+		return listOfCompanies.get(0);
 		} catch (HibernateException e) {
 			tx.rollback();
 			LoggerUtil.error("CompanyDaoImpl, getCompanyByEmail, HibernateException");
@@ -134,9 +135,9 @@ public class CompanyDaoImpl implements CompanyDao {
 		
 		try {
 			Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("accessCode", accessCode));
-			List<Company> company = crit.list();
+			List<Company> listOfCompanies = crit.list();
 		
-			return company;
+			return listOfCompanies;
 		} catch (HibernateException e) {
 			LoggerUtil.error("CompanyDaoImpl, getCompanyByAccessCode, HibernateException");
 			e.printStackTrace();
@@ -155,8 +156,8 @@ public class CompanyDaoImpl implements CompanyDao {
 		
 		try {
 			Criteria crit = sess.createCriteria(Company.class).add(Restrictions.eq("companyName", companyName));
-			List<Company> company = crit.list();
-			return company;
+			List<Company> listOfCompanies = crit.list();
+			return listOfCompanies;
 		} catch (HibernateException e) {
 			LoggerUtil.error("CompanyDaoImpl, getCompanyByName, HibernateException");
 			e.printStackTrace();
