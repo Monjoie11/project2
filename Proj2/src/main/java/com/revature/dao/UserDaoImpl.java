@@ -16,7 +16,7 @@ import com.revature.util.SessionFactoryUtil;
 
 @Component
 public class UserDaoImpl implements UserDao {
-
+	
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
 	@Override
@@ -30,6 +30,7 @@ public class UserDaoImpl implements UserDao {
 		return true;
 		} catch (HibernateException e) {
 			tx.rollback();
+			LoggerUtil.error("UserDaoImpl, updateUser, HibernateException");
 			return false;
 		} finally {
 			sess.close();
@@ -51,10 +52,18 @@ public class UserDaoImpl implements UserDao {
 		}
 		
 		Transaction tx = sess.beginTransaction();
+		
+		try {
 		sess.save(user);
 		tx.commit();
-		sess.close();
 		return true;
+		} catch (HibernateException e) {
+			tx.rollback();
+			LoggerUtil.error("UserDaoImpl, insertUser, HibernateException");
+			return false;
+		} finally {
+			sess.close();
+		}
 	}
 
 	@Override
@@ -62,10 +71,17 @@ public class UserDaoImpl implements UserDao {
 		
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
+		try {
 		sess.delete(user);
 		tx.commit();
-		sess.close();
 		return true;
+		} catch (HibernateException e) {
+			tx.rollback();
+			LoggerUtil.error("UserDaoImpl, deleteUser, HibernateException");
+			return false;
+		} finally {
+			sess.close();
+		}
 		
 		
 	}
@@ -74,19 +90,36 @@ public class UserDaoImpl implements UserDao {
 	public User getUserByEmail(String email) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
+
+		try {
 		User user = (User) sess.get(User.class, email);
 		tx.commit();
-		sess.close();
 		return user;
+		} catch (HibernateException e) {
+			tx.rollback();
+			LoggerUtil.error("UserDaoImpl, getUserByEmail, HibernateException");
+			return null;
+		} finally {
+			sess.close();
+		}
+		
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(User.class);
-		List<User> result = crit.list();
-		sess.close();
-		return result;
+		
+		try {
+			Criteria crit = sess.createCriteria(User.class);
+			List<User> result = crit.list();
+			return result;
+		} catch (HibernateException e) {
+			LoggerUtil.error("UserDaoImpl, getAllUsers, HibernateException");
+			return null;
+		} finally {
+			sess.close();
+		}
+		
 	}
 
 }
