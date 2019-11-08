@@ -6,16 +6,27 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class LoginServiceService {
-  email: string;
-  password:string;
+  constructor(private router: Router, private http: HttpClient) { }
+/*   email: string;
+  password:string; */
   response: any;
-  loginRequest(email, password) {
-    let obs = this.http.post('login', { email: email, password: password})
-    obs.subscribe((response) => {
+  async loginRequest(login) {
+    let obs = this.http.post('login', { email: login.email, password: login.password}).toPromise();
+    await obs.then((response) => {
       this.response = response;
-       return this.response;
+      return this.response;
     });
+    console.log(this.response);
     return this.response;
   }
-  constructor(private router: Router, private http: HttpClient) { }
+/*   async loginRequest(email, password) {
+    let obs = this.http.post('login', { email: email, password: password}).toPromise();
+    await obs.then((response) => {
+      this.response = response;
+      return this.response;
+    });
+    console.log(this.response);
+  } */
+
+
 }
