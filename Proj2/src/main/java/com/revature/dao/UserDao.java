@@ -6,11 +6,11 @@ import com.revature.pojo.User;
 
 public interface UserDao {
 
-	public void updateUser(User user);
+	public boolean updateUser(User user);
 	
-	public void insertUser(User user);
+	public boolean insertUser(User user);
 	
-	public void deleteUser(User user);
+	public boolean deleteUser(User user);
 	
 	public User getUserByEmail(String email);
 	

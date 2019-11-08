@@ -3,7 +3,10 @@
  */
 package com.revature.dao;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -13,17 +16,24 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.pojo.User;
+import com.revature.util.SessionFactoryUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserDaoTest {
 	
-	private UserDao userDao = new UserDaoImpl();
-	User user;
+	@Spy
+	UserDaoImpl userDao = new UserDaoImpl();
+	
+	@Spy
+	NullPointerException exceptionSpy = new NullPointerException("catch NullPointerException");
+	
 	@Mock
-	private SessionFactory sf;
+	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -42,19 +52,54 @@ public class UserDaoTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testUpdateUser() {
+		String email = "testinsertuser@junit.com";
+		String password = "passwordChanged";
+		User testUser = new User();
+		testUser.setEmail(email);
+		testUser.setPassword(password);
+		assertTrue(userDao.updateUser(testUser));
+	}
+	
+	@Test
+	public void testInsertUser() {
+		String email = "testinsertuser1@junit.com";
+		String password = "test";
+		User testUser = new User();
+		testUser.setEmail(email);
+		testUser.setPassword(password);
+		assertTrue(userDao.insertUser(testUser));
+	}
+	
+	@Test
+	public void testDeleteUser() {
+		String email = "testingsertuser2test@junit.com";
+		String password = "test";
+		User testUser = new User();
+		testUser.setEmail(email);
+		testUser.setPassword(password);
+		assertTrue(userDao.deleteUser(testUser));
 	}
 	
 	@Test
 	public void testGetUserByEmail() {
+		String email = "testinsertuser@junit.com";
+		String password = "passwordChanged";
+		User testUser = new User();
+		testUser.setEmail(email);
+		testUser.setPassword(password);
+		User user = userDao.getUserByEmail(email);
+		//assertEquals(testUser, user);
+		assertNotNull(user);
 		
 	}
 	
 	@Test
-	public void testUpdateRating() {
-		
+	public void testGetAllUsers() {
+		List<User> listOfUsers = userDao.getAllUsers();
+		assertThat(listOfUsers.size(), is(10));
 	}
+	
 	
 
 }
