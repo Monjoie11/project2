@@ -8,10 +8,10 @@ import { Router, Data } from "@angular/router";
   styleUrls: ['./mb-tabbed-table.component.css']
 })
 export class MbTabbedTableComponent implements OnInit {
-  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'content'];
-  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'content', 'accept-button'];
-  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'content'];
-  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'content', 'companyRating'];
+  displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content', 'accept-button'];
+  displayedColumns3: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content'];
+  displayedColumns4: string[] = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content', 'companyRating'];
   dataSource: any[] = [];
   response: any;
   constructor(private router: Router, private http: HttpClient, private changeDetectorRefs: ChangeDetectorRef) {
@@ -31,13 +31,13 @@ export class MbTabbedTableComponent implements OnInit {
       for (var key of Object.keys(result2)) {
         let model;
         if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
-          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-        } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
-          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-        } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
-          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+        } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+        } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
         } else {
-          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
         }
         this.dataSource.push(model);
         rowCounter++;
@@ -46,9 +46,9 @@ export class MbTabbedTableComponent implements OnInit {
     });
   }
 
-  acceptPost(id) {
-    let obs = this.http.put('add-user-acceptedpost/' + id, id);
-    obs.subscribe((response) => {
+  async acceptPost(id) {
+    let obs = this.http.put('add-user-acceptedpost/' + id, id).toPromise();
+    await obs.then((response) => {
       this.response = response;
       var result = JSON.stringify(this.response);
       var result2 = JSON.parse(result);
@@ -57,6 +57,37 @@ export class MbTabbedTableComponent implements OnInit {
         alert("Post accepted")
       } else {
         alert("Error accepting post")
+      }
+      this.updateView();
+      //this.dataSource = [...this.dataSource];
+    });
+  }
+
+  async updateView() {
+    this.dataSource = [];
+    let obs = this.http.get('posts/all/').toPromise();
+    await obs.then((response) => {
+      this.response = response;
+      var result = JSON.stringify(this.response);
+      var result2 = JSON.parse(result);
+      console.log(result2);
+      var rowCounter: number = 0;
+
+      for (var key of Object.keys(result2)) {
+        if (result2[rowCounter]['status'] == 'PENDING') {
+          let model;
+          if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          } else {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          }
+          this.dataSource.push(model);
+        }
+        rowCounter++;
       }
       this.dataSource = [...this.dataSource];
     });
@@ -76,13 +107,13 @@ export class MbTabbedTableComponent implements OnInit {
         for (var key of Object.keys(result2)) {
           let model;
           if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
-            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-          } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
-            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-          } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
-            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+          } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
           } else {
-            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
           }
           this.dataSource.push(model);
           rowCounter++;
@@ -103,13 +134,13 @@ export class MbTabbedTableComponent implements OnInit {
           if (result2[rowCounter]['status'] == 'PENDING') {
             let model;
             if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             } else {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             }
             this.dataSource.push(model);
           }
@@ -131,13 +162,13 @@ export class MbTabbedTableComponent implements OnInit {
           if (result2[rowCounter]['status'] == 'REPLIEDTO') {
             let model;
             if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             } else {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             }
             this.dataSource.push(model);
           }
@@ -159,13 +190,13 @@ export class MbTabbedTableComponent implements OnInit {
           if (result2[rowCounter]['status'] == 'ACCEPTED') {
             let model;
             if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
-            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
+            } else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             } else {
-              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] }
             }
             this.dataSource.push(model);
           }
