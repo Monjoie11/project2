@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accept-button\">\r\n                            <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\" color=\"primary\" mat-button (click)= \"acceptPost(element.postId)\">Accept Post</button></td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"deny-button\">\r\n                                <th mat-header-cell *matHeaderCellDef> <button>Deny Shift</button> </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <button id=\"deny-button\" name=\"deny-button\" color=\"primary\" mat-button (click)= \"denyPost(element.postId)\">Deny Post</button></td>\r\n                            </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
 
 /***/ }),
 
@@ -162,7 +162,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n        <div class=\"example-button-row\">\r\n                <button mat-raised-button id=\"post-button\" routerLink=\"/post\">New Post</button>\r\n        </div>\r\n        <app-tabbed-table2></app-tabbed-table2>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\r\n<div id=\"page-container\">\r\n        <div class=\"example-button-row\">\r\n                <button mat-raised-button id=\"post-button\" routerLink=\"/post\">New Post</button>\r\n        </div>\r\n        <!-- <app-tabbed-table2></app-tabbed-table2> -->\r\n        <app-mb-tabbed-table></app-mb-tabbed-table>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/mb-tabbed-table/mb-tabbed-table.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/mb-tabbed-table/mb-tabbed-table.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n        <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n            <mat-tab class=\"label\" label=\"All Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accept-button\">\r\n                                <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\" color=\"primary\" mat-button (click)= \"acceptPost(element.postId)\">Accept Post</button></td>\r\n                            </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"companyRating\">\r\n                                <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                            </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n        </mat-tab-group>\r\n    </div>\r\n");
 
 /***/ }),
 
@@ -188,7 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"placeholder\"></div>\r\n<div class=\"form-div\">\r\n    <mat-card>\r\n        <mat-card-header>Select date and time for your shift</mat-card-header>\r\n        <mat-card-content fxLayout=\"column\">\r\n            <mat-form-field class=\"example-full-width\">\r\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\">\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker touchUi #picker></mat-datepicker>\r\n            </mat-form-field>\r\n               <input placeholder=\"Start time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default1\" readonly>\r\n            <ngx-material-timepicker #default1></ngx-material-timepicker>\r\n               <input placeholder=\"End time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default2\" readonly>\r\n            <ngx-material-timepicker #default2></ngx-material-timepicker>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Submit Post</button>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Cancel</button>\r\n        </mat-card-content>\r\n    </mat-card>\r\n</div>\r\n<!-- start time, end time, posted time -->");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"placeholder\"></div>\r\n<div class=\"form-div\">\r\n    <mat-card>\r\n        <mat-card-header>Select date and time for your shift</mat-card-header>\r\n        <mat-card-content fxLayout=\"column\">\r\n            <mat-select placeholder=\"Select company\" [(ngModel)]=\"selectedValue\" id=\"companyName\" name=\"companyName\"\r\n                [(ngModel)]=\"companyName\">\r\n                <mat-option value=\"Company 1\">company name 1</mat-option>\r\n                <mat-option value=\"Company 2\">company name 2</mat-option>\r\n                <mat-option value=\"Company 3\">company name 3</mat-option>\r\n                <mat-option value=\"Company 4\">company name 4</mat-option>\r\n                <mat-option value=\"Company 5\">company name 5</mat-option>\r\n            </mat-select>\r\n            <mat-form-field class=\"example-full-width\">\r\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\" [(ngModel)]=\"shiftDate\">\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker touchUi #picker></mat-datepicker>\r\n            </mat-form-field>\r\n               <input placeholder=\"Start time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default1\" readonly\r\n                [(ngModel)]=\"startTime\">\r\n            <ngx-material-timepicker #default1></ngx-material-timepicker>\r\n               <input placeholder=\"End time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default2\" readonly\r\n                [(ngModel)]=\"endTime\">\r\n            <ngx-material-timepicker #default2></ngx-material-timepicker>\r\n            <button (click)='postEvent($event)' mat-raised-button color=\"primary\" id=\"submit-post\"\r\n                routerLink=\"/marketboard\">Submit Post</button>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Cancel</button>\r\n        </mat-card-content>\r\n    </mat-card>\r\n</div>\r\n<!-- start time, end time, posted time -->");
 
 /***/ }),
 
@@ -227,7 +240,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<form action=\"register\" method=\"POST\">\r\n    <div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n        <mat-card>\r\n            <mat-card-header>\r\n                  <mat-card-title>Please Register below</mat-card-title>\r\n            </mat-card-header>\r\n            <form action=\"register\" method=\"POST\">\r\n                <mat-card-content fxLayout=\"column\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Company (disabled)\" disabled value=\"Freelancer\">\r\n                    </mat-form-field>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"First Name\" name=\"userFirstName\" [(ngModel)]=\"userFirstName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"Last Name\" name=\"userLastName\" [(ngModel)]=\"userLastName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"email\" matInput placeholder=\"Email\" name=\"userEmail\" [(ngModel)]=\"userEmail\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"password\" matInput placeholder=\"Password\" name=\"userPassword\" [(ngModel)]=\"userPassword\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"tel\" matInput placeholder=\"Telephone\" name=\"userTelephone\" [(ngModel)]=\"userTelephone\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"userAccessLevel\" [(ngModel)]=\"userAccessLevel\">\r\n                                        <mat-option value=\"Freelancer\">Freelancer</mat-option>\r\n                                        <mat-option value=\"Enterprise\">Enterprise</mat-option>\r\n                                    </mat-select>\r\n                                    <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"third\" *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                                    <input type=\"text\" matInput placeholder=\"Company Code\" name=\"userCode\" [(ngModel)]=\"userCode\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <div class=\"fab-container\">\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">add</i>\r\n                                    </button>\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">remove</i>\r\n                                    </button>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <mat-label>Biography</mat-label>\r\n                        <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                            cdkAutosizeMaxRows=\"5\" name=\"userBiography\" [(ngModel)]=\"userBiography\"></textarea>\r\n                    </mat-form-field>\r\n                </mat-card-content>\r\n                <mat-card-actions align=\"end\">\r\n                    <button routerLink=\"/login\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n                    <button (click) = \"register($event)\" type=\"button\" mat-raised-button color=\"primary\">Submit</button>\r\n                    <button routerLink=\"/register-company\" type=\"button\" mat-raised-button color=\"primary\">Register as\r\n                        Company</button>\r\n                </mat-card-actions>\r\n            </form>\r\n        </mat-card>\r\n    </div>\r\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\r\n    <span>Shiftz Register Page</span>\r\n</mat-toolbar>\r\n<form action=\"register\" method=\"POST\">\r\n    <div id=\"form-div\" fxLayout=\"row\" fxLayoutAlign=\"center center\" class=\"login-main\">\r\n        <mat-card>\r\n            <mat-card-header>\r\n                  <mat-card-title>Please Register below</mat-card-title>\r\n            </mat-card-header>\r\n            <form action=\"register\" method=\"POST\">\r\n                <mat-card-content fxLayout=\"column\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Company (disabled)\" disabled value=\"Freelancer\">\r\n                    </mat-form-field>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"First Name\" name=\"userFirstName\" [(ngModel)]=\"userFirstName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input matInput placeholder=\"Last Name\" name=\"userLastName\" [(ngModel)]=\"userLastName\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"email\" matInput placeholder=\"Email\" name=\"userEmail\" [(ngModel)]=\"userEmail\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"password\" matInput placeholder=\"Password\" name=\"userPassword\" [(ngModel)]=\"userPassword\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <table cellspacing=\"0\">\r\n                        <tr>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <input type=\"tel\" matInput placeholder=\"Telephone\" name=\"userTelephone\" [(ngModel)]=\"userTelephone\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"half\">\r\n                                <mat-form-field class=\"full\">\r\n                                    <mat-select placeholder=\"Access Level\" [(ngModel)]=\"selectedValue\" name=\"userAccessLevel\" [(ngModel)]=\"userAccessLevel\">\r\n                                        <mat-option value=\"Freelancer\">Freelancer</mat-option>\r\n                                        <mat-option value=\"Enterprise\">Enterprise</mat-option>\r\n                                    </mat-select>\r\n                                    <mat-hint align=\"end\">Here's the dropdown arrow ^</mat-hint>\r\n                                </mat-form-field>\r\n                            </td>\r\n                            <td class=\"third\" *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                <mat-form-field class=\"company-code\" *ngFor=\"let container of containers\">\r\n                                    <input type=\"text\" matInput placeholder=\"Company Code\" name=\"userCode\" [(ngModel)]=\"userCode\">\r\n                                </mat-form-field>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <div class=\"fab-container\">\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"add()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">add</i>\r\n                                    </button>\r\n                                    <button mat-fab class=\"fab-toggler\" color=\"primary\" (click)=\"remove()\"\r\n                                        *ngIf=\"selectedValue == 'Enterprise'\">\r\n                                        <i class=\"material-icons\">remove</i>\r\n                                    </button>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                    <mat-form-field >\r\n                            <mat-select [(value)]=\"selected\" [(ngModel)]=\"workType\" placeholder=\"Work type\">\r\n                              <mat-option>None</mat-option>\r\n                              <mat-option value=\"FRONTHOUSE\">Front House</mat-option>\r\n                              <mat-option value=\"FLOOR\">Floor/Wait</mat-option>\r\n                              <mat-option value=\"BACKHOUSE\">Back House</mat-option>\r\n                              <mat-option value=\"HOST\">Host</mat-option>\r\n                              <mat-option value=\"MAITRED\">Maitre'd</mat-option>\r\n                              <mat-option value=\"WAITER\">Waiter</mat-option>\r\n                              <mat-option value=\"BARTENDER\">Bartender</mat-option>\r\n                              <mat-option value=\"BUSSER\">Busser</mat-option>\r\n                              <mat-option value=\"BARBACK\">Barback</mat-option>\r\n                              <mat-option value=\"SOMMELIER\">Sommelier</mat-option>\r\n                              <mat-option value=\"HEADCHEF\">Head Chef</mat-option>\r\n                              <mat-option value=\"PREPCHEF\">Prep Chef</mat-option>\r\n                              <mat-option value=\"LINECHEF\">Line Chef</mat-option>\r\n                            </mat-select>\r\n                          </mat-form-field>\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <mat-label>Biography</mat-label>\r\n                        <textarea matInput cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\" cdkAutosizeMinRows=\"1\"\r\n                            cdkAutosizeMaxRows=\"5\" name=\"userBiography\" [(ngModel)]=\"userBiography\"></textarea>\r\n                    </mat-form-field>\r\n                </mat-card-content>\r\n                <mat-card-actions align=\"end\">\r\n                    <button routerLink=\"/login\" type=\"button\" mat-raised-button color=\"primary\">Login</button>\r\n                    <button (click) = \"register($event)\" type=\"button\" mat-raised-button color=\"primary\">Submit</button>\r\n                    <button routerLink=\"/register-company\" type=\"button\" mat-raised-button color=\"primary\">Register as\r\n                        Company</button>\r\n                </mat-card-actions>\r\n            </form>\r\n        </mat-card>\r\n    </div>\r\n</form>");
 
 /***/ }),
 
@@ -240,7 +253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\" color=\"primary\">\r\n    <mat-tab-group dynamicHeight>\r\n        <mat-tab class=\"label\" label=\"Shift Applicants\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"height\">\r\n                        <th mat-header-cell *matHeaderCellDef> Height</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.height}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n<!--                 <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table> -->\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n<!--                 <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table> -->\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n<!--                 <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posted-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns2\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table> -->\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\" color=\"primary\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"My Created Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Replied to Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"My Accepted Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"My Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns2\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
 
 /***/ }),
 
@@ -654,6 +667,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_service_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./login-service.service */ "./src/app/login-service.service.ts");
 /* harmony import */ var _user_register_service_service__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./user-register-service.service */ "./src/app/user-register-service.service.ts");
 /* harmony import */ var _company_register_service_service__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./company-register-service.service */ "./src/app/company-register-service.service.ts");
+/* harmony import */ var _mb_tabbed_table_mb_tabbed_table_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./mb-tabbed-table/mb-tabbed-table.component */ "./src/app/mb-tabbed-table/mb-tabbed-table.component.ts");
+
 
 
 
@@ -716,6 +731,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _marketboard_marketboard_component__WEBPACK_IMPORTED_MODULE_28__["MarketboardComponent"],
             _company_calendar_calendar_component__WEBPACK_IMPORTED_MODULE_30__["CalendarComponent"],
             _post_addition_form_post_addition_form_component__WEBPACK_IMPORTED_MODULE_34__["PostAdditionFormComponent"],
+            _mb_tabbed_table_mb_tabbed_table_component__WEBPACK_IMPORTED_MODULE_39__["MbTabbedTableComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -922,7 +938,7 @@ let CompanyRegisterServiceService = class CompanyRegisterServiceService {
         this.http = http;
     }
     registerCompany(companyName, companyEmail, companyPassword, companyWebsiteUrl, companyAccessLevel, companyCode, companyBiography) {
-        let obs = this.http.post('register/', { companyName: companyName, companyEmail: companyEmail, companyPassword: companyPassword, companyWebsiteUrl: companyWebsiteUrl, companyAccessLevel: companyAccessLevel, companyCode: companyCode, companyBiography: companyBiography });
+        let obs = this.http.post('register-company', { companyName: companyName, companyEmail: companyEmail, password: companyPassword, companyLink: companyWebsiteUrl, accessLevel: companyAccessLevel, accessCode: companyCode, companyBiography: companyBiography });
         obs.subscribe((response) => {
             this.response = response;
             return response;
@@ -1095,7 +1111,7 @@ StarRatingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mat-elevation-z8{\r\n    width: 100%;\r\n}\r\n.example-large-box {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 16px;\r\n    padding: 16px;\r\n    border-radius: 8px;\r\n    margin-bottom: 16px;\r\n    padding-bottom: 16px;\r\n    background-color: grey;\r\n  }\r\n#tab-div{\r\n    background-color: white;\r\n    margin-top: 5%;\r\n    margin-bottom:  5%;\r\n    padding-bottom: 16px;\r\n    display: block;\r\n  }\r\n#page-container{\r\n      margin-left: 1%;\r\n      margin-right: 1%;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcGFueS10YWJiZWQtdGFibGUvdGFiYmVkLXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLFlBQVk7SUFDWixhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixvQkFBb0I7SUFDcEIsc0JBQXNCO0VBQ3hCO0FBRUE7SUFDRSx1QkFBdUI7SUFDdkIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixvQkFBb0I7SUFDcEIsY0FBYztFQUNoQjtBQUVBO01BQ0ksZUFBZTtNQUNmLGdCQUFnQjtFQUNwQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBhbnktdGFiYmVkLXRhYmxlL3RhYmJlZC10YWJsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hdC1lbGV2YXRpb24tejh7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4uZXhhbXBsZS1sYXJnZS1ib3gge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIG1hcmdpbjogMTZweDtcclxuICAgIHBhZGRpbmc6IDE2cHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiA4cHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxNnB4O1xyXG4gICAgcGFkZGluZy1ib3R0b206IDE2cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmV5O1xyXG4gIH1cclxuICBcclxuICAjdGFiLWRpdntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAgNSU7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMTZweDtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gIH1cclxuXHJcbiAgI3BhZ2UtY29udGFpbmVye1xyXG4gICAgICBtYXJnaW4tbGVmdDogMSU7XHJcbiAgICAgIG1hcmdpbi1yaWdodDogMSU7XHJcbiAgfVxyXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-elevation-z8{\r\n    width: 100%;\r\n}\r\n.example-large-box {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 16px;\r\n    padding: 16px;\r\n    border-radius: 8px;\r\n    margin-bottom: 16px;\r\n    padding-bottom: 16px;\r\n    background-color: grey;\r\n  }\r\n#tab-div{\r\n    background-color: white;\r\n    margin-top: 5%;\r\n    margin-bottom:  5%;\r\n    padding-bottom: 16px;\r\n    display: block;\r\n  }\r\n#page-container{\r\n      margin-left: 1%;\r\n      margin-right: 1%;\r\n  }\r\n#accept-button{\r\n    background-color: green;\r\n    color: white;\r\n    margin: 0;\r\n  }\r\n#deny-button{\r\n    background-color: red;\r\n    color: white;\r\n    margin: 0;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcGFueS10YWJiZWQtdGFibGUvdGFiYmVkLXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLFlBQVk7SUFDWixhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixvQkFBb0I7SUFDcEIsc0JBQXNCO0VBQ3hCO0FBRUE7SUFDRSx1QkFBdUI7SUFDdkIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixvQkFBb0I7SUFDcEIsY0FBYztFQUNoQjtBQUVBO01BQ0ksZUFBZTtNQUNmLGdCQUFnQjtFQUNwQjtBQUVBO0lBQ0UsdUJBQXVCO0lBQ3ZCLFlBQVk7SUFDWixTQUFTO0VBQ1g7QUFFQTtJQUNFLHFCQUFxQjtJQUNyQixZQUFZO0lBQ1osU0FBUztFQUNYIiwiZmlsZSI6InNyYy9hcHAvY29tcGFueS10YWJiZWQtdGFibGUvdGFiYmVkLXRhYmxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LWVsZXZhdGlvbi16OHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcbi5leGFtcGxlLWxhcmdlLWJveCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgbWFyZ2luOiAxNnB4O1xyXG4gICAgcGFkZGluZzogMTZweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICAgIG1hcmdpbi1ib3R0b206IDE2cHg7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMTZweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZXk7XHJcbiAgfVxyXG4gIFxyXG4gICN0YWItZGl2e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICBtYXJnaW4tdG9wOiA1JTtcclxuICAgIG1hcmdpbi1ib3R0b206ICA1JTtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxNnB4O1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgfVxyXG5cclxuICAjcGFnZS1jb250YWluZXJ7XHJcbiAgICAgIG1hcmdpbi1sZWZ0OiAxJTtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxJTtcclxuICB9XHJcblxyXG4gICNhY2NlcHQtYnV0dG9ue1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgfVxyXG5cclxuICAjZGVueS1idXR0b257XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgfVxyXG4iXX0= */");
 
 /***/ }),
 
@@ -1117,44 +1133,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//var ELEMENT_DATA: Element[] = [
-//{postId: 1, postingUser: 'John', acceptingUser: 'Brian', postedTime: '8:00', startTime: '10:00', endTime: '1:00'},
-//];
 let TabbedTableComponent2 = class TabbedTableComponent2 {
     constructor(router, http, changeDetectorRefs) {
-        // this.dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
         this.router = router;
         this.http = http;
         this.changeDetectorRefs = changeDetectorRefs;
-        this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-        this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-        this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-        this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
-        //dataSource = ELEMENT_DATA;
+        this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+        this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'accept-button', 'deny-button'];
+        this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+        this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'companyRating'];
         this.dataSource = [];
     }
     ngOnInit() {
-        let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+        let obs = this.http.get('/company/posts');
         obs.subscribe((response) => {
             this.response = response;
             var result = JSON.stringify(this.response);
             var result2 = JSON.parse(result);
             var rowCounter = 0;
-            for (var key of Object.keys(result2['results'])) {
-                let model = { postId: result2['results'][rowCounter]['name'] };
+            for (var key of Object.keys(result2)) {
+                //let model = {postId: result2['results'][rowCounter]['name']}
+                let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
                 this.dataSource.push(model);
                 rowCounter++;
-                if (rowCounter == 20) { //comment this out later
-                    break;
-                }
             }
             this.dataSource = [...this.dataSource];
         });
-        //this.refresh();
     }
-    /*   refresh() {
-        this.changeDetectorRefs.detectChanges();
-      } */
+    acceptPost(id) {
+        let obs = this.http.put('/accept-company-acceptedpost/' + id, id);
+        obs.subscribe((response) => {
+            this.response = response;
+            var result = JSON.stringify(this.response);
+            var result2 = JSON.parse(result);
+            if (result2 == true) {
+                alert("Post accepted");
+            }
+            else {
+                alert("Error accepting post");
+            }
+            this.dataSource = [...this.dataSource];
+        });
+    }
+    denyPost(id) {
+        let obs = this.http.put('/reject-company-acceptedpost/' + id, id);
+        obs.subscribe((response) => {
+            this.response = response;
+            var result = JSON.stringify(this.response);
+            var result2 = JSON.parse(result);
+            if (result2 == true) {
+                alert("Post denied");
+            }
+            else {
+                alert("Error denying post");
+            }
+            this.dataSource = [...this.dataSource];
+        });
+    }
     yourFn($event) {
         this.dataSource = [];
         if ($event.index === 0) {
@@ -1376,11 +1411,11 @@ let LoginServiceService = class LoginServiceService {
         this.http = http;
     }
     loginRequest(email, password) {
-        let obs = this.http.post('login/', { email: email, password: password });
+        let obs = this.http.post('login', { email: email, password: password });
         obs.subscribe((response) => {
             this.response = response;
-            return response;
         });
+        setTimeout(function () { console.log(this.response); }, 1000);
         return this.response;
     }
 };
@@ -1440,12 +1475,17 @@ let LoginComponent = class LoginComponent {
     ngOnInit() {
     }
     search() {
+        alert("inside search");
         this.result = this.svc.loginRequest(this.email, this.password);
-        if (this.response.length == 13) {
+        alert(this.result);
+        alert("got response");
+        if (this.result.length == 10) {
+            alert("user");
             this.router.navigateByUrl('user-homepage');
             return true;
         }
-        else if (this.response.length == 10) {
+        else if (this.result.length == 7) {
+            alert("company");
             this.router.navigateByUrl('company-homepage');
             return true;
         }
@@ -1516,6 +1556,195 @@ MarketboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/mb-tabbed-table/mb-tabbed-table.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/mb-tabbed-table/mb-tabbed-table.component.css ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".mat-elevation-z8{\r\n    width: 100%;\r\n}\r\n.example-large-box {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 16px;\r\n    padding: 16px;\r\n    border-radius: 8px;\r\n    margin-bottom: 16px;\r\n    padding-bottom: 16px;\r\n    background-color: grey;\r\n  }\r\n#tab-div{\r\n    background-color: white;\r\n    margin-top: 5%;\r\n    margin-bottom:  5%;\r\n    padding-bottom: 16px;\r\n    display: block;\r\n  }\r\n#page-container{\r\n      margin-left: 1%;\r\n      margin-right: 1%;\r\n  }\r\n#accept-button{\r\n      background-color: green;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWItdGFiYmVkLXRhYmxlL21iLXRhYmJlZC10YWJsZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksV0FBVztBQUNmO0FBQ0E7SUFDSSxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixZQUFZO0lBQ1osYUFBYTtJQUNiLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsb0JBQW9CO0lBQ3BCLHNCQUFzQjtFQUN4QjtBQUVBO0lBQ0UsdUJBQXVCO0lBQ3ZCLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsb0JBQW9CO0lBQ3BCLGNBQWM7RUFDaEI7QUFFQTtNQUNJLGVBQWU7TUFDZixnQkFBZ0I7RUFDcEI7QUFFQTtNQUNJLHVCQUF1QjtFQUMzQiIsImZpbGUiOiJzcmMvYXBwL21iLXRhYmJlZC10YWJsZS9tYi10YWJiZWQtdGFibGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtZWxldmF0aW9uLXo4e1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuLmV4YW1wbGUtbGFyZ2UtYm94IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDE2cHg7XHJcbiAgICBwYWRkaW5nOiAxNnB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTZweDtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxNnB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogZ3JleTtcclxuICB9XHJcbiAgXHJcbiAgI3RhYi1kaXZ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIG1hcmdpbi10b3A6IDUlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogIDUlO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDE2cHg7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICB9XHJcblxyXG4gICNwYWdlLWNvbnRhaW5lcntcclxuICAgICAgbWFyZ2luLWxlZnQ6IDElO1xyXG4gICAgICBtYXJnaW4tcmlnaHQ6IDElO1xyXG4gIH1cclxuXHJcbiAgI2FjY2VwdC1idXR0b257XHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xyXG4gIH0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/mb-tabbed-table/mb-tabbed-table.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/mb-tabbed-table/mb-tabbed-table.component.ts ***!
+  \**************************************************************/
+/*! exports provided: MbTabbedTableComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MbTabbedTableComponent", function() { return MbTabbedTableComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let MbTabbedTableComponent = class MbTabbedTableComponent {
+    constructor(router, http, changeDetectorRefs) {
+        this.router = router;
+        this.http = http;
+        this.changeDetectorRefs = changeDetectorRefs;
+        this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+        this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'accept-button'];
+        this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
+        this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+        this.dataSource = [];
+    }
+    ngOnInit() {
+        let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+        obs.subscribe((response) => {
+            this.response = response;
+            var result = JSON.stringify(this.response);
+            var result2 = JSON.parse(result);
+            var rowCounter = 0;
+            for (var key of Object.keys(result2['results'])) {
+                let model = { postId: result2['results'][rowCounter]['name'] };
+                this.dataSource.push(model);
+                rowCounter++;
+                if (rowCounter == 20) { //comment this out later
+                    break;
+                }
+            }
+            this.dataSource = [...this.dataSource];
+        });
+    }
+    acceptPost(id) {
+        let obs = this.http.put('/add-user-acceptedpost/' + id, id);
+        obs.subscribe((response) => {
+            this.response = response;
+            var result = JSON.stringify(this.response);
+            var result2 = JSON.parse(result);
+            if (result2 == true) {
+                alert("Post accepted");
+            }
+            else {
+                alert("Error accepting post");
+            }
+            this.dataSource = [...this.dataSource];
+        });
+    }
+    yourFn($event) {
+        this.dataSource = [];
+        if ($event.index === 0) {
+            let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2['results'])) {
+                    let model = { postId: result2['results'][rowCounter]['name'] };
+                    this.dataSource.push(model);
+                    rowCounter++;
+                    if (rowCounter == 20) { //comment this out later
+                        break;
+                    }
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 1) {
+            let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2['results'])) {
+                    if (result2['results'][rowCounter]['name'].startsWith("B")) {
+                        let model = { postId: result2['results'][rowCounter]['name'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                    if (rowCounter == 20) { //comment this out later
+                        break;
+                    }
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 2) {
+            let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2['results'])) {
+                    if (result2['results'][rowCounter]['name'].startsWith("C")) {
+                        let model = { postId: result2['results'][rowCounter]['name'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                    if (rowCounter == 20) { //comment this out later
+                        break;
+                    }
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 3) {
+            let obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2['results'])) {
+                    if (result2['results'][rowCounter]['name'].startsWith("V")) {
+                        let model = { postId: result2['results'][rowCounter]['name'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                    if (rowCounter == 20) { //comment this out later
+                        break;
+                    }
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+    }
+};
+MbTabbedTableComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
+];
+MbTabbedTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-mb-tabbed-table',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./mb-tabbed-table.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/mb-tabbed-table/mb-tabbed-table.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./mb-tabbed-table.component.css */ "./src/app/mb-tabbed-table/mb-tabbed-table.component.css")).default]
+    })
+], MbTabbedTableComponent);
+
+/* import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-mb-tabbed-table',
+  templateUrl: './mb-tabbed-table.component.html',
+  styleUrls: ['./mb-tabbed-table.component.css']
+})
+export class MbTabbedTableComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+} */
+
+
+/***/ }),
+
 /***/ "./src/app/navbar/navbar.component.css":
 /*!*********************************************!*\
   !*** ./src/app/navbar/navbar.component.css ***!
@@ -1569,7 +1798,7 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\nmat-card{\r\n    min-width: 30%;\r\n    max-width: 10px;\r\n    margin-left: 35%;\r\n}\r\n#placeholder{\r\n    height: 20%;\r\n}\r\n#submit-post{\r\n    margin-top: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC1hZGRpdGlvbi1mb3JtL3Bvc3QtYWRkaXRpb24tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9wb3N0LWFkZGl0aW9uLWZvcm0vcG9zdC1hZGRpdGlvbi1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubWF0LWNhcmR7XHJcbiAgICBtaW4td2lkdGg6IDMwJTtcclxuICAgIG1heC13aWR0aDogMTBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbn1cclxuI3BsYWNlaG9sZGVye1xyXG4gICAgaGVpZ2h0OiAyMCU7XHJcbn1cclxuI3N1Ym1pdC1wb3N0e1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\nmat-card{\r\n    min-width: 30%;\r\n    max-width: 10px;\r\n    margin-left: 35%;\r\n}\r\n#placeholder{\r\n    height: 20%;\r\n}\r\n#submit-post{\r\n    margin-top: 5%;\r\n}\r\n#companyName{\r\n    margin-top: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC1hZGRpdGlvbi1mb3JtL3Bvc3QtYWRkaXRpb24tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGNBQWM7QUFDbEI7QUFDQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9wb3N0LWFkZGl0aW9uLWZvcm0vcG9zdC1hZGRpdGlvbi1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubWF0LWNhcmR7XHJcbiAgICBtaW4td2lkdGg6IDMwJTtcclxuICAgIG1heC13aWR0aDogMTBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbn1cclxuI3BsYWNlaG9sZGVye1xyXG4gICAgaGVpZ2h0OiAyMCU7XHJcbn1cclxuI3N1Ym1pdC1wb3N0e1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn1cclxuI2NvbXBhbnlOYW1le1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -1585,18 +1814,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostAdditionFormComponent", function() { return PostAdditionFormComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../post-addition-service.service */ "./src/app/post-addition-service.service.ts");
+
 
 
 let PostAdditionFormComponent = class PostAdditionFormComponent {
-    constructor() {
-        this.events = [];
-    }
-    addEvent(type, event) {
-        this.events.push(`${type}: ${event.value}`);
+    constructor(svc) {
+        this.svc = svc;
     }
     ngOnInit() {
     }
+    postEvent() {
+        this.result = this.svc.addPost(this.shiftDate, this.startTime, this.endTime, this.companyName);
+        if (this.result == true) {
+            alert("Post was Added");
+        }
+        else {
+            alert("Post failed");
+        }
+    }
 };
+PostAdditionFormComponent.ctorParameters = () => [
+    { type: _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__["PostAdditionServiceService"] }
+];
 PostAdditionFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-post-addition-form',
@@ -1604,6 +1844,53 @@ PostAdditionFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./post-addition-form.component.css */ "./src/app/post-addition-form/post-addition-form.component.css")).default]
     })
 ], PostAdditionFormComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/post-addition-service.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/post-addition-service.service.ts ***!
+  \**************************************************/
+/*! exports provided: PostAdditionServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostAdditionServiceService", function() { return PostAdditionServiceService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let PostAdditionServiceService = class PostAdditionServiceService {
+    constructor(router, http) {
+        this.router = router;
+        this.http = http;
+    }
+    addPost(shiftDate, startTime, EndTime, companyName) {
+        alert([companyName, shiftDate, startTime, EndTime]);
+        let obs = this.http.post('addPost/', { shiftDate: shiftDate, startTime: startTime, EndTime: EndTime, companyName: companyName });
+        obs.subscribe((response) => {
+            this.response = response;
+            return response;
+        });
+        return this.response;
+    }
+};
+PostAdditionServiceService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+PostAdditionServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], PostAdditionServiceService);
 
 
 
@@ -1735,8 +2022,8 @@ let UserRegisterServiceService = class UserRegisterServiceService {
         this.router = router;
         this.http = http;
     }
-    registerUser(userFirstName, userLastName, userEmail, userPassword, userTelephone, userAccessLevel, userCode, userBiography) {
-        let obs = this.http.post('register/', { userFirstName: userFirstName, userLastName: userLastName, userEmail: userEmail, userPassword: userPassword, userTelephone: userTelephone, userAccessLevel: userAccessLevel, userCode: userCode, userBiography: userBiography });
+    registerUser(userFirstName, userLastName, userEmail, userPassword, userTelephone, userAccessLevel, userCode, userBiography, workType) {
+        let obs = this.http.post('register-user', { firstName: userFirstName, lastName: userLastName, email: userEmail, password: userPassword, userTelephone: userTelephone, accessLevel: userAccessLevel, userCode: userCode, userBiography: userBiography, workType: workType });
         obs.subscribe((response) => {
             this.response = response;
             return response;
@@ -1802,7 +2089,7 @@ let RegisterComponent = class RegisterComponent {
     ngOnInit() {
     }
     register() {
-        this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography);
+        this.result = this.svc.registerUser(this.userFirstName, this.userLastName, this.userEmail, this.userPassword, this.userTelephone, this.userAccessLevel, this.userCode, this.userBiography, this.workType);
         if (this.result == true) {
             alert("registration successful");
             this.router.navigateByUrl('login');
@@ -1881,30 +2168,105 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let TabbedTableComponent = class TabbedTableComponent {
-    constructor(router, http) {
+    constructor(router, http, changeDetectorRefs) {
         this.router = router;
         this.http = http;
-        // displayedColumns: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-        this.displayedColumns = ['height'];
-        this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
-        this.dataSource = this.postData;
+        this.changeDetectorRefs = changeDetectorRefs;
+        this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+        this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+        this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time'];
+        this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'userRating'];
+        this.dataSource = [];
     }
     ngOnInit() {
-        let obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
+        let obs = this.http.get('/user/created-posts');
         obs.subscribe((response) => {
             this.response = response;
             var result = JSON.stringify(this.response);
             var result2 = JSON.parse(result);
-            this.postData[0] = (result2['height']);
+            var rowCounter = 0;
+            for (var key of Object.keys(result2)) {
+                let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
+                this.dataSource.push(model);
+                rowCounter++;
+            }
+            this.dataSource = [...this.dataSource];
         });
     }
-    search() {
-        alert("search called");
+    yourFn($event) {
+        //this.dataSource = [];
+        if ($event.index === 0) {
+            let obs = this.http.get('/user/created-posts');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2)) {
+                    let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
+                    this.dataSource.push(model);
+                    rowCounter++;
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 1) {
+            let obs = this.http.get('/user/accepted-posts');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2)) {
+                    if (result2['status'] === 'REPLIEDTO') {
+                        let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 2) {
+            let obs = this.http.get('/user/accepted-posts');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2)) {
+                    if (result2['status'] === 'ACCEPTED') {
+                        let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
+        if ($event.index === 3) {
+            let obs = this.http.get('/user/accepted-posts');
+            obs.subscribe((response) => {
+                this.response = response;
+                var result = JSON.stringify(this.response);
+                var result2 = JSON.parse(result);
+                var rowCounter = 0;
+                for (var key of Object.keys(result2)) {
+                    if (result2['status'] === 'COMPLETED') {
+                        let model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
+                        this.dataSource.push(model);
+                    }
+                    rowCounter++;
+                }
+                this.dataSource = [...this.dataSource];
+            });
+        }
     }
 };
 TabbedTableComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
 ];
 TabbedTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1914,6 +2276,41 @@ TabbedTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], TabbedTableComponent);
 
+/* import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
+
+
+@Component({
+  selector: 'app-tabbed-table',
+  templateUrl: './tabbed-table.component.html',
+  styleUrls: ['./tabbed-table.component.css']
+})
+export class TabbedTableComponent implements OnInit {
+ displayedColumns: string[] = ['height'];
+  displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+  postData: string[];
+  dataSource = this.postData;
+  email: string;
+  password:string;
+  response: any;
+  constructor(private router: Router, private http: HttpClient) { }
+  ngOnInit() {
+    let obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
+    obs.subscribe((response) => {
+      this.response = response;
+     var result = JSON.stringify(this.response);
+      
+      var result2 = JSON.parse(result);
+      this.postData[0] = (result2['height']);
+
+    });
+  }
+
+  search() {
+    alert("search called");
+}
+} */
 
 
 /***/ }),
