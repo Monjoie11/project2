@@ -100,11 +100,12 @@ public class PostService {
 	}
 
 
-	public void createPost(Post post) {
-		// TODO Auto-generated method stub
-		postDao.createPost(post) ;
-		LoggerUtil.debug("Post created");
-	}
+    public void createPost(Post post) {
+        // TODO Auto-generated method stub
+        post.setStatus(Post.Status.PENDING);
+        postDao.createPost(post) ;
+        LoggerUtil.debug("Post created");
+    }
 	
 	
 

@@ -39,15 +39,15 @@ public class LoginController {
 		this.authService = authService;
 	}
 
-	@GetMapping("/login")
-	public String loginGet(HttpSession sess, ModelMap modelMap) {
-		/*
-		if (sess.getAttribute("user") != null) {
-			modelMap.addAttribute("user", sess.getAttribute("user"));
-			return "home";
+	@GetMapping("/userType")
+	public Boolean loginGet(HttpSession sess) {	//true for User
+		User u = (User) sess.getAttribute("user");
+		Company c = (Company) sess.getAttribute("company");
+		if(u!=null) {
+			return true;
+		}else{
+			return false;
 		}
-		*/
-		return "index";
 	}
 
 	@GetMapping("/login/{email}")
