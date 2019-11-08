@@ -6,11 +6,11 @@
             <h1>Shiftz</h1>
             <span class="menu-spacer"></span>
             <div>
-                <a mat-button [routerLink]="'/login'"> Log Out </a>
+                <a mat-button (click)="logout($event)"> Log Out </a>
                 <a mat-button [routerLink]="'/calendar'"> See Your Calendar </a>
                 <a mat-button [routerLink]="'/marketboard'"> View The Market Board </a>
-                <a mat-button (event)="goHome($event)"> Home </a>
-    
+                <a mat-button (click)="goHome($event)"> Home </a>
+
             </div>
         </mat-toolbar-row>
     

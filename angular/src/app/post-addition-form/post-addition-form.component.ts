@@ -26,7 +26,7 @@ export class PostAdditionFormComponent implements OnInit {
   }
 
   async postEvent(){
-    let obs = this.http.post('post/create', {shiftDate: this.shiftDate, startTime: this.startTime, endTime: this.endTime, companyName: this.companyName, content: this.content}).toPromise()
+    let obs = this.http.put('post/create/' + this.companyName, {shiftDate: this.shiftDate, startTime: this.startTime, endTime: this.endTime, content: this.content}).toPromise()
     await obs.then((response) => {
       this.result = response;
     });

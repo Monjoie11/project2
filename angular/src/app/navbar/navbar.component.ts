@@ -15,12 +15,22 @@ export class NavbarComponent implements OnInit {
     await obs.then((response) => {
       this.response = response;
     });
+    console.log(this.response);
     if(this.response == true){
       this.router.navigateByUrl('user-homepage');
     } else {
       this.router.navigateByUrl('company-homepage');
 
     }
+  }
+
+  async logout($event){
+    let obs = this.http.get('logout').toPromise();
+    await obs.then((response) => {
+      this.response = response;
+    });
+    console.log(this.response);
+    this.router.navigateByUrl('login');
   }
 
   constructor(private http: HttpClient, private router: Router) { }
