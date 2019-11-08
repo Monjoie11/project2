@@ -41,7 +41,11 @@ export class TabbedTableComponent implements OnInit {
 
       for (var key of Object.keys(result2)) {
         let model;
-        if (result2[rowCounter]['acceptingUser'] == null) {
+        if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+        } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+          model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+        } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
           model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
         } else {
           model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
@@ -67,7 +71,11 @@ export class TabbedTableComponent implements OnInit {
 
         for (var key of Object.keys(result2)) {
           let model;
-          if (result2[rowCounter]['acceptingUser'] == null) {
+          if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+          } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+            model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+          } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
             model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
           } else {
             model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
@@ -91,7 +99,11 @@ export class TabbedTableComponent implements OnInit {
         for (var key of Object.keys(result2)) {
           if (result2[rowCounter]['status'] == 'REPLIEDTO') {
             let model;
-            if (result2[rowCounter]['acceptingUser'] == null) {
+            if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
               model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
             } else {
               model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
@@ -115,10 +127,14 @@ export class TabbedTableComponent implements OnInit {
         for (var key of Object.keys(result2)) {
           if (result2[rowCounter]['status'] == 'ACCEPTED') {
             let model;
-            if(result2[rowCounter]['acceptingUser'] == null){
-             model = {postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime']}
+            if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
             } else {
-             model = {postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime']}
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
             }
             this.dataSource.push(model);
           }
@@ -139,10 +155,14 @@ export class TabbedTableComponent implements OnInit {
         for (var key of Object.keys(result2)) {
           if (result2[rowCounter]['status'] == 'COMPLETED') {
             let model;
-            if(result2[rowCounter]['acceptingUser'] == null){
-             model = {postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime']}
+            if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
+            } else if(result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
             } else {
-             model = {postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime']}
+              model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] }
             }
             this.dataSource.push(model);
           }
