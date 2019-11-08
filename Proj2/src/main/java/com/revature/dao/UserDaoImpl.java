@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.postgresql.util.PSQLException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.pojo.User;
@@ -19,6 +20,11 @@ public class UserDaoImpl implements UserDao {
 	
 	private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
+	@Autowired
+	public void setSessionFactory(SessionFactory sf) {
+		this.sf = sf;
+	}
+	
 	@Override
 	public boolean updateUser(User user) {
 		Session sess = sf.openSession();
