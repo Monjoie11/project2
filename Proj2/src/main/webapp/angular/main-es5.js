@@ -1,3 +1,30 @@
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
         /***/ "./$$_lazy_route_resource lazy recursive": 
         /*!******************************************************!*\
@@ -94,7 +121,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accept-button\">\r\n                            <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\" color=\"primary\" mat-button (click)= \"acceptPost(element.postId)\">Accept Post</button></td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"deny-button\">\r\n                                <th mat-header-cell *matHeaderCellDef> <button>Deny Shift</button> </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <button id=\"deny-button\" name=\"deny-button\" color=\"primary\" mat-button (click)= \"denyPost(element.postId)\">Deny Post</button></td>\r\n                            </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Our Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Action Required\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accept-button\">\r\n                            <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\" color=\"primary\" mat-button (click)= \"acceptPost(element.postId)\">Accept Post</button></td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"deny-button\">\r\n                                <th mat-header-cell *matHeaderCellDef> <button>Deny Shift</button> </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <button id=\"deny-button\" name=\"deny-button\" color=\"primary\" mat-button (click)= \"denyPost(element.postId)\">Deny Post</button></td>\r\n                            </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns2\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Incoming Reinforcements\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns3\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Our Completed Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                            <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                        </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/error/error.component.html": 
@@ -116,7 +143,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-card *ngIf=\"url; else nourl\" style=\"display: inline-block;\">\r\n        <img [src]=\"url\" height=\"200\" width=\"200\">\r\n</mat-card>\r\n<ng-template #nourl>\r\n        <mat-card style=\"display: inline-block;\">\r\n                <img src=\"../assets/empty.jpg\" height=\"200\" width=\"200\">\r\n        </mat-card>\r\n</ng-template>\r\n<app-job-dropdown></app-job-dropdown>\r\n<app-bio></app-bio>\r\n<br>\r\n<input id=\"file-input\" type='file' (change)=\"onSelectFile($event)\">");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-card *ngIf=\"url; else nourl\" style=\"display: inline-block;\">\r\n        <img [src]=\"url\" height=\"200\" width=\"200\">\r\n</mat-card>\r\n<ng-template #nourl>\r\n        <mat-card style=\"display: inline-block;\">\r\n                <img src=\"./assets/empty.jpg\" height=\"200\" width=\"200\">\r\n        </mat-card>\r\n</ng-template>\r\n<app-job-dropdown></app-job-dropdown>\r\n<app-bio></app-bio>\r\n<br>\r\n<input id=\"file-input\" type='file' (change)=\"onSelectFile($event)\">");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.component.html": 
@@ -149,7 +176,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n        <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n            <mat-tab class=\"label\" label=\"All Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Pending Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accept-button\">\r\n                                <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\" color=\"primary\" mat-button (click)= \"acceptPost(element.postId)\">Accept Post</button></td>\r\n                            </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Recently Denied Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n            <mat-tab class=\"label\" label=\"All Completed Shifts\">\r\n                <div class=\"example-large-box mat-elevation-z4\">\r\n                    <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"post-id\">\r\n                            <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"accepting-user\">\r\n                            <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"posted-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.postedTime}} </td>\r\n                        </ng-container>\r\n    \r\n                        <ng-container matColumnDef=\"start-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"end-time\">\r\n                            <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                            <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"companyRating\">\r\n                                <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                                <td mat-cell *matCellDef=\"let element\"> <app-star-rating></app-star-rating></td>\r\n                            </ng-container>\r\n    \r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                    </table>\r\n                </div>\r\n            </mat-tab>\r\n        </mat-tab-group>\r\n    </div>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"tab-div\">\r\n    <mat-tab-group dynamicHeight (selectedTabChange)=\"yourFn($event)\">\r\n        <mat-tab class=\"label\" label=\"All Shifts\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"content\">\r\n                        <th mat-header-cell *matHeaderCellDef> Content </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.content}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Need a Shift?\" id=\"secondTabUpdate\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"content\">\r\n                        <th mat-header-cell *matHeaderCellDef> Content </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.content}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accept-button\">\r\n                        <th mat-header-cell *matHeaderCellDef> <button>Accept Shift</button> </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> <button id=\"accept-button\" name=\"accept-button\"\r\n                                color=\"primary\" mat-button (click)=\"acceptPost(element.postId)\">Accept Post</button>\r\n                        </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns2;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Found a Shift\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posted Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"content\">\r\n                        <th mat-header-cell *matHeaderCellDef> Content </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.content}} </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns3;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n        <mat-tab class=\"label\" label=\"Deal is Done\">\r\n            <div class=\"example-large-box mat-elevation-z4\">\r\n                <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n                    <ng-container matColumnDef=\"post-id\">\r\n                        <th mat-header-cell *matHeaderCellDef> Post ID</th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postId}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"posting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Posting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.postingUser}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"accepting-user\">\r\n                        <th mat-header-cell *matHeaderCellDef> Accepting User </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.acceptingUser}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"shift-date\">\r\n                        <th mat-header-cell *matHeaderCellDef> Shift Date </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.shiftDate}} </td>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"start-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> Start Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.startTime}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"end-time\">\r\n                        <th mat-header-cell *matHeaderCellDef> End Time </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.endTime}}</td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"content\">\r\n                        <th mat-header-cell *matHeaderCellDef> Content </th>\r\n                        <td mat-cell *matCellDef=\"let element\"> {{element.content}} </td>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"companyRating\">\r\n                        <th mat-header-cell *matHeaderCellDef> Performance Rating </th>\r\n                        <td mat-cell *matCellDef=\"let element\">\r\n                            <app-star-rating></app-star-rating>\r\n                        </td>\r\n                    </ng-container>\r\n\r\n                    <tr mat-header-row *matHeaderRowDef=\"displayedColumns4\"></tr>\r\n                    <tr mat-row *matRowDef=\"let row; columns: displayedColumns4;\"></tr>\r\n                </table>\r\n            </div>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html": 
@@ -601,7 +628,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("#img{\r\n    height: 200vh;\r\n    background: url('background.jpg');\r\n    background-repeat: repeat;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2IsaUNBQXlDO0lBQ3pDLHlCQUF5QjtBQUM3QiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2ltZ3tcclxuICAgIGhlaWdodDogMjAwdmg7XHJcbiAgICBiYWNrZ3JvdW5kOiB1cmwoLi4vYXNzZXRzL2JhY2tncm91bmQuanBnKTtcclxuICAgIGJhY2tncm91bmQtcmVwZWF0OiByZXBlYXQ7XHJcbn0iXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = ("#img{\r\n    height: 1000vh;\r\n    background: url('background.jpg');\r\n    background-repeat: repeat;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0lBQ2QsaUNBQXlDO0lBQ3pDLHlCQUF5QjtBQUM3QiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2ltZ3tcclxuICAgIGhlaWdodDogMTAwMHZoO1xyXG4gICAgYmFja2dyb3VuZDogdXJsKC4uL2Fzc2V0cy9iYWNrZ3JvdW5kLmpwZyk7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogcmVwZWF0O1xyXG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/app.component.ts": 
@@ -1061,140 +1088,286 @@
                     this.dataSource = [];
                 }
                 TabbedTableComponent2.prototype.ngOnInit = function () {
-                    var _this = this;
-                    var obs = this.http.get('/company/posts');
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        var rowCounter = 0;
-                        for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                            var key = _a[_i];
-                            //let model = {postId: result2['results'][rowCounter]['name']}
-                            var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser']['email'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                            _this.dataSource.push(model);
-                            rowCounter++;
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.get('company/posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
                     });
                 };
                 TabbedTableComponent2.prototype.acceptPost = function (id) {
-                    var _this = this;
-                    var obs = this.http.put('/accept-company-acceptedpost/' + id, id);
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        if (result2 == true) {
-                            alert("Post accepted");
-                        }
-                        else {
-                            alert("Error accepting post");
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.put('accept-company-acceptedpost/' + id, id).toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            if (result2 == true) {
+                                                alert("Post accepted");
+                                            }
+                                            else {
+                                                alert("Error accepting post");
+                                            }
+                                            _this.updateView();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
                     });
                 };
                 TabbedTableComponent2.prototype.denyPost = function (id) {
-                    var _this = this;
-                    var obs = this.http.put('/reject-company-acceptedpost/' + id, id);
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        if (result2 == true) {
-                            alert("Post denied");
-                        }
-                        else {
-                            alert("Error denying post");
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.put('reject-company-acceptedpost/' + id, id).toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            if (result2 == true) {
+                                                alert("Post denied");
+                                            }
+                                            else {
+                                                alert("Error denying post");
+                                            }
+                                            _this.updateView();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                TabbedTableComponent2.prototype.updateView = function () {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.dataSource = [];
+                                    obs = this.http.get('company/posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'REPLIEDTO') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
                     });
                 };
                 TabbedTableComponent2.prototype.yourFn = function ($event) {
-                    var _this = this;
-                    this.dataSource = [];
-                    if ($event.index === 0) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                var model = { postId: result2['results'][rowCounter]['name'] };
-                                _this.dataSource.push(model);
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs, obs, obs, obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.dataSource = [];
+                                    if (!($event.index === 0)) return [3 /*break*/, 2];
+                                    obs = this.http.get('company/posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    _a.label = 2;
+                                case 2:
+                                    if (!($event.index === 1)) return [3 /*break*/, 4];
+                                    obs = this.http.get('company/posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'REPLIEDTO') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 3:
+                                    _a.sent();
+                                    _a.label = 4;
+                                case 4:
+                                    if ($event.index === 2) {
+                                        obs = this.http.get('company/posts');
+                                        obs.subscribe(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'ACCEPTED') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        });
+                                    }
+                                    if ($event.index === 3) {
+                                        obs = this.http.get('company/posts');
+                                        obs.subscribe(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'COMPLETED') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        });
+                                    }
+                                    return [2 /*return*/];
                             }
-                            _this.dataSource = _this.dataSource.slice();
                         });
-                    }
-                    if ($event.index === 1) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("B")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 2) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("C")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 3) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("V")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
+                    });
                 };
                 return TabbedTableComponent2;
             }());
@@ -1477,133 +1650,271 @@
                     this.router = router;
                     this.http = http;
                     this.changeDetectorRefs = changeDetectorRefs;
-                    this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-                    this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'accept-button'];
-                    this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time'];
-                    this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
+                    this.displayedColumns = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content'];
+                    this.displayedColumns2 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content', 'accept-button'];
+                    this.displayedColumns3 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content'];
+                    this.displayedColumns4 = ['post-id', 'posting-user', 'accepting-user', 'shift-date', 'start-time', 'end-time', 'content', 'companyRating'];
                     this.dataSource = [];
                 }
                 MbTabbedTableComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        var rowCounter = 0;
-                        for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                            var key = _a[_i];
-                            var model = { postId: result2['results'][rowCounter]['name'] };
-                            _this.dataSource.push(model);
-                            rowCounter++;
-                            if (rowCounter == 20) { //comment this out later
-                                break;
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
                             }
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                        });
                     });
                 };
                 MbTabbedTableComponent.prototype.acceptPost = function (id) {
-                    var _this = this;
-                    var obs = this.http.put('/add-user-acceptedpost/' + id, id);
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        if (result2 == true) {
-                            alert("Post accepted");
-                        }
-                        else {
-                            alert("Error accepting post");
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.put('add-user-acceptedpost/' + id, id).toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            if (result2 == true) {
+                                                alert("Post accepted");
+                                            }
+                                            else {
+                                                alert("Error accepting post");
+                                            }
+                                            _this.updateView();
+                                            //this.dataSource = [...this.dataSource];
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                MbTabbedTableComponent.prototype.updateView = function () {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.dataSource = [];
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'PENDING') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
                     });
                 };
                 MbTabbedTableComponent.prototype.yourFn = function ($event) {
-                    var _this = this;
-                    this.dataSource = [];
-                    if ($event.index === 0) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                var model = { postId: result2['results'][rowCounter]['name'] };
-                                _this.dataSource.push(model);
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs, obs, obs, obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.dataSource = [];
+                                    if (!($event.index === 0)) return [3 /*break*/, 2];
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    _a.label = 2;
+                                case 2:
+                                    if (!($event.index === 1)) return [3 /*break*/, 4];
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'PENDING') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 3:
+                                    _a.sent();
+                                    _a.label = 4;
+                                case 4:
+                                    if (!($event.index === 2)) return [3 /*break*/, 6];
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'REPLIEDTO') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 5:
+                                    _a.sent();
+                                    _a.label = 6;
+                                case 6:
+                                    if (!($event.index === 3)) return [3 /*break*/, 8];
+                                    obs = this.http.get('posts/all/').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'ACCEPTED') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'], content: result2[rowCounter]['content'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 7:
+                                    _a.sent();
+                                    _a.label = 8;
+                                case 8: return [2 /*return*/];
                             }
-                            _this.dataSource = _this.dataSource.slice();
                         });
-                    }
-                    if ($event.index === 1) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("B")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 2) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("C")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 3) {
-                        var obs = this.http.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2['results']); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['results'][rowCounter]['name'].startsWith("V")) {
-                                    var model = { postId: result2['results'][rowCounter]['name'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                                if (rowCounter == 20) { //comment this out later
-                                    break;
-                                }
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
+                    });
                 };
                 return MbTabbedTableComponent;
             }());
@@ -1619,21 +1930,6 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./mb-tabbed-table.component.css */ "./src/app/mb-tabbed-table/mb-tabbed-table.component.css")).default]
                 })
             ], MbTabbedTableComponent);
-            /* import { Component, OnInit } from '@angular/core';
-            
-            @Component({
-              selector: 'app-mb-tabbed-table',
-              templateUrl: './mb-tabbed-table.component.html',
-              styleUrls: ['./mb-tabbed-table.component.css']
-            })
-            export class MbTabbedTableComponent implements OnInit {
-            
-              constructor() { }
-            
-              ngOnInit() {
-              }
-            
-            } */
             /***/ 
         }),
         /***/ "./src/app/navbar/navbar.component.css": 
@@ -1697,25 +1993,47 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../post-addition-service.service */ "./src/app/post-addition-service.service.ts");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var PostAdditionFormComponent = /** @class */ (function () {
-                function PostAdditionFormComponent(svc) {
+                function PostAdditionFormComponent(svc, router, http) {
+                    this.router = router;
+                    this.http = http;
                     this.svc = svc;
                 }
                 PostAdditionFormComponent.prototype.ngOnInit = function () {
                 };
                 PostAdditionFormComponent.prototype.postEvent = function () {
-                    this.result = this.svc.addPost(this.shiftDate, this.startTime, this.endTime, this.companyName);
-                    if (this.result == true) {
-                        alert("Post was Added");
-                    }
-                    else {
-                        alert("Post failed");
-                    }
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.post('addPost', { shiftDate: this.shiftDate, startTime: this.startTime, EndTime: this.endTime, companyName: this.companyName }).toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.result = response;
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    if (this.result == true) {
+                                        alert("Post was Added");
+                                    }
+                                    else {
+                                        alert("Post failed");
+                                    }
+                                    this.router.navigateByUrl('marketboard');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 };
                 return PostAdditionFormComponent;
             }());
             PostAdditionFormComponent.ctorParameters = function () { return [
-                { type: _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__["PostAdditionServiceService"] }
+                { type: _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__["PostAdditionServiceService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
             ]; };
             PostAdditionFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2014,95 +2332,193 @@
                     this.dataSource = [];
                 }
                 TabbedTableComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    var obs = this.http.get('/user/created-posts');
-                    obs.subscribe(function (response) {
-                        _this.response = response;
-                        var result = JSON.stringify(_this.response);
-                        var result2 = JSON.parse(result);
-                        var rowCounter = 0;
-                        for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                            var key = _a[_i];
-                            var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                            _this.dataSource.push(model);
-                            rowCounter++;
-                        }
-                        _this.dataSource = _this.dataSource.slice();
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.get('user/created-posts').toPromise();
+                                    /*     obs.subscribe((response) => { */
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    /*     obs.subscribe((response) => { */
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
                     });
                 };
                 TabbedTableComponent.prototype.yourFn = function ($event) {
-                    var _this = this;
-                    //this.dataSource = [];
-                    if ($event.index === 0) {
-                        var obs = this.http.get('/user/created-posts');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                                _this.dataSource.push(model);
-                                rowCounter++;
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs, obs, obs, obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.dataSource = [];
+                                    if (!($event.index === 0)) return [3 /*break*/, 2];
+                                    obs = this.http.get('user/created-posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                var model = void 0;
+                                                if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                else {
+                                                    model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                }
+                                                _this.dataSource.push(model);
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    _a.label = 2;
+                                case 2:
+                                    if (!($event.index === 1)) return [3 /*break*/, 4];
+                                    obs = this.http.get('user/accepted-posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'REPLIEDTO') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 3:
+                                    _a.sent();
+                                    _a.label = 4;
+                                case 4:
+                                    if (!($event.index === 2)) return [3 /*break*/, 6];
+                                    obs = this.http.get('user/accepted-posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'ACCEPTED') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 5:
+                                    _a.sent();
+                                    _a.label = 6;
+                                case 6:
+                                    if (!($event.index === 3)) return [3 /*break*/, 8];
+                                    obs = this.http.get('user/accepted-posts').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                            var result = JSON.stringify(_this.response);
+                                            var result2 = JSON.parse(result);
+                                            console.log(result2);
+                                            var rowCounter = 0;
+                                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
+                                                var key = _a[_i];
+                                                if (result2[rowCounter]['status'] == 'COMPLETED') {
+                                                    var model = void 0;
+                                                    if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] != null && result2[rowCounter]['postingUser'] == null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else if (result2[rowCounter]['acceptingUser'] == null && result2[rowCounter]['postingUser'] != null) {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    else {
+                                                        model = { postId: result2[rowCounter]['postId'], postingUser: result2[rowCounter]['postingUser']['email'], acceptingUser: result2[rowCounter]['acceptingUser']['email'], shiftDate: result2[rowCounter]['shiftDate'], startTime: result2[rowCounter]['startTime'], endTime: result2[rowCounter]['endTime'] };
+                                                    }
+                                                    _this.dataSource.push(model);
+                                                }
+                                                rowCounter++;
+                                            }
+                                            _this.dataSource = _this.dataSource.slice();
+                                        })];
+                                case 7:
+                                    _a.sent();
+                                    _a.label = 8;
+                                case 8: return [2 /*return*/];
                             }
-                            _this.dataSource = _this.dataSource.slice();
                         });
-                    }
-                    if ($event.index === 1) {
-                        var obs = this.http.get('/user/accepted-posts');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['status'] === 'REPLIEDTO') {
-                                    var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 2) {
-                        var obs = this.http.get('/user/accepted-posts');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['status'] === 'ACCEPTED') {
-                                    var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
-                    if ($event.index === 3) {
-                        var obs = this.http.get('/user/accepted-posts');
-                        obs.subscribe(function (response) {
-                            _this.response = response;
-                            var result = JSON.stringify(_this.response);
-                            var result2 = JSON.parse(result);
-                            var rowCounter = 0;
-                            for (var _i = 0, _a = Object.keys(result2); _i < _a.length; _i++) {
-                                var key = _a[_i];
-                                if (result2['status'] === 'COMPLETED') {
-                                    var model = { postId: result2['postId'], postingUser: result2['postingUser']['email'], acceptingUser: result2['acceptingUser'], shiftDate: result2['shiftDate'], startTime: result2['startTime'], endTime: result2['endTime'] };
-                                    _this.dataSource.push(model);
-                                }
-                                rowCounter++;
-                            }
-                            _this.dataSource = _this.dataSource.slice();
-                        });
-                    }
+                    });
                 };
                 return TabbedTableComponent;
             }());
@@ -2118,41 +2534,6 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tabbed-table.component.css */ "./src/app/user-tabbed-table/tabbed-table.component.css")).default]
                 })
             ], TabbedTableComponent);
-            /* import { Component, OnInit } from '@angular/core';
-            import { HttpClient } from '@angular/common/http';
-            import { Router } from "@angular/router";
-            
-            
-            @Component({
-              selector: 'app-tabbed-table',
-              templateUrl: './tabbed-table.component.html',
-              styleUrls: ['./tabbed-table.component.css']
-            })
-            export class TabbedTableComponent implements OnInit {
-             displayedColumns: string[] = ['height'];
-              displayedColumns2: string[] = ['post-id', 'posting-user', 'accepting-user', 'posted-time', 'start-time', 'end-time', 'companyRating'];
-              postData: string[];
-              dataSource = this.postData;
-              email: string;
-              password:string;
-              response: any;
-              constructor(private router: Router, private http: HttpClient) { }
-              ngOnInit() {
-                let obs = this.http.get('https://pokeapi.co/api/v2/pokemon/ditto/');
-                obs.subscribe((response) => {
-                  this.response = response;
-                 var result = JSON.stringify(this.response);
-                  
-                  var result2 = JSON.parse(result);
-                  this.postData[0] = (result2['height']);
-            
-                });
-              }
-            
-              search() {
-                alert("search called");
-            }
-            } */
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 
