@@ -90,8 +90,8 @@ public class LoginController {
 	}
 	
 	@GetMapping("/logout")
-	public Boolean logout(@PathVariable String email) {
-
+	public Boolean logout( HttpSession sess) {
+		sess.invalidate();
 		return false;
 	}
 
