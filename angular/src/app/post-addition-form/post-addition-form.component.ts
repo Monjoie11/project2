@@ -14,10 +14,11 @@ export class PostAdditionFormComponent implements OnInit {
   shiftDate: any;
   startTime: string;
   endTime: string;
+  content: string;
   result: any;
   svc: PostAdditionServiceService;
 
-  constructor(svc: PostAdditionServiceService, private router: Router, private http: HttpClient) { 
+  constructor(svc: PostAdditionServiceService, private http: HttpClient, private router: Router) { 
     this.svc = svc;
   }
 
@@ -25,8 +26,7 @@ export class PostAdditionFormComponent implements OnInit {
   }
 
   async postEvent(){
-    //this.result = this.svc.addPost(this.shiftDate, this.startTime, this.endTime, this.companyName);
-    let obs = this.http.post('addPost', {shiftDate: this.shiftDate, startTime: this.startTime, EndTime: this.endTime, companyName: this.companyName}).toPromise()
+    let obs = this.http.post('post/create', {shiftDate: this.shiftDate, startTime: this.startTime, endTime: this.endTime, companyName: this.companyName, content: this.content}).toPromise()
     await obs.then((response) => {
       this.result = response;
     });

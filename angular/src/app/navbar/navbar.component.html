@@ -9,7 +9,7 @@
                 <a mat-button [routerLink]="'/login'"> Log Out </a>
                 <a mat-button [routerLink]="'/calendar'"> See Your Calendar </a>
                 <a mat-button [routerLink]="'/marketboard'"> View The Market Board </a>
-                <a mat-button [routerLink]="'/company-homepage'"> Home </a>
+                <a mat-button (event)="goHome($event)"> Home </a>
     
             </div>
         </mat-toolbar-row>

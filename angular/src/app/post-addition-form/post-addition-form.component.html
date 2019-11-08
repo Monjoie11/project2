@@ -22,8 +22,9 @@
                <input placeholder="End time" aria-label="12hr format" [ngxTimepicker]="default2" readonly
                 [(ngModel)]="endTime">
             <ngx-material-timepicker #default2></ngx-material-timepicker>
+            <textarea id="content" name="content" [(ngModel)]="content"></textarea>
             <button (click)='postEvent($event)' mat-raised-button color="primary" id="submit-post"
-                routerLink="/marketboard">Submit Post</button>
+               >Submit Post</button>
             <button mat-raised-button color="primary" id="submit-post" routerLink="/marketboard">Cancel</button>
         </mat-card-content>
     </mat-card>
