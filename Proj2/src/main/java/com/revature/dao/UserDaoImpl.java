@@ -31,6 +31,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (HibernateException e) {
 			tx.rollback();
 			LoggerUtil.error("UserDaoImpl, updateUser, HibernateException");
+			e.printStackTrace();
 			return false;
 		} finally {
 			sess.close();
@@ -60,6 +61,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (HibernateException e) {
 			tx.rollback();
 			LoggerUtil.error("UserDaoImpl, insertUser, HibernateException");
+			e.printStackTrace();
 			return false;
 		} finally {
 			sess.close();
@@ -78,6 +80,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (HibernateException e) {
 			tx.rollback();
 			LoggerUtil.error("UserDaoImpl, deleteUser, HibernateException");
+			e.printStackTrace();
 			return false;
 		} finally {
 			sess.close();
@@ -98,6 +101,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (HibernateException e) {
 			tx.rollback();
 			LoggerUtil.error("UserDaoImpl, getUserByEmail, HibernateException");
+			e.printStackTrace();
 			return null;
 		} finally {
 			sess.close();
@@ -115,6 +119,7 @@ public class UserDaoImpl implements UserDao {
 			return result;
 		} catch (HibernateException e) {
 			LoggerUtil.error("UserDaoImpl, getAllUsers, HibernateException");
+			e.printStackTrace();
 			return null;
 		} finally {
 			sess.close();
