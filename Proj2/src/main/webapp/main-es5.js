@@ -187,7 +187,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar id=\"toolbar\" color=\"primary\">\r\n        <mat-toolbar-row>\r\n            <button mat-icon-button>\r\n                <mat-icon (click)=\"sidenav.toggle()\">menu</mat-icon>\r\n            </button>\r\n            <h1>Shiftz</h1>\r\n            <span class=\"menu-spacer\"></span>\r\n            <div>\r\n                <a mat-button [routerLink]=\"'/login'\"> Log Out </a>\r\n                <a mat-button [routerLink]=\"'/calendar'\"> See Your Calendar </a>\r\n                <a mat-button [routerLink]=\"'/marketboard'\"> View The Market Board </a>\r\n                <a mat-button [routerLink]=\"'/company-homepage'\"> Home </a>\r\n    \r\n            </div>\r\n        </mat-toolbar-row>\r\n    \r\n        <mat-toolbar-row>\r\n            <span style=\"font-size: 18px;\">Need a Shift? Get a Shift.</span>\r\n        </mat-toolbar-row>\r\n    </mat-toolbar>\r\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar id=\"toolbar\" color=\"primary\">\r\n        <mat-toolbar-row>\r\n            <button mat-icon-button>\r\n                <mat-icon (click)=\"sidenav.toggle()\">menu</mat-icon>\r\n            </button>\r\n            <h1>Shiftz</h1>\r\n            <span class=\"menu-spacer\"></span>\r\n            <div>\r\n                <a mat-button (click)=\"logout($event)\"> Log Out </a>\r\n                <a mat-button [routerLink]=\"'/calendar'\"> See Your Calendar </a>\r\n                <a mat-button [routerLink]=\"'/marketboard'\"> View The Market Board </a>\r\n                <a mat-button (click)=\"goHome($event)\"> Home </a>\r\n\r\n            </div>\r\n        </mat-toolbar-row>\r\n    \r\n        <mat-toolbar-row>\r\n            <span style=\"font-size: 18px;\">Need a Shift? Get a Shift.</span>\r\n        </mat-toolbar-row>\r\n    </mat-toolbar>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-addition-form/post-addition-form.component.html": 
@@ -198,7 +198,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"placeholder\"></div>\r\n<div class=\"form-div\">\r\n    <mat-card>\r\n        <mat-card-header>Select date and time for your shift</mat-card-header>\r\n        <mat-card-content fxLayout=\"column\">\r\n            <mat-select placeholder=\"Select company\" [(ngModel)]=\"selectedValue\" id=\"companyName\" name=\"companyName\"\r\n                [(ngModel)]=\"companyName\">\r\n                <mat-option value=\"Company 1\">company name 1</mat-option>\r\n                <mat-option value=\"Company 2\">company name 2</mat-option>\r\n                <mat-option value=\"Company 3\">company name 3</mat-option>\r\n                <mat-option value=\"Company 4\">company name 4</mat-option>\r\n                <mat-option value=\"Company 5\">company name 5</mat-option>\r\n            </mat-select>\r\n            <mat-form-field class=\"example-full-width\">\r\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\" [(ngModel)]=\"shiftDate\">\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker touchUi #picker></mat-datepicker>\r\n            </mat-form-field>\r\n               <input placeholder=\"Start time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default1\" readonly\r\n                [(ngModel)]=\"startTime\">\r\n            <ngx-material-timepicker #default1></ngx-material-timepicker>\r\n               <input placeholder=\"End time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default2\" readonly\r\n                [(ngModel)]=\"endTime\">\r\n            <ngx-material-timepicker #default2></ngx-material-timepicker>\r\n            <button (click)='postEvent($event)' mat-raised-button color=\"primary\" id=\"submit-post\"\r\n                routerLink=\"/marketboard\">Submit Post</button>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Cancel</button>\r\n        </mat-card-content>\r\n    </mat-card>\r\n</div>\r\n<!-- start time, end time, posted time -->");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"placeholder\"></div>\r\n<div class=\"form-div\">\r\n    <mat-card>\r\n        <mat-card-header>Select date and time for your shift</mat-card-header>\r\n        <mat-card-content fxLayout=\"column\">\r\n            <mat-select placeholder=\"Select company\" [(ngModel)]=\"selectedValue\" id=\"companyName\" name=\"companyName\"\r\n                [(ngModel)]=\"companyName\">\r\n                <mat-option value=\"company_name_1\">company name 1</mat-option>\r\n                <mat-option value=\"company_name_2\">company name 2</mat-option>\r\n                <mat-option value=\"company_name_3\">company name 3</mat-option>\r\n                <mat-option value=\"company_name_4\">company name 4</mat-option>\r\n                <mat-option value=\"company_name_5\">company name 5</mat-option>\r\n            </mat-select>\r\n            <mat-form-field class=\"example-full-width\">\r\n                <input matInput [matDatepicker]=\"picker\" placeholder=\"Choose a date\" [(ngModel)]=\"shiftDate\">\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker touchUi #picker></mat-datepicker>\r\n            </mat-form-field>\r\n               <input placeholder=\"Start time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default1\" readonly\r\n                [(ngModel)]=\"startTime\">\r\n            <ngx-material-timepicker #default1></ngx-material-timepicker>\r\n               <input placeholder=\"End time\" aria-label=\"12hr format\" [ngxTimepicker]=\"default2\" readonly\r\n                [(ngModel)]=\"endTime\">\r\n            <ngx-material-timepicker #default2></ngx-material-timepicker>\r\n            <textarea id=\"content\" name=\"content\" [(ngModel)]=\"content\"></textarea>\r\n            <button (click)='postEvent($event)' mat-raised-button color=\"primary\" id=\"submit-post\"\r\n               >Submit Post</button>\r\n            <button mat-raised-button color=\"primary\" id=\"submit-post\" routerLink=\"/marketboard\">Cancel</button>\r\n        </mat-card-content>\r\n    </mat-card>\r\n</div>\r\n<!-- start time, end time, posted time -->");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-homepage/user-homepage.component.html": 
@@ -1968,13 +1968,66 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function () { return NavbarComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var NavbarComponent = /** @class */ (function () {
-                function NavbarComponent() {
+                function NavbarComponent(http, router) {
+                    this.http = http;
+                    this.router = router;
                 }
+                NavbarComponent.prototype.goHome = function ($event) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.get('userType').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    console.log(this.response);
+                                    if (this.response == true) {
+                                        this.router.navigateByUrl('user-homepage');
+                                    }
+                                    else {
+                                        this.router.navigateByUrl('company-homepage');
+                                    }
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                NavbarComponent.prototype.logout = function ($event) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var obs;
+                        var _this = this;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    obs = this.http.get('logout').toPromise();
+                                    return [4 /*yield*/, obs.then(function (response) {
+                                            _this.response = response;
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    console.log(this.response);
+                                    this.router.navigateByUrl('login');
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
                 NavbarComponent.prototype.ngOnInit = function () {
                 };
                 return NavbarComponent;
             }());
+            NavbarComponent.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+            ]; };
             NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-navbar',
@@ -1992,7 +2045,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\r\nmat-card{\r\n    min-width: 30%;\r\n    max-width: 10px;\r\n    margin-left: 35%;\r\n}\r\n#placeholder{\r\n    height: 20%;\r\n}\r\n#submit-post{\r\n    margin-top: 5%;\r\n}\r\n#companyName{\r\n    margin-top: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC1hZGRpdGlvbi1mb3JtL3Bvc3QtYWRkaXRpb24tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLGNBQWM7QUFDbEI7QUFDQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9wb3N0LWFkZGl0aW9uLWZvcm0vcG9zdC1hZGRpdGlvbi1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubWF0LWNhcmR7XHJcbiAgICBtaW4td2lkdGg6IDMwJTtcclxuICAgIG1heC13aWR0aDogMTBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbn1cclxuI3BsYWNlaG9sZGVye1xyXG4gICAgaGVpZ2h0OiAyMCU7XHJcbn1cclxuI3N1Ym1pdC1wb3N0e1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn1cclxuI2NvbXBhbnlOYW1le1xyXG4gICAgbWFyZ2luLXRvcDogNSU7XHJcbn0iXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = ("\r\nmat-card{\r\n    min-width: 30%;\r\n    max-width: 10px;\r\n    margin-left: 35%;\r\n}\r\n#placeholder{\r\n    height: 1%;\r\n}\r\n#submit-post{\r\n    margin-top: 5%;\r\n}\r\n#companyName{\r\n    margin-top: 5%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC1hZGRpdGlvbi1mb3JtL3Bvc3QtYWRkaXRpb24tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxVQUFVO0FBQ2Q7QUFDQTtJQUNJLGNBQWM7QUFDbEI7QUFDQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9wb3N0LWFkZGl0aW9uLWZvcm0vcG9zdC1hZGRpdGlvbi1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubWF0LWNhcmR7XHJcbiAgICBtaW4td2lkdGg6IDMwJTtcclxuICAgIG1heC13aWR0aDogMTBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbn1cclxuI3BsYWNlaG9sZGVye1xyXG4gICAgaGVpZ2h0OiAxJTtcclxufVxyXG4jc3VibWl0LXBvc3R7XHJcbiAgICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG4jY29tcGFueU5hbWV7XHJcbiAgICBtYXJnaW4tdG9wOiA1JTtcclxufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/post-addition-form/post-addition-form.component.ts": 
@@ -2010,9 +2063,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var PostAdditionFormComponent = /** @class */ (function () {
-                function PostAdditionFormComponent(svc, router, http) {
-                    this.router = router;
+                function PostAdditionFormComponent(svc, http, router) {
                     this.http = http;
+                    this.router = router;
                     this.svc = svc;
                 }
                 PostAdditionFormComponent.prototype.ngOnInit = function () {
@@ -2024,7 +2077,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    obs = this.http.post('addPost', { shiftDate: this.shiftDate, startTime: this.startTime, EndTime: this.endTime, companyName: this.companyName }).toPromise();
+                                    obs = this.http.put('post/create/' + this.companyName, { shiftDate: this.shiftDate, startTime: this.startTime, endTime: this.endTime, content: this.content }).toPromise();
                                     return [4 /*yield*/, obs.then(function (response) {
                                             _this.result = response;
                                         })];
@@ -2046,8 +2099,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             }());
             PostAdditionFormComponent.ctorParameters = function () { return [
                 { type: _post_addition_service_service__WEBPACK_IMPORTED_MODULE_2__["PostAdditionServiceService"] },
-                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
             ]; };
             PostAdditionFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2604,7 +2657,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! D:\Users\Dilshan\Desktop\code\STS\Project2\separate-angular\project2\angular\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Repositories\P2\project2\angular\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

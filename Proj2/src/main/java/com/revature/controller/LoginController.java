@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,8 @@ public class LoginController {
 	}
 
 	@GetMapping("/userType")
-	public Boolean loginGet(HttpSession sess) {	//true for User
+	public Boolean loginGet(HttpSession sess, HttpServletRequest req) {	//true for User
+		req.getSession(false);
 		User u = (User) sess.getAttribute("user");
 		Company c = (Company) sess.getAttribute("company");
 		if(u!=null) {
@@ -90,7 +92,13 @@ public class LoginController {
 	}
 	
 	@GetMapping("/logout")
-	public Boolean logout( HttpSession sess) {
+	public Boolean logout( HttpSession sess, ModelMap map, HttpServletRequest req) {
+		sess.setAttribute("user", null);
+		sess.setAttribute("company", null);
+		map.clear();
+		sess = req.getSession(false);
+		map.remove("user");
+		map.remove("company");
 		sess.invalidate();
 		return false;
 	}

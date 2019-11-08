@@ -304,8 +304,8 @@
           \***********************************************************************************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            __webpack_require__(/*! D:\Users\Dilshan\Desktop\code\STS\Project2\separate-angular\project2\angular\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */ "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
-            module.exports = __webpack_require__(/*! D:\Users\Dilshan\Desktop\code\STS\Project2\separate-angular\project2\angular\src\styles.css */ "./src/styles.css");
+            __webpack_require__(/*! C:\Repositories\P2\project2\angular\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */ "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+            module.exports = __webpack_require__(/*! C:\Repositories\P2\project2\angular\src\styles.css */ "./src/styles.css");
             /***/ 
         })
     }, [[3, "runtime"]]]);

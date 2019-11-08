@@ -47,6 +47,7 @@ public class PostController {
 		Company c = (companyService.getCompanyByName(name)).get(0);
 		post.setReferencedCompany(c); //REQUEST SHOULD HAVE REFERENCEDCOMPANY
 		// FIELD FILLED (DROPDOWN)
+		post.setPostingUser(user);
 		postService.createPost(post);
 		return true;
 	}
