@@ -7,11 +7,11 @@ import com.revature.pojo.Company;
 
 public interface CompanyDao {
 	
-	public void updateCompany(Company company);
+	public boolean updateCompany(Company company);
 
-	public void insertCompany(Company company);
+	public boolean insertCompany(Company company);
 
-	public void deleteCompany(Company company);
+	public boolean deleteCompany(Company company);
 
 	public Company getCompanyByEmail(String email);
 
